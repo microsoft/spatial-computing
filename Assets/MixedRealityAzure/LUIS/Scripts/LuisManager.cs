@@ -45,10 +45,12 @@ namespace Microsoft.MR.LUIS
 	{
 		#region Member Variables
 		private LuisClient client;
-		#endregion // Member Variables
+        private List<IContextProvider> contextProviders = new List<IContextProvider>();
+        private List<IEntityResolver> entityResolvers = new List<IEntityResolver>();
+        #endregion // Member Variables
 
-		#region Unity Inspector Variables
-		[Tooltip("The application ID of the LUIS application.")]
+        #region Unity Inspector Variables
+        [Tooltip("The application ID of the LUIS application.")]
 		[SecretValue("LUIS.AppId")]
 		public string AppId;
 
@@ -59,7 +61,11 @@ namespace Microsoft.MR.LUIS
 		[Tooltip("String that represents the domain of the LUIS endpoint.")]
 		public string Domain = "westus";
 
-		[Tooltip("Whether to use preview LUIS features.")]
+        [Tooltip("The minimum confidence level for an intent to be handled.")]
+        [Range(0,1)]
+        public double MinimumIntentScore = 0.5;
+
+        [Tooltip("Whether to use preview LUIS features.")]
 		public bool Preview = false;
 
 		[Tooltip("Whether to return full result of all intents not just the top scoring intent (for preview features only).")]
@@ -110,11 +116,6 @@ namespace Microsoft.MR.LUIS
 				this.enabled = false;
 			}
 		}
-
-		protected virtual async void Start()
-		{
-			await Predict("Turn the box blue");
-		}
 		#endregion // Unity Overrides
 
 		#region Overridables / Event Triggers
@@ -144,25 +145,101 @@ namespace Microsoft.MR.LUIS
 			}
 			return valid;
 		}
-		#endif
+        #endif
 
-		protected virtual void ProcessResult(LuisResult result)
-		{
-			Debug.LogFormat($"Top Intent: {result.TopScoringIntent.Name} with a score of {result.TopScoringIntent.Score}");
-		}
-		#endregion // Overridables / Event Triggers
+        /// <summary>
+        /// Capture the current context for a prediction.
+        /// </summary>
+        /// <param name="context">
+        /// The <see cref="PredictionContext"/> where context is stored.
+        /// </param>
+        /// <remarks>
+        /// This is stage 1 in processing a LUIS utterence. 
+        /// The default implementation enumerates through all objects in 
+        /// <see cref="ContextProviders"/> and asks them to provide context.
+        /// </remarks>
+        protected virtual void CaptureContext(PredictionContext context)
+        {
+            foreach (IContextProvider provider in contextProviders)
+            {
+                provider.CaptureContext(context);
+            }
+        }
 
-		#region Public Methods
-		public async Task Predict(string text)
-		{
-			// Make sure we have a client
-			EnsureClient();
+        /// <summary>
+        /// Handles the final result for a LUIS prediction.
+        /// </summary>
+        /// <param name="result">
+        /// The <see cref="LuisMRResult"/> that contains information about the prediction.
+        /// </param>
+        /// <remarks>
+        /// This is stage 4 in processing a LUIS utterence. The default implementaiton looks for 
+        /// a global handler for the specified intent and executes it. If a global handler is not 
+        /// found and there is only one mapped entity, the entity will be checked to see if it 
+        /// can handle the intent.
+        /// </remarks>
+        protected virtual void HandleIntent(LuisMRResult result)
+        {
+            // TODO: Routing and execution here
+            // NOTE: If a handler is found and is executed, we need to set result.Handled = true;
+        }
 
-			// Use client to do the prediction
-			LuisResult result = await client.Predict(text);
+        /// <summary>
+        /// Attempts to resolve scene entities from LUIS entities.
+        /// </summary>
+        /// <param name="result">
+        /// The <see cref="LuisMRResult"/> that provides context and storage for the resolution.
+        /// </param>
+        /// <remarks>
+        /// This is stage 3 in processing a LUIS utterence. 
+        /// The default implementation enumerates through all objects in the 
+        /// <see cref="EntityResolvers"/> and asks them to resolve entities.
+        /// </remarks>
+        protected virtual void ResolveEntities(LuisMRResult result)
+        {
+            foreach (IEntityResolver resolver in entityResolvers)
+            {
+                resolver.Resolve(result);
+            }
+        }
+        #endregion // Overridables / Event Triggers
 
-			// Process the result
-			ProcessResult(result);
+        #region Public Methods
+        /// <summary>
+        /// Attempts a LUIS prediction on the specified text and if confidence is high enough, the intent is executed.
+        /// </summary>
+        /// <param name="text">
+        /// The text used for the prediction.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task"/> that yields the result of the operation as a <see cref="LuisMRResult"/>.
+        /// </returns>
+        public async Task<LuisMRResult> PredictAndHandle(string text)
+        {
+            // Make sure we have a client
+            EnsureClient();
+
+            // Create our result object
+            LuisMRResult mrResult = new LuisMRResult();
+
+            // Stage 1: Capture context
+            CaptureContext(mrResult.Context);
+
+            // Stage 2: Predict using the LUIS client
+            mrResult.OriginalResult = await client.Predict(text);
+
+            // Only do the next two stages if we have the mininmum required confidence
+            if (mrResult.OriginalResult.TopScoringIntent.Score >= MinimumIntentScore)
+            {
+                // Stage 3: Resolve Entites
+                ResolveEntities(mrResult);
+
+                // Stage 4: Handle Intents
+                HandleIntent(mrResult);
+            }
+
+            // Done
+            return mrResult;
 		}
 		#endregion // Public Methods
 
@@ -178,6 +255,37 @@ namespace Microsoft.MR.LUIS
 				return client;
 			}
 		}
-		#endregion // Public Properties
-	}
+        /// <summary>
+        /// Gets or sets the list of classes that can provide context for a LUIS prediction.
+        /// </summary>
+        public List<IContextProvider> ContextProviders
+        {
+            get
+            {
+                return contextProviders;
+            }
+            set
+            {
+                if (value == null) throw new ArgumentNullException(nameof(value));
+                this.contextProviders = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the list of classes that can be used to resolve LUIS entities to scene objects.
+        /// </summary>
+        public List<IEntityResolver> EntityResolvers
+        {
+            get
+            {
+                return entityResolvers;
+            }
+            set
+            {
+                if (value == null) throw new ArgumentNullException(nameof(value));
+                this.entityResolvers = value;
+            }
+        }
+        #endregion // Public Properties
+    }
 }
