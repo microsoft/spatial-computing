@@ -80,9 +80,20 @@ namespace Microsoft.MR.LUIS
 
         #region Public Properties
         /// <summary>
-        /// Gets the <see cref="PredictionContext"/> that supplies additional context for the prediction.
+        /// Gets or sets the <see cref="PredictionContext"/> that supplies additional context for the prediction.
         /// </summary>
-        public PredictionContext Context => context;
+        public PredictionContext Context
+        {
+            get
+            {
+                return context;
+            }
+            set
+            {
+                if (value == null) throw new ArgumentNullException(nameof(value));
+                this.context = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value that indicates if the result was handled by an intent handler.
