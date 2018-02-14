@@ -286,3 +286,6 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+mixedreality-azure-samples.sln
+mixedreality-azure-samples.csproj
+mixedreality-azure-samples.Player.csproj
