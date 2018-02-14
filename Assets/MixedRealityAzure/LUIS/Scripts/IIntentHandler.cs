@@ -23,34 +23,35 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using Microsoft.Cognitive.LUIS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEngine;
 
 namespace Microsoft.MR.LUIS
 {
     /// <summary>
-    /// Represents a map between an <see cref="Entity"/> recognised by LUIS and a <see cref="GameObject"/> in the scene.
+    /// The interface for a class that can handle a LUIS MR intent.
     /// </summary>
-    public class EntityMap
+    public interface IIntentHandler
     {
         /// <summary>
-        /// Gets or sets the <see cref="Entity"/> recognised by LUIS.
+        /// Returns true if the handler can handle the specified intent.
         /// </summary>
-        public Entity Entity { get; set; }
+        /// <param name="intent">
+        /// </param>
+        /// <returns>
+        /// <c>true</c> if the intent can be handled; otherwise <c>false</c>.
+        /// </returns>
+        bool CanHandleIntent(string intent);
 
         /// <summary>
-        /// Gets or sets the <see cref="GameObject"/> that represents the LUIS Entity.
+        /// Handles the intent stored within the <see cref="LuisMRResult"/>.
         /// </summary>
-        public GameObject GameObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resolver that resolved the entity.
-        /// </summary>
-        public IEntityResolver Resolver { get; set; }
+        /// <param name="result">
+        /// The <see cref="LuisMRResult"/> that contains the intent.
+        /// </param>
+        void HandleIntent(LuisMRResult result);
     }
 }

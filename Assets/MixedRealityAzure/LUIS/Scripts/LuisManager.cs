@@ -31,6 +31,7 @@ using System.Net;
 using System.Net.Security;
 using System.Threading.Tasks;
 using UnityEngine;
+using System.Linq;
 
 #if !UNITY_WSA || UNITY_EDITOR
 using System.Security.Cryptography.X509Certificates;
@@ -47,6 +48,7 @@ namespace Microsoft.MR.LUIS
 		private LuisClient client;
         private List<IContextProvider> contextProviders = new List<IContextProvider>();
         private List<IEntityResolver> entityResolvers = new List<IEntityResolver>();
+        private Dictionary<string, Action<LuisMRResult>> intentHandlers = new Dictionary<string, Action<LuisMRResult>>();
         #endregion // Member Variables
 
         #region Unity Inspector Variables
@@ -180,7 +182,24 @@ namespace Microsoft.MR.LUIS
         /// </remarks>
         protected virtual void HandleIntent(LuisMRResult result)
         {
-            // TODO: Routing and execution here
+            // Which intent?
+            Intent intent = result.OriginalResult.TopScoringIntent;
+
+            // Where to route?
+            if (intentHandlers.ContainsKey(intent.Name))
+            {
+                // Route to global handler
+                intentHandlers[intent.Name](result);
+            }
+            else
+            {
+                // No global handler, was there a single entity?
+                if (result.Entities.Count == 1)
+                {
+                    // TODO: Try and route to the single entity
+                    //result.Entities.First().Value.
+                }
+            }
             // NOTE: If a handler is found and is executed, we need to set result.Handled = true;
         }
 
@@ -206,27 +225,35 @@ namespace Microsoft.MR.LUIS
 
         #region Public Methods
         /// <summary>
-        /// Attempts a LUIS prediction on the specified text and if confidence is high enough, the intent is executed.
+        /// Attempts a LUIS prediction on the specified context and if confidence is high enough, the intent is executed.
         /// </summary>
-        /// <param name="text">
-        /// The text used for the prediction.
+        /// <param name="context">
+        /// Context that is used for the prediction. Additional context may still be collected by  
+        /// the <see cref="ContextProviders"/>.
         /// </param>
         /// <returns>
         /// A <see cref="Task"/> that yields the result of the operation as a <see cref="LuisMRResult"/>.
         /// </returns>
-        public async Task<LuisMRResult> PredictAndHandle(string text)
+        /// <remarks>
+        /// At a minimium, <see cref="PredictionContext.PredictionText"/> must be included within the context.
+        /// </remarks>
+        public virtual async Task<LuisMRResult> PredictAndHandle(PredictionContext context)
         {
+            // Validate
+            if (context == null) throw new ArgumentNullException(nameof(context));
+            if (string.IsNullOrEmpty(context.PredictionText)) throw new InvalidOperationException("At a minimum, PredictionText must be included within the context.");
+
             // Make sure we have a client
             EnsureClient();
 
             // Create our result object
-            LuisMRResult mrResult = new LuisMRResult();
+            LuisMRResult mrResult = new LuisMRResult() { Context = context };
 
             // Stage 1: Capture context
-            CaptureContext(mrResult.Context);
+            CaptureContext(context);
 
             // Stage 2: Predict using the LUIS client
-            mrResult.OriginalResult = await client.Predict(text);
+            mrResult.OriginalResult = await client.Predict(context.PredictionText);
 
             // Only do the next two stages if we have the mininmum required confidence
             if (mrResult.OriginalResult.TopScoringIntent.Score >= MinimumIntentScore)
@@ -241,13 +268,33 @@ namespace Microsoft.MR.LUIS
             // Done
             return mrResult;
 		}
-		#endregion // Public Methods
+        /// <summary>
+        /// Attempts a LUIS prediction on the specified text and if confidence is high enough, the intent is executed.
+        /// </summary>
+        /// <param name="text">
+        /// The text used for the prediction.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task"/> that yields the result of the operation as a <see cref="LuisMRResult"/>.
+        /// </returns>
+        public virtual Task<LuisMRResult> PredictAndHandle(string text)
+        {
+            // Validate
+            if (string.IsNullOrEmpty(text)) throw new ArgumentException(nameof(text));
 
-		#region Public Properties
-		/// <summary>
-		/// Gets the <see cref="LuisClient"/> instance created by this manager.
-		/// </summary>
-		public LuisClient Client
+            // Create a context and store the text
+            PredictionContext context = new PredictionContext() { PredictionText = text };
+
+            // Pass to context override
+            return PredictAndHandle(context);
+        }
+        #endregion // Public Methods
+
+        #region Public Properties
+        /// <summary>
+        /// Gets the <see cref="LuisClient"/> instance created by this manager.
+        /// </summary>
+        public LuisClient Client
 		{
 			get
 			{
@@ -255,6 +302,7 @@ namespace Microsoft.MR.LUIS
 				return client;
 			}
 		}
+
         /// <summary>
         /// Gets or sets the list of classes that can provide context for a LUIS prediction.
         /// </summary>
@@ -272,18 +320,18 @@ namespace Microsoft.MR.LUIS
         }
 
         /// <summary>
-        /// Gets or sets the list of classes that can be used to resolve LUIS entities to scene objects.
+        /// Gets or sets the list of global handlers for LUIS intents.
         /// </summary>
-        public List<IEntityResolver> EntityResolvers
+        public Dictionary<string, Action<LuisMRResult>> IntentHandlers
         {
             get
             {
-                return entityResolvers;
+                return intentHandlers;
             }
             set
             {
                 if (value == null) throw new ArgumentNullException(nameof(value));
-                this.entityResolvers = value;
+                this.intentHandlers = value;
             }
         }
         #endregion // Public Properties
