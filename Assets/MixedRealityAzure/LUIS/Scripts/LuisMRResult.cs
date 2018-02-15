@@ -71,9 +71,9 @@ namespace Microsoft.MR.LUIS
         {
             // First, make sure the entity table is created
             List<EntityMap> entityMapList;
-            if (!entities.TryGetValue(contextEntityMap.Entity.Name, out entityMapList))
+            if (!resolvedEntities.TryGetValue(contextEntityMap.Entity.Name, out entityMapList))
             {
-                entities[contextEntityMap.Entity.Name] = new List<EntityMap>() { contextEntityMap };
+                resolvedEntities[contextEntityMap.Entity.Name] = new List<EntityMap>() { contextEntityMap };
             }
             else
             {
