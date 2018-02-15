@@ -23,41 +23,27 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using Microsoft.Cognitive.LUIS;
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Cognitive.LUIS;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Microsoft.MR.LUIS
 {
-    /// <summary>
-    /// The interface for a class that can handle a LUIS MR intent.
-    /// </summary>
-    public interface IIntentHandler : IEventSystemHandler
+    public class IntentEventData : BaseEventData
     {
-        /// <summary>
-        /// Returns true if the handler can handle the specified intent.
-        /// </summary>
-        /// <param name="intentName">
-        /// The name of the intent to test.
-        /// </param>
-        /// <returns>
-        /// <c>true</c> if the intent can be handled; otherwise <c>false</c>.
-        /// </returns>
-        bool CanHandle(string intentName);
+        public LuisMRResult Result { get; private set; }
 
-        /// <summary>
-        /// Handles the intent stored within the <see cref="LuisMRResult"/>.
-        /// </summary>
-        /// <param name="intent">
-        /// The <see cref="Intent"/> to handle.
-        /// </param>
-        /// <param name="result">
-        /// The <see cref="LuisMRResult"/> that contains the result of the prediction.
-        /// </param>
-        void Handle(Intent intent, LuisMRResult result);
+        public Intent Intent { get; private set; }
+
+        public IntentEventData(EventSystem eventSystem) : base(eventSystem) { }
+
+        public void Initialize(Intent intent, LuisMRResult result)
+        {
+            Reset();
+            Result = result;
+            Intent = intent;
+        }
     }
 }

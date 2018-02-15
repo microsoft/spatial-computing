@@ -72,17 +72,7 @@ namespace Microsoft.MR.LUIS
 
 		[Tooltip("Whether to return full result of all intents not just the top scoring intent (for preview features only).")]
 		public bool Verbose = false;
-        #endregion // Unity Inspector Variables
-
-        #region Constructors
-        /// <summary>
-        /// Initializes a new <see cref="LuisManager"/> instance.
-        /// </summary>
-        public LuisManager()
-        {
-            AddDefaultStrategies();
-        }
-        #endregion // Constructors
+	    #endregion // Unity Inspector Variables
 
         #region Internal Methods
         /// <summary>
@@ -127,7 +117,10 @@ namespace Microsoft.MR.LUIS
 				Debug.LogErrorFormat("'{0}' is required but is not set. {1} has been disabled.", "AppKey", this.GetType().Name);
 				this.enabled = false;
 			}
-		}
+            
+            // Add default strategies (can be overridden)
+		    AddDefaultStrategies();
+        }
         #endregion // Unity Overrides
 
         #region Overridables / Event Triggers
