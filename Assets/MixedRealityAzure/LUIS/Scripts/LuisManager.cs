@@ -324,6 +324,22 @@ namespace Microsoft.MR.LUIS
         }
 
         /// <summary>
+        /// Gets or sets the list of classes that can resolve LUIS Entity to GameObject relationships.
+        /// </summary>
+        public List<IEntityResolver> EntityResolvers
+        {
+            get
+            {
+                return entityResolvers;
+            }
+            set
+            {
+                if (value == null) throw new ArgumentNullException(nameof(value));
+                this.entityResolvers = value;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the list of handlers for LUIS intents.
         /// </summary>
         public List<IIntentHandler> IntentHandlers
