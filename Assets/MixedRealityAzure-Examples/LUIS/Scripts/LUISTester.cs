@@ -12,6 +12,6 @@ public class LUISTester : MonoBehaviour
     async void Start()
     {
         var result = await luisManager.PredictAndHandle(testUtterence);
-        Debug.Log($"Utterence '{testUtterence}' confidence: {result.OriginalResult.TopScoringIntent.Score} was handled: {result.Handled}.");
+        Debug.Log($"Utterence '{testUtterence}' confidence: {result.PredictionResult.TopScoringIntent.Score} was handled: {result.Handled}.");
     }
 }

@@ -23,6 +23,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+using Microsoft.Cognitive.LUIS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,19 +40,23 @@ namespace Microsoft.MR.LUIS
         /// <summary>
         /// Returns true if the handler can handle the specified intent.
         /// </summary>
-        /// <param name="intent">
+        /// <param name="intentName">
+        /// The name of the intent to test.
         /// </param>
         /// <returns>
         /// <c>true</c> if the intent can be handled; otherwise <c>false</c>.
         /// </returns>
-        bool CanHandleIntent(string intent);
+        bool CanHandle(string intentName);
 
         /// <summary>
         /// Handles the intent stored within the <see cref="LuisMRResult"/>.
         /// </summary>
-        /// <param name="result">
-        /// The <see cref="LuisMRResult"/> that contains the intent.
+        /// <param name="intent">
+        /// The <see cref="Intent"/> to handle.
         /// </param>
-        void HandleIntent(LuisMRResult result);
+        /// <param name="result">
+        /// The <see cref="LuisMRResult"/> that contains the result of the prediction.
+        /// </param>
+        void Handle(Intent intent, LuisMRResult result);
     }
 }

@@ -45,6 +45,22 @@ namespace Microsoft.MR.LUIS
 
         #region Public Methods
         /// <summary>
+        /// Gets all mapped entities that have been resolved.
+        /// </summary>
+        /// <returns>
+        /// A list of all mapped entities.
+        /// </returns>
+        public List<EntityMap> GetAllEntities()
+        {
+            List<EntityMap> list = new List<EntityMap>();
+            foreach (var entityList in Entities)
+            {
+                list.AddRange(entityList.Value);
+            }
+            return list;
+        }
+
+        /// <summary>
         /// Maps the specified entity to the specified game object.
         /// </summary>
         /// <param name="entity">
@@ -101,12 +117,12 @@ namespace Microsoft.MR.LUIS
         public bool Handled { get; set; }
 
         /// <summary>
-        /// Gets or sets the LuisResult of the <see cref="LuisMRResult"/>.
+        /// Gets or sets the <see cref="LuisResult"/> that was returned from the LUIS prediction.
         /// </summary>
         /// <value>
-        /// The LuisResult of the <c>LuisMRResult</c>.
+        /// The <see cref="LuisResult"/> returned by the LUIS prediction.
         /// </value>
-        public LuisResult OriginalResult { get; set; }
+        public LuisResult PredictionResult { get; set; }
 
         ///// <summary>
         ///// Collection of <see cref="CompositeEntities"/> objects parsed accessed though a dictionary for easy access.
