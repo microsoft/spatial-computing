@@ -40,20 +40,20 @@ namespace Microsoft.MR.LUIS
     {
         #region Member Variables
         private PredictionContext context = new PredictionContext();
-        private Dictionary<string, List<EntityMap>> entities = new Dictionary<string, List<EntityMap>>();
+        private Dictionary<string, List<EntityMap>> resolvedEntities = new Dictionary<string, List<EntityMap>>();
         #endregion // Member Variables
 
         #region Public Methods
         /// <summary>
-        /// Gets all mapped entities that have been resolved.
+        /// Gets all entities that have been resolved to scene objects.
         /// </summary>
         /// <returns>
-        /// A list of all mapped entities.
+        /// A list of all resolved entities.
         /// </returns>
-        public List<EntityMap> GetAllEntities()
+        public List<EntityMap> GetAllResolvedEntities()
         {
             List<EntityMap> list = new List<EntityMap>();
-            foreach (var entityList in Entities)
+            foreach (var entityList in ResolvedEntities)
             {
                 list.AddRange(entityList.Value);
             }
@@ -83,9 +83,9 @@ namespace Microsoft.MR.LUIS
 
             // First, make sure the entity table is created
             List<EntityMap> entityMapList;
-            if (!entities.TryGetValue(entity.Name, out entityMapList))
+            if (!resolvedEntities.TryGetValue(entity.Name, out entityMapList))
             {
-                entities[entity.Name] = new List<EntityMap>() { map };
+                resolvedEntities[entity.Name] = new List<EntityMap>() { map };
             }
             else
             {
@@ -133,7 +133,7 @@ namespace Microsoft.MR.LUIS
         /// Gets the collection of mappings between LUIS <see cref="Entity"/> objects and their corresponding scene 
         /// <see cref="GameObject"/>. Each mapping table is keyed by the entity type.
         /// </summary>
-        public Dictionary<string, List<EntityMap>> Entities => entities;
+        public Dictionary<string, List<EntityMap>> ResolvedEntities => resolvedEntities;
         #endregion // Public Properties
     }
 }

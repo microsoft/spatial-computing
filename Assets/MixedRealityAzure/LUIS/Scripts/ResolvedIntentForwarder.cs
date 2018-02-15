@@ -59,7 +59,7 @@ namespace Microsoft.MR.LUIS
             intentEventData.Initialize(intent, result);
 
             // Get all resolved entities
-            List<EntityMap> resolvedEntities = result.GetAllEntities();
+            List<EntityMap> resolvedEntities = result.GetAllResolvedEntities();
             
             // Forward to all resolved entities
             foreach (EntityMap map in resolvedEntities)
