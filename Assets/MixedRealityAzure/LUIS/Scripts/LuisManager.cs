@@ -48,7 +48,7 @@ namespace Microsoft.MR.LUIS
 		private LuisClient client;
         private List<IContextProvider> contextProviders = new List<IContextProvider>();
         private List<IEntityResolver> entityResolvers = new List<IEntityResolver>();
-        private Dictionary<string, Action<LuisMRResult>> intentHandlers = new Dictionary<string, Action<LuisMRResult>>();
+        private List<IIntentHandler> intentHandlers = new List<IIntentHandler>();
         #endregion // Member Variables
 
         #region Unity Inspector Variables
@@ -72,13 +72,23 @@ namespace Microsoft.MR.LUIS
 
 		[Tooltip("Whether to return full result of all intents not just the top scoring intent (for preview features only).")]
 		public bool Verbose = false;
-		#endregion // Unity Inspector Variables
+        #endregion // Unity Inspector Variables
 
-		#region Internal Methods
-		/// <summary>
-		/// Makes sure that the client has been created.
-		/// </summary>
-		private void EnsureClient()
+        #region Constructors
+        /// <summary>
+        /// Initializes a new <see cref="LuisManager"/> instance.
+        /// </summary>
+        public LuisManager()
+        {
+            AddDefaultStrategies();
+        }
+        #endregion // Constructors
+
+        #region Internal Methods
+        /// <summary>
+        /// Makes sure that the client has been created.
+        /// </summary>
+        private void EnsureClient()
 		{
 			this.AssertEnabled();
 			if (client == null)
@@ -118,9 +128,18 @@ namespace Microsoft.MR.LUIS
 				this.enabled = false;
 			}
 		}
-		#endregion // Unity Overrides
+        #endregion // Unity Overrides
 
-		#region Overridables / Event Triggers
+        #region Overridables / Event Triggers
+        /// <summary>
+        /// Adds default context providers, entity resolvers and intent handlers.
+        /// </summary>
+        protected virtual void AddDefaultStrategies()
+        {
+            // Default Handlers
+            IntentHandlers.Add(new ResolvedIntentForwarder());
+        }
+
 		#if !UNITY_WSA || UNITY_EDITOR
 		protected virtual bool CheckValidCertificateCallback(System.Object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
 		{
@@ -183,24 +202,16 @@ namespace Microsoft.MR.LUIS
         protected virtual void HandleIntent(LuisMRResult result)
         {
             // Which intent?
-            Intent intent = result.OriginalResult.TopScoringIntent;
+            Intent intent = result.PredictionResult.TopScoringIntent;
 
-            // Where to route?
-            if (intentHandlers.ContainsKey(intent.Name))
+            // Handle the intent
+            foreach (IIntentHandler handler in intentHandlers)
             {
-                // Route to global handler
-                intentHandlers[intent.Name](result);
-            }
-            else
-            {
-                // No global handler, was there a single entity?
-                if (result.Entities.Count == 1)
+                if (handler.CanHandle(intent.Name))
                 {
-                    // TODO: Try and route to the single entity
-                    //result.Entities.First().Value.
+                    handler.Handle(intent, result);
                 }
             }
-            // NOTE: If a handler is found and is executed, we need to set result.Handled = true;
         }
 
         private static readonly ExecuteEvents.EventFunction<IIntentHandler> OnIntentHandler =
@@ -263,10 +274,10 @@ namespace Microsoft.MR.LUIS
             CaptureContext(context);
 
             // Stage 2: Predict using the LUIS client
-            mrResult.OriginalResult = await client.Predict(context.PredictionText);
+            mrResult.PredictionResult = await client.Predict(context.PredictionText);
 
             // Only do the next two stages if we have the mininmum required confidence
-            if (mrResult.OriginalResult.TopScoringIntent.Score >= MinimumIntentScore)
+            if (mrResult.PredictionResult.TopScoringIntent.Score >= MinimumIntentScore)
             {
                 // Stage 3: Resolve Entites
                 ResolveEntities(mrResult);
@@ -330,9 +341,9 @@ namespace Microsoft.MR.LUIS
         }
 
         /// <summary>
-        /// Gets or sets the list of global handlers for LUIS intents.
+        /// Gets or sets the list of handlers for LUIS intents.
         /// </summary>
-        public Dictionary<string, Action<LuisMRResult>> IntentHandlers
+        public List<IIntentHandler> IntentHandlers
         {
             get
             {

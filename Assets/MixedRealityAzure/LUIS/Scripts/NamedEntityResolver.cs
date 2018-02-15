@@ -89,7 +89,7 @@ namespace Microsoft.MR.LUIS
         public void Resolve(LuisMRResult result)
         {
             // Loop through all LUIS entities of the specific type MR.InstanceName
-            foreach (Entity entity in result.OriginalResult.Entities["MR.InstanceName"])
+            foreach (Entity entity in result.PredictionResult.Entities["MR.InstanceName"])
             {
                 // The Value of this type should be the name in the name table
                 GameObject gameObject = nameTable[entity.Value];
