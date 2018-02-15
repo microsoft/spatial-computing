@@ -25,6 +25,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Cognitive.LUIS;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -34,12 +35,15 @@ namespace Microsoft.MR.LUIS
     {
         public LuisMRResult Result { get; private set; }
 
+        public Intent Intent { get; private set; }
+
         public IntentEventData(EventSystem eventSystem) : base(eventSystem) { }
 
-        public void Initialize(LuisMRResult result)
+        public void Initialize(Intent intent, LuisMRResult result)
         {
             Reset();
             Result = result;
+            Intent = intent;
         }
     }
 }

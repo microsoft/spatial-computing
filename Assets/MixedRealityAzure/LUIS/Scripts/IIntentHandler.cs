@@ -29,13 +29,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine.EventSystems;
 
 namespace Microsoft.MR.LUIS
 {
     /// <summary>
     /// The interface for a class that can handle a LUIS MR intent.
     /// </summary>
-    public interface IIntentHandler
+    public interface IIntentHandler : IEventSystemHandler
     {
         /// <summary>
         /// Returns true if the handler can handle the specified intent.
