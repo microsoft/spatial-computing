@@ -203,6 +203,16 @@ namespace Microsoft.MR.LUIS
             // NOTE: If a handler is found and is executed, we need to set result.Handled = true;
         }
 
+        private static readonly ExecuteEvents.EventFunction<IIntentHandler> OnIntentHandler =
+            delegate (IIntentHandler handler, BaseEventData eventData)
+            {
+                var casted = ExecuteEvents.ValidateEventData<IntentEventData>(eventData);
+                if (handler.CanHandleIntent(casted.Result.OriginalResult.TopScoringIntent.Name))
+                {
+                    handler.HandleIntent(casted);
+                }
+            };
+
         /// <summary>
         /// Attempts to resolve scene entities from LUIS entities.
         /// </summary>

@@ -38,6 +38,7 @@ namespace Microsoft.MR.LUIS
 
         public void Initialize(LuisMRResult result)
         {
+            Reset();
             Result = result;
         }
     }
