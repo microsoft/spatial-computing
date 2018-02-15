@@ -63,6 +63,27 @@ namespace Microsoft.MR.LUIS
         /// <summary>
         /// Maps the specified entity to the specified game object.
         /// </summary>
+        /// <param name="contextEntityMap">
+        /// The set of context entity data <see cref="ContextEntityMap"/> to map.
+        /// </param>
+
+        public void Map(EntityMap contextEntityMap)
+        {
+            // First, make sure the entity table is created
+            List<EntityMap> entityMapList;
+            if (!entities.TryGetValue(contextEntityMap.Entity.Name, out entityMapList))
+            {
+                entities[contextEntityMap.Entity.Name] = new List<EntityMap>() { contextEntityMap };
+            }
+            else
+            {
+                entityMapList.Add(contextEntityMap);
+            }
+        }
+
+        /// <summary>
+        /// Maps the specified entity to the specified game object.
+        /// </summary>
         /// <param name="entity">
         /// The LUIS <see cref="Entity"/> to map.
         /// </param>
@@ -81,16 +102,7 @@ namespace Microsoft.MR.LUIS
             // Create the map entry
             EntityMap map = new EntityMap { Entity = entity, GameObject = gameObject, Resolver = resolver };
 
-            // First, make sure the entity table is created
-            List<EntityMap> entityMapList;
-            if (!entities.TryGetValue(entity.Name, out entityMapList))
-            {
-                entities[entity.Name] = new List<EntityMap>() { map };
-            }
-            else
-            {
-                entityMapList.Add(map);
-            }
+            Map(map);
         }
         #endregion // Public Methods
 
