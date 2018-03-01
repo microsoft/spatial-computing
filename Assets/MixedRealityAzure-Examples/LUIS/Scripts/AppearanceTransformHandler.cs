@@ -34,10 +34,10 @@ public class AppearanceTransformHandler : MonoBehaviour, IIntentHandler
 {
     #region Unity Inspector Variables
     [Tooltip("The amount to rotate by if no amount is specified.")]
-    public float unspecifiedRotateAmount = 0.25f;
+    public float unspecifiedRotateAmount = 45f;
 
     [Tooltip("The amount to scale by if no amount is specified.")]
-    public float unspecifiedScaleAmount = 36f;
+    public float unspecifiedScaleAmount = 0.25f;
     #endregion // Unity Inspector Variables
 
 
@@ -46,21 +46,13 @@ public class AppearanceTransformHandler : MonoBehaviour, IIntentHandler
     {
         // Which direction?
         var roateDirection = result.PredictionResult.Entities.FirstOrDefaultItem("MR.RotateDirection");
-        if (roateDirection == null) { return; }
+        bool counterClockwise = (roateDirection?.Value == "counterclockwise");
 
         // TODO: Determine which amount
         float amount = unspecifiedRotateAmount;
 
-        // Actual scale
-        switch (roateDirection.Value)
-        {
-            case "Clockwise":
-                gameObject.transform.Rotate(gameObject.transform.up, amount);
-                break;
-            case "Counterclockwise":
-                gameObject.transform.Rotate(gameObject.transform.up, -amount);
-                break;
-        }
+        // Rotate
+        gameObject.transform.Rotate(gameObject.transform.up, (counterClockwise ? -amount : amount));
     }
 
     private void DoScale(LuisMRResult result)
@@ -68,18 +60,22 @@ public class AppearanceTransformHandler : MonoBehaviour, IIntentHandler
         // Which direction?
         var scaleDirection = result.PredictionResult.Entities.FirstOrDefaultItem("MR.ScaleDirection");
         if (scaleDirection == null) { return; }
+        var dArray = scaleDirection.Resolution["values"];// as JArray;
+        // var dk = dArray.First();
+        var direction = "increase";
 
         // TODO: Determine which amount
         float amount = unspecifiedScaleAmount;
 
         // Actual scale
-        switch (scaleDirection.Value)
+        switch (direction.ToLower())
         {
-            case "Decrease":
-                gameObject.transform.localScale.Scale(new Vector3(amount, amount, amount));
+            case "decrease":
+                //gameObject.transform.localScale.Scale(new Vector3(amount, amount, amount));
+                gameObject.transform.localScale *= (1.0f - amount);
                 break;
-            case "Increase":
-                gameObject.transform.localScale.Scale(new Vector3(1f + amount, 1f + amount, 1f + amount));
+            case "increase":
+                gameObject.transform.localScale *= (1.0f + amount);
                 break;
         }
     }
@@ -116,13 +112,13 @@ public class AppearanceTransformHandler : MonoBehaviour, IIntentHandler
 
         switch (transformType.Value)
         {
-            case "Rotate":
+            case "rotate":
                 DoRotate(result);
                 break;
-            case "Scale":
+            case "scale":
                 DoScale(result);
                 break;
-            case "Translate":
+            case "translate":
                 DoTranslate(result);
                 break;
         }
