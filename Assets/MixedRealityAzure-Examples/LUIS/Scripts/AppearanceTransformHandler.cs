@@ -94,7 +94,7 @@ public class AppearanceTransformHandler : MonoBehaviour, IIntentHandler
 
         // Try to convert the entity color to a Unity color
         Color color;
-        if (!ColorUtility.TryParseHtmlString(colorEntity.Value.ToLower(), out color)) { return; }
+        if (!ColorMapper.GetColor(colorEntity.Value.ToLower(), out color)) { return; }
 
         // Get renderer
         var renderer = GetComponent<Renderer>();
