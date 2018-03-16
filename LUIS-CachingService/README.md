@@ -32,4 +32,4 @@ LUIS Caching Service includes the following components:
     ![VSTS Build]()
 1. Fork this repository to your GitHub account 
 1. Click on the **Deploy to Azure** Button
-    [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdacoppet%2Fmixedreality-azure-samples%2Fluis-cachingservice%2Fazuredeploy.json)
+    [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdacoppet%2Fmixedreality-azure-samples%2Ffeature%2FLUIScache%2FLUIS-CachingService%2Fazuredeploy.json)
