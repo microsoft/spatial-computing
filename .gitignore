@@ -287,3 +287,4 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 /LUIS-CachingService/deployscript.sh
+LUIS-CachingService/LUIS-CachingComponents/LuisCacheClient.sln

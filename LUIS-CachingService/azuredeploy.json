@@ -123,7 +123,8 @@
                 ],
                 "properties": {
                   "MS_MobileServiceName": "[variables('uniqueAppName')]",
-                  "MS_NotificationHubName": "[variables('notificationHubName')]"
+                  "MS_NotificationHubName": "[variables('notificationHubName')]",                  
+                  "PROJECT": "LUIS-CachingService\\LUIS-CachingComponents\\LuisCacheServer\\LuisCacheServer.csproj"
                 }
               },
               {
