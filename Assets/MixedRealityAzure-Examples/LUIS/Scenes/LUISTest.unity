@@ -778,7 +778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191a39b4e52ca2042b4d6913e578660c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityName: Bouncey Ball
+  EntityName: Bouncy Ball
   EntityType: Sphere
 --- !u!114 &1730099939
 MonoBehaviour:

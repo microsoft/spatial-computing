@@ -59,5 +59,40 @@ namespace Microsoft.MR.LUIS
             // Get the table and return the first if found
             return lookup[name].FirstOrDefault();
         }
+
+        /// <summary>
+        /// Gets the first resolved value for the entity or <see langword = "null" /> 
+        /// if there is no resolution.
+        /// </summary>
+        /// <param name="entity">
+        /// The entity to resolve.
+        /// </param>
+        /// <returns>
+        /// The first resolved value for the entity or <see langword = "null" /> 
+        /// if there is no resolution.
+        /// </returns>
+        static public string FirstOrDefaultResolution(this Entity entity)
+        {
+            // Validate
+            if (entity == null) throw new ArgumentNullException(nameof(entity));
+
+            // Attempt to get resolution
+            if (entity.Resolution.ContainsKey("values"))
+            {
+                var resolution = entity.Resolution["values"];
+
+                // Remove extra characters
+                var resString = resolution.ToString().Replace("[\r\n  \"", "");
+                resString = resString.Replace("\"\r\n]", "");
+
+                // Return cleaned resolution
+                return resString;
+            }
+            else
+            {
+                // No resolution
+                return null;
+            }
+        }
     }
 }

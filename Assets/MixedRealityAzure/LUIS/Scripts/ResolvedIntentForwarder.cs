@@ -105,8 +105,11 @@ namespace Microsoft.MR.LUIS
             delegate (IIntentHandler handler, BaseEventData eventData)
             {
                 var casted = ExecuteEvents.ValidateEventData<IntentEventData>(eventData);
-                handler.Handle(casted.Intent, casted.Result);
-                casted.Use();
+                if (handler.CanHandle(casted.Intent.Name))
+                {
+                    handler.Handle(casted.Intent, casted.Result);
+                    casted.Use();
+                }
             };
 
         /// <summary>

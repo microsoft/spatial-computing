@@ -60,9 +60,7 @@ public class AppearanceTransformHandler : MonoBehaviour, IIntentHandler
         // Which direction?
         var scaleDirection = result.PredictionResult.Entities.FirstOrDefaultItem("MR.ScaleDirection");
         if (scaleDirection == null) { return; }
-        var dArray = scaleDirection.Resolution["values"];// as JArray;
-        // var dk = dArray.First();
-        var direction = "increase";
+        var direction = scaleDirection.FirstOrDefaultResolution(); 
 
         // TODO: Determine which amount
         float amount = unspecifiedScaleAmount;
@@ -107,10 +105,28 @@ public class AppearanceTransformHandler : MonoBehaviour, IIntentHandler
     private void DoTransform(LuisMRResult result)
     {
         // Which transform?
+        string transformTypeName = null;
         var transformType = result.PredictionResult.Entities.FirstOrDefaultItem("MR.TransformType");
-        if (transformType == null) { return; }
+        if (transformType != null) { transformTypeName = transformType.Value; }
 
-        switch (transformType.Value)
+        // If a transform type wasn't specified, let's see if there's a scale?
+        if (transformTypeName == null)
+        {
+            // Try to get a scale direciton
+            var scaleDirection = result.PredictionResult.Entities.FirstOrDefaultItem("MR.ScaleDirection");
+            if (scaleDirection != null) { transformTypeName = "scale"; }
+
+        }
+
+        // If there's still no transform type name, nothing to do.
+        if (transformTypeName == null)
+        {
+            Debug.LogWarning("Received Transform intent but could not determine transform type.");
+            return;
+        }
+
+        // Which transform type?
+        switch (transformTypeName)
         {
             case "rotate":
                 DoRotate(result);
