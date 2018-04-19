@@ -124,8 +124,9 @@ GameObject:
   - component: {fileID: 393811216}
   - component: {fileID: 393811215}
   - component: {fileID: 393811214}
-  - component: {fileID: 393811219}
   - component: {fileID: 393811218}
+  - component: {fileID: 393811219}
+  - component: {fileID: 393811220}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -222,6 +223,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36a05a97b4eeab348b969b19722c8ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &393811220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393811213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bcce45eed8650e41a20b77fb255c5e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   unspecifiedRotateAmount: 45
@@ -468,8 +480,9 @@ GameObject:
   - component: {fileID: 1086835821}
   - component: {fileID: 1086835820}
   - component: {fileID: 1086835819}
-  - component: {fileID: 1086835824}
   - component: {fileID: 1086835823}
+  - component: {fileID: 1086835824}
+  - component: {fileID: 1086835825}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -567,6 +580,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a05a97b4eeab348b969b19722c8ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1086835825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1086835818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bcce45eed8650e41a20b77fb255c5e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   unspecifiedRotateAmount: 45
   unspecifiedScaleAmount: 0.25
 --- !u!1 &1622662001
@@ -582,6 +606,7 @@ GameObject:
   - component: {fileID: 1622662004}
   - component: {fileID: 1622662003}
   - component: {fileID: 1622662002}
+  - component: {fileID: 1622662008}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -600,8 +625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a05a97b4eeab348b969b19722c8ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unspecifiedRotateAmount: 45
-  unspecifiedScaleAmount: 0.25
 --- !u!114 &1622662003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,6 +704,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1622662008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1622662001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bcce45eed8650e41a20b77fb255c5e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unspecifiedRotateAmount: 45
+  unspecifiedScaleAmount: 0.25
 --- !u!1 &1730099933
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,8 +728,9 @@ GameObject:
   - component: {fileID: 1730099936}
   - component: {fileID: 1730099935}
   - component: {fileID: 1730099934}
-  - component: {fileID: 1730099939}
   - component: {fileID: 1730099938}
+  - component: {fileID: 1730099939}
+  - component: {fileID: 1730099940}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -789,6 +826,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36a05a97b4eeab348b969b19722c8ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1730099940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1730099933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bcce45eed8650e41a20b77fb255c5e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   unspecifiedRotateAmount: 45
@@ -937,8 +985,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d7cd01fd87922428af51ee39a56761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  luisManager: {fileID: 1776187685}
-  testUtterence: scale the cube bigger
+  EnableDebugging: 1
+  LuisManager: {fileID: 1776187685}
+  PredictOnStart: 1
+  TestUtterance: Make the cube bigger
 --- !u!114 &1776187688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -951,7 +1001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoSilenceTimeout: 20
-  autoStartListening: 0
+  autoStartListening: 1
   continuousRecognition: 1
   debugOutput: {fileID: 1764009441}
   initialSilenceTimeout: 5

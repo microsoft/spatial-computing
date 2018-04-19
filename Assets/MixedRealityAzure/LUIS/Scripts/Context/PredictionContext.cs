@@ -33,7 +33,7 @@ using UnityEngine;
 namespace Microsoft.MR.LUIS
 {
     /// <summary>
-    /// Provides contextual information that can be used during a Mixed Reality LUIS prediction.
+    /// Provides contextual information that can be used during a LUIS prediction.
     /// </summary>
     public class PredictionContext : Dictionary<string, object>
     {

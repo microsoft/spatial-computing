@@ -32,6 +32,9 @@ using System.Threading.Tasks;
 
 namespace Microsoft.MR.LUIS
 {
+	/// <summary>
+	/// Provides extensions to the LUIS SDK for .Net.
+	/// </summary>
     static public class LuisExtensions
     {
         /// <summary>

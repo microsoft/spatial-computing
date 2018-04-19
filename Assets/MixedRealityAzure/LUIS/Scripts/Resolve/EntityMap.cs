@@ -23,27 +23,34 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System.Collections;
-using System.Collections.Generic;
 using Microsoft.Cognitive.LUIS;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Microsoft.MR.LUIS
 {
-    public class IntentEventData : BaseEventData
+    /// <summary>
+    /// Represents a map between an <see cref="Entity"/> recognized by LUIS and a <see cref="GameObject"/> in the scene.
+    /// </summary>
+    public class EntityMap
     {
-        public LuisMRResult Result { get; private set; }
+        /// <summary>
+        /// Gets or sets the <see cref="Entity"/> recognized by LUIS.
+        /// </summary>
+        public Entity Entity { get; set; }
 
-        public Intent Intent { get; private set; }
+        /// <summary>
+        /// Gets or sets the <see cref="GameObject"/> that represents the LUIS Entity.
+        /// </summary>
+        public GameObject GameObject { get; set; }
 
-        public IntentEventData(EventSystem eventSystem) : base(eventSystem) { }
-
-        public void Initialize(Intent intent, LuisMRResult result)
-        {
-            Reset();
-            Result = result;
-            Intent = intent;
-        }
+        /// <summary>
+        /// Gets or sets the resolver that resolved the entity.
+        /// </summary>
+        public IEntityResolver Resolver { get; set; }
     }
 }

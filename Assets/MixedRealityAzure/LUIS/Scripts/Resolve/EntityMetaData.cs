@@ -33,24 +33,16 @@ using UnityEngine;
 
 namespace Microsoft.MR.LUIS
 {
-    /// <summary>
-    /// Represents a map between an <see cref="Entity"/> recognised by LUIS and a <see cref="GameObject"/> in the scene.
-    /// </summary>
-    public class EntityMap
-    {
-        /// <summary>
-        /// Gets or sets the <see cref="Entity"/> recognised by LUIS.
-        /// </summary>
-        public Entity Entity { get; set; }
+	/// <summary>
+	/// Provides data about a <see cref="GameObject"/> so that <see cref="EntityMetaDataResolver"/> 
+	/// can map a Luis <see cref="Entity"/> in a result to the object.
+	/// </summary>
+	public class EntityMetaData : MonoBehaviour
+	{
+		[Tooltip("The Name of the Luis Entity that will be mapped to this object.")]
+		public string EntityName;
 
-        /// <summary>
-        /// Gets or sets the <see cref="GameObject"/> that represents the LUIS Entity.
-        /// </summary>
-        public GameObject GameObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resolver that resolved the entity.
-        /// </summary>
-        public IEntityResolver Resolver { get; set; }
-    }
+		[Tooltip("The Type of the Luis Entity that will be mapped to this object.")]
+		public string EntityType;
+	}
 }

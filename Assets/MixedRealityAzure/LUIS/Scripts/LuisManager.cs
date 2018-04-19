@@ -129,8 +129,11 @@ namespace Microsoft.MR.LUIS
         /// </summary>
         protected virtual void AddDefaultStrategies()
         {
-            // Default Handlers
-            IntentHandlers.Add(new ResolvedIntentForwarder());
+			// Default Resolvers
+			EntityResolvers.Add(new EntityMetaDataResolver());
+
+			// Default Handlers
+			IntentHandlers.Add(new ResolvedIntentForwarder());
         }
 
 		#if !UNITY_WSA || UNITY_EDITOR
@@ -168,7 +171,7 @@ namespace Microsoft.MR.LUIS
         /// The <see cref="PredictionContext"/> where context is stored.
         /// </param>
         /// <remarks>
-        /// This is stage 1 in processing a LUIS utterence. 
+        /// This is stage 1 in processing a LUIS utterance. 
         /// The default implementation enumerates through all objects in 
         /// <see cref="ContextProviders"/> and asks them to provide context.
         /// </remarks>
@@ -187,7 +190,7 @@ namespace Microsoft.MR.LUIS
         /// The <see cref="LuisMRResult"/> that contains information about the prediction.
         /// </param>
         /// <remarks>
-        /// This is stage 4 in processing a LUIS utterence. The default implementaiton looks for 
+        /// This is stage 4 in processing a LUIS utterance. The default implementation looks for 
         /// a global handler for the specified intent and executes it. If a global handler is not 
         /// found and there is only one mapped entity, the entity will be checked to see if it 
         /// can handle the intent.
@@ -214,7 +217,7 @@ namespace Microsoft.MR.LUIS
         /// The <see cref="LuisMRResult"/> that provides context and storage for the resolution.
         /// </param>
         /// <remarks>
-        /// This is stage 3 in processing a LUIS utterence. 
+        /// This is stage 3 in processing a LUIS utterance. 
         /// The default implementation enumerates through all objects in the 
         /// <see cref="EntityResolvers"/> and asks them to resolve entities.
         /// </remarks>
@@ -239,7 +242,7 @@ namespace Microsoft.MR.LUIS
         /// A <see cref="Task"/> that yields the result of the operation as a <see cref="LuisMRResult"/>.
         /// </returns>
         /// <remarks>
-        /// At a minimium, <see cref="PredictionContext.PredictionText"/> must be included within the context.
+        /// At a minimum, <see cref="PredictionContext.PredictionText"/> must be included within the context.
         /// </remarks>
         public virtual async Task<LuisMRResult> PredictAndHandle(PredictionContext context)
         {
@@ -259,10 +262,10 @@ namespace Microsoft.MR.LUIS
             // Stage 2: Predict using the LUIS client
             mrResult.PredictionResult = await client.Predict(context.PredictionText);
 
-            // Only do the next two stages if we have the mininmum required confidence
+            // Only do the next two stages if we have the minimum required confidence
             if (mrResult.PredictionResult.TopScoringIntent.Score >= MinimumIntentScore)
             {
-                // Stage 3: Resolve Entites
+                // Stage 3: Resolve Entities
                 ResolveEntities(mrResult);
 
                 // Stage 4: Handle Intents

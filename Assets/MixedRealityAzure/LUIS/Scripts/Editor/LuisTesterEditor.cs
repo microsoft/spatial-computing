@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(LUISTester))]
-public class LUISTesterEditor : Editor
+[CustomEditor(typeof(LuisTester))]
+public class LuisTesterEditor : Editor
 {
     public override void OnInspectorGUI()
     {
@@ -14,8 +14,11 @@ public class LUISTesterEditor : Editor
         {
             if (GUILayout.Button("Predict"))
             {
-                LUISTester tester = (LUISTester)target;
-                tester.luisManager.PredictAndHandle(tester.testUtterence);
+				LuisTester tester = (LuisTester)target;
+				if (tester != null)
+				{
+					tester.TryPredict();
+				}
             }
         }
     }

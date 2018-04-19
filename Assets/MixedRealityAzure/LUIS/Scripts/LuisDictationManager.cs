@@ -32,6 +32,9 @@ using UnityEngine.Windows.Speech;
 
 namespace Microsoft.MR.LUIS
 {
+	/// <summary>
+	/// Provides a method of invoking LUIS using speech recognized by <see cref="DictationRecognizer"/>.
+	/// </summary>
     public class LuisDictationManager : MonoBehaviour
     {
         #region Member Variables
@@ -47,9 +50,9 @@ namespace Microsoft.MR.LUIS
 
         #region Unity Inspector Variables
         [Tooltip("The time length in seconds before dictation recognizer session ends due to lack of audio input.")]
-        [Range(5f, 60f)]
+        [Range(1f, 60f)]
         [SerializeField]
-        private float autoSilenceTimeout = 20f;
+        private float autoSilenceTimeout = 2f;
 
         [Tooltip("Whether or not the dictation manager should listen on start.")]
         [SerializeField]
@@ -64,7 +67,7 @@ namespace Microsoft.MR.LUIS
         private TextMesh debugOutput;
 
         [Tooltip("The time length in seconds before dictation recognizer session ends due to lack of audio input in case there was no audio heard in the current session.")]
-        [Range(0.1f, 10f)]
+        [Range(1f, 60f)]
         [SerializeField]
         private float initialSilenceTimeout = 5f;
 
@@ -83,7 +86,7 @@ namespace Microsoft.MR.LUIS
         #endregion // Unity Inspector Variables
 
         #region Internal Methods
-        private void Log(string message, bool toConsole = true)
+        private void LogInfo(string message, bool toConsole = true)
         {
             if (toConsole)
             {
@@ -139,7 +142,7 @@ namespace Microsoft.MR.LUIS
                 yield break;
             }
 
-            Log("Starting recognizer");
+            LogInfo("Starting recognizer");
 
             isListening = true;
             isTransitioning = true;
@@ -158,21 +161,21 @@ namespace Microsoft.MR.LUIS
             dictationRecognizer.AutoSilenceTimeoutSeconds = autoSilenceTimeout;
             dictationRecognizer.Start();
 
-            Log("Waiting for speech system");
+            LogInfo("Waiting for speech system");
 
             while (dictationRecognizer.Status == SpeechSystemStatus.Stopped)
             {
                 yield return null;
             }
 
-            Log("Starting microphone");
+            LogInfo("Starting microphone");
 
             // Start recording from the microphone.
             Microphone.Start(deviceName, false, recordingTime, samplingRate);
             textSoFar = new StringBuilder();
             isTransitioning = false;
             
-            Log("Listening");
+            LogInfo("Listening");
 
             #else
             return null;
@@ -194,16 +197,16 @@ namespace Microsoft.MR.LUIS
             isListening = false;
             isTransitioning = true;
 
-            Log("Stopping microphone");
+            LogInfo("Stopping microphone");
             Microphone.End(deviceName);
 
-            Log("Stopping dictation");
+            LogInfo("Stopping dictation");
             if (dictationRecognizer.Status == SpeechSystemStatus.Running)
             {
                 dictationRecognizer.Stop();
             }
 
-            Log("Waiting for speech to stop");
+            LogInfo("Waiting for speech to stop");
             while (dictationRecognizer.Status == SpeechSystemStatus.Running)
             {
                 yield return null;
@@ -212,7 +215,7 @@ namespace Microsoft.MR.LUIS
             PhraseRecognitionSystem.Restart();
             isTransitioning = false;
             
-            Log("Stopped listening");
+            LogInfo("Stopped listening");
 
             #else
             return null;
@@ -230,7 +233,7 @@ namespace Microsoft.MR.LUIS
         {
             // We don't want to append to textSoFar yet, because the hypothesis may have changed on the next event.
             dictationResult = textSoFar.ToString() + " " + text + "...";
-            Log(text, toConsole:false);
+            LogInfo(text, toConsole:false);
         }
 
         /// <summary>
@@ -240,11 +243,13 @@ namespace Microsoft.MR.LUIS
         /// <param name="confidence">A representation of how confident (rejected, low, medium, high) the recognizer is of this recognition.</param>
         private void DictationRecognizer_DictationResult(string text, ConfidenceLevel confidence)
         {
-            textSoFar.Append(text + ". ");
+			// We have final text
+			dictationResult = text;
 
-            dictationResult = textSoFar.ToString();
+			// Clear intermediate text
+			textSoFar.Clear();
 
-            // Make sure we have a minimuim confidence level
+            // Make sure we have a minimum confidence level
             if (confidence > minimumConfidenceLevel) // Numerically this is inverted. Lower confidence levels are higher numbers.
             {
                 LogWarn($"Heard '{dictationResult}' but confidence was too low.");
@@ -253,7 +258,7 @@ namespace Microsoft.MR.LUIS
             {
                 if (luisManager != null)
                 {
-                    Log($"Heard '{dictationResult}', sending to LUIS.");
+                    LogInfo($"Heard '{dictationResult}', sending to LUIS.");
                     luisManager.PredictAndHandle(text);
                 }
                 else
@@ -277,15 +282,19 @@ namespace Microsoft.MR.LUIS
             // If Timeout occurs, the user has been silent for too long.
             if (cause == DictationCompletionCause.TimeoutExceeded)
             {
-                LogWarn("Dictation timed out");
+                LogInfo("Dictation timed out");
             }
 
-            // If not continuous, stop
-            if (!continuousRecognition)
+            // If continuous, start again. Otherwise stop.
+            if (continuousRecognition)
             {
-                StopListening();
+				StartListening();
             }
-        }
+			else
+			{
+				StopListening();
+			}
+		}
 
         /// <summary>
         /// This event is fired when an error occurs.
