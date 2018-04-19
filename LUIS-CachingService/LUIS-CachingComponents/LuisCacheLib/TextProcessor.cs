@@ -19,6 +19,7 @@ namespace LuisCacheLib
 {
     public class TextProcessor
     {
+        // TODO: Refactor to get from App Settings
         public static MobileServiceClient MobileService = new MobileServiceClient("https://insertappservicename.azurewebsites.net");
         private IMobileServiceSyncTable<IntentItem> intentTable = MobileService.GetSyncTable<IntentItem>(); // offline sync
         private MobileServiceCollection<IntentItem, IntentItem> items;
@@ -38,7 +39,9 @@ namespace LuisCacheLib
             });
             t.Wait();
 
+            // TODO: Refactor to get from App Settings
             string appId = "APP_ID";
+            // TODO: Refactor to get from App Settings
             string subscriptionKey = "SUBSCRIPTION_KEY";
             bool preview = true;
 

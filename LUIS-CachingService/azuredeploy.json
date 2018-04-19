@@ -75,7 +75,23 @@
                 "metadata": {
                     "description": "Use 'true' if you are deploying from the base repo, 'false' if you are deploying from your own fork. If you're using 'false', make sure you have admin permissions to the repo. If you get an error, you should add GitHub integration to another web app manually, so that you get a GitHub access token associated with your Azure Subscription."
                 }
-            }    
+            },
+            "luisSku": {
+              "type": "string",
+              "defaultValue": "F0",
+              "allowedValues": [
+                "F0",
+                "S0",
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "metadata": {
+                "description": "SKU for Speech API"
+              }
+            }
+            
     },
     "variables": {
         "uniqueAppName": "[concat(parameters('appName'), '-', uniqueString(resourceGroup().id))]",
@@ -235,7 +251,111 @@
               "[variables('notificationHubNamespace')]"
             ],
             "properties": {}
+          },
+          {
+            "comments": "Luis ",
+            "type": "Microsoft.CognitiveServices/accounts",
+            "sku": {
+                "name": "[parameters('luisSku')]"
+            },
+            "kind": "LUIS",
+            "name": "[variables('uniqueAppName')]",
+            "apiVersion": "2016-02-01-preview",
+            "location": "[resourceGroup().location]",
+            "scale": null,
+            "properties": {},
+            "dependsOn": []
+        },
+        {
+          "type": "Microsoft.Storage/storageAccounts",
+          "name": "[variables('storageAccountName')]",
+          "apiVersion": "2015-06-15",
+          "location": "[resourceGroup().location]",
+          "properties": {
+            "accountType": "[parameters('storageAccountType')]"
           }
+        },
+        {
+          "type": "Microsoft.Web/serverfarms",
+          "apiVersion": "2015-04-01",
+          "name": "[variables('hostingPlanName')]",
+          "location": "[resourceGroup().location]",
+          "properties": {
+            "name": "[variables('hostingPlanName')]",
+            "sku": "[parameters('sku')]",
+            "workerSize": "[parameters('workerSize')]",
+            "hostingEnvironment": "",
+            "numberOfWorkers": 1
+          }
+        },
+        {
+          "apiVersion": "2015-08-01",
+          "type": "Microsoft.Web/sites",
+          "name": "[variables('functionAppName')]",
+          "location": "[resourceGroup().location]",
+          "kind": "functionapp",
+          "properties": {
+            "name": "[variables('functionAppName')]",
+            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+            "hostingEnvironment": "",
+            "clientAffinityEnabled": false,
+            "siteConfig": {
+              "alwaysOn": true,
+              "cors": {
+                "allowedOrigins": [
+                  "*"
+                ]
+              },
+              "appSettings": [
+                {
+                  "name": "FUNCTIONS_EXTENSION_VERSION",
+                  "value": "~1"
+                },
+                {
+                  "name": "SpeechLocale",
+                  "value": "ja-jp"
+                },
+                {
+                  "name": "SpeechSubscriptionKey",
+                  "value": "[listkeys(resourceId('Microsoft.CognitiveServices/accounts', variables('speechAccountsName')), '2016-02-01-preview').key1]"
+                },
+                {
+                  "name": "SpeechStorage",
+                  "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1,';')]"
+                },
+                {
+                  "name": "AzureWebJobsStorage",
+                  "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1,';')]"
+                },
+                {
+                  "name": "AzureWebJobsDashboard",
+                  "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1,';')]"
+                }
+              ]
+            }
+          },
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+            "[resourceId('Microsoft.CognitiveServices/accounts', variables('speechAccountsName'))]"
+          ],
+          "resources": [
+            {
+              "apiVersion": "2015-08-01",
+              "name": "web",
+              "type": "sourcecontrols",
+              "dependsOn": [
+                "[resourceId('Microsoft.Web/Sites', variables('functionAppName'))]"
+              ],
+              "properties": {
+                "RepoUrl": "[parameters('repoURL')]",
+                "branch": "[parameters('branch')]",
+                "IsManualIntegration": true
+              }
+            }
+          ]
+        }
+  
     ],
     "outputs": {}
 }

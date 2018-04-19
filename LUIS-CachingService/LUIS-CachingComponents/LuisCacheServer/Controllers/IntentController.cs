@@ -10,6 +10,10 @@ using Microsoft.Cognitive.LUIS;
 using LuisCacheModel;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Queue;
+using Microsoft.Azure;
 
 namespace KsparkAPI.Controllers
 {
@@ -50,8 +54,12 @@ namespace KsparkAPI.Controllers
             System.Diagnostics.Trace.TraceInformation("Positing new intent: " + item.Utterance);
 
             IntentItem current;
+            bool proceessInQueue = false;
+
+
             if (!item.IsProcessed)
             {
+                proceessInQueue = true;
                 current = await CreateIntentItem(item);
                 current.IsProcessed = true;
             }
@@ -61,13 +69,38 @@ namespace KsparkAPI.Controllers
             }
 
             current = await InsertAsync(current);
-            return CreatedAtRoute("Tables", new { id = current.Id }, current);
+
+            if (proceessInQueue)
+            {
+                // Get storage queue connection string
+                var queueConStr = CloudConfigurationManager.GetSetting("StorageQueueConnectionString");
+                // Get queue name
+                var queueName = CloudConfigurationManager.GetSetting("StorageQueueName");
+
+                // Parse the connection string and return a reference to the storage account.
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(queueConStr);
+
+                // Create the queue client.
+                CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+
+                // Retrieve a reference to a queue.
+                CloudQueue queue = queueClient.GetQueueReference(queueName);
+
+                // Create the queue if it doesn't already exist.
+                queue.CreateIfNotExists();
+
+                // Create a message and add it to the queue.
+                CloudQueueMessage message = new CloudQueueMessage(current.Id);
+                queue.AddMessage(message);
+            }
+
+                return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }
 
         private async Task<IntentItem> CreateIntentItem(IntentItem item)
         {
-            string appId = "9f25daaa-3d94-4988-b201-f10a2d41a6a5";
-            string subscriptionKey = "07f77f9e723140aeb54b4ed346752851";
+            string appId = Environment.GetEnvironmentVariable("LuisAppId");
+            string subscriptionKey = Environment.GetEnvironmentVariable("LuisSubscriptionKey");
             bool preview = true;
 
             var client = new LuisClient(appId, subscriptionKey, preview);
