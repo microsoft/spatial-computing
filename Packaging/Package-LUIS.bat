@@ -1,17 +1,21 @@
 @ECHO OFF
-
+ECHO.
 
 REM Set Paths
-SET Version=1.0.0
 SET UnityExe="%ProgramFiles%\Unity\Hub\Editor\2017.4.1f1\Editor\Unity.exe"
 SET ProjectDir=%cd%\..
 SET AssetDir=%ProjectDir%\Assets
 SET PackageDir=%ProjectDir%\UnityPackages
 
+REM Set Package Info
+SET PackageName=LUIS
+SET PackageVersion=1.0.0
+SET PackageFileName=%PackageName%-%PackageVersion%.unitypackage
 
-REM Build Asset List for Package
+ECHO Packaging %PackageName% %PackageVersion%
+
+ECHO Defining Asset List
 SET Assets=Assets\Plugins\LUIS
-SET Assets=%Assets% Assets\Plugins\LUIS
 SET Assets=%Assets% Assets\Plugins\Newtonsoft.Json
 SET Assets=%Assets% Assets\Plugins\System.Collections
 SET Assets=%Assets% Assets\Plugins\System.Runtime
@@ -20,8 +24,16 @@ SET Assets=%Assets% Assets\MixedRealityAzure\Common
 SET Assets=%Assets% Assets\MixedRealityAzure\LUIS
 SET Assets=%Assets% Assets\MixedRealityAzure-Examples\LUIS
 
+ECHO Generating %PackageFileName% ...
+%UnityExe% -batchmode -projectPath %ProjectDir%\ -exportPackage %Assets% %PackageDir%\%PackageFileName% -quit
+IF ERRORLEVEL 1 GOTO ERROR
 
-REM Package
-%UnityExe% -batchmode -projectPath %ProjectDir%\ -exportPackage %Assets% %PackageDir%\LUIS-%Version%.unitypackage -quit
+:SUCCESS
+ECHO "Package Success!"
+GOTO END
 
-echo "Packaging complete."
+:ERROR
+ECHO "Packaging Error"
+GOTO END
+
+:END
