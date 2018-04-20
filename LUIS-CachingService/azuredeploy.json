@@ -88,7 +88,46 @@
                 "S4"
               ],
               "metadata": {
-                "description": "SKU for Speech API"
+                "description": "SKU for LUIS API"
+              }
+            },
+            
+          "sku": {
+            "type": "string",
+            "allowedValues": [
+              "Free",
+              "Shared",
+              "Basic",
+              "Standard"
+            ],
+            "defaultValue": "Standard",
+            "metadata": {
+              "description": "The pricing tier for the hosting plan."
+            }
+          },
+            "workerSize": {
+              "type": "string",
+              "allowedValues": [
+                "0",
+                "1",
+                "2"
+              ],
+              "defaultValue": "0",
+              "metadata": {
+                "description": "The instance size of the hosting plan (small, medium, or large)."
+              }
+            },
+            "storageAccountType": {
+              "type": "string",
+              "defaultValue": "Standard_LRS",
+              "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_ZRS",
+                "Premium_LRS"
+              ],
+              "metadata": {
+                "description": "Storage Account type"
               }
             }
             
@@ -99,7 +138,11 @@
         "databaseServerName": "[concat(variables('uniqueAppName'), '-sqlserver')]",
         "databaseName": "[concat(variables('uniqueAppName'), '-sqldb')]",
         "notificationHubNamespace": "[concat(variables('uniqueAppName'), '-namespace')]",
-        "notificationHubName": "[concat(variables('uniqueAppName'), '-hub')]"
+        "notificationHubName": "[concat(variables('uniqueAppName'), '-hub')]",
+        "storageAccountName": "[concat(variables('uniqueAppName'), 'functions')]",
+        "luisAccountsName": "[concat(variables('uniqueAppName'),'luis')]",
+        "functionAppName": "[concat(variables('uniqueAppName'),parameters('appName'))]"
+  
     },
     "resources": [
         {
@@ -135,7 +178,8 @@
                 "name": "appsettings",
                 "type": "config",
                 "dependsOn": [
-                  "[variables('uniqueAppName')]"
+                  "[variables('uniqueAppName')]",
+                  "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
                 ],
                 "properties": {
                   "MS_MobileServiceName": "[variables('uniqueAppName')]",
@@ -159,6 +203,10 @@
                   },
                   "MS_NotificationHubConnectionString": {
                     "value": "[listkeys(resourceId('Microsoft.NotificationHubs/namespaces/notificationHubs/authorizationRules', variables('notificationHubNamespace'), variables('notificationHubName'), 'DefaultFullSharedAccessSignature'), '2014-09-01').primaryConnectionString]",
+                    "type": "Custom"
+                  },
+                  "StorageQueueConnectionString": {
+                    "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1,';')]",
                     "type": "Custom"
                   }
                 }
@@ -312,16 +360,24 @@
                   "value": "~1"
                 },
                 {
-                  "name": "SpeechLocale",
-                  "value": "ja-jp"
+                  "name": "LuisApiEndpoint",
+                  "value": "https://westus.api.cognitive.microsoft.com/luis/api/v2.0"
                 },
                 {
-                  "name": "SpeechSubscriptionKey",
-                  "value": "[listkeys(resourceId('Microsoft.CognitiveServices/accounts', variables('speechAccountsName')), '2016-02-01-preview').key1]"
+                  "name": "LuisEndpoint",
+                  "value": "https://westus.api.cognitive.microsoft.com/luis/v2.0"
                 },
                 {
-                  "name": "SpeechStorage",
-                  "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1,';')]"
+                  "name": "LuisAppId",
+                  "value": "8ab015c6-a3f1-44f6-a6bb-e7d1c46ab80a"
+                },
+                {
+                  "name": "LuisAppVersion",
+                  "value": "0.1"
+                },
+                {
+                  "name": "LuisSubscriptionKey",
+                  "value": "[listkeys(resourceId('Microsoft.CognitiveServices/accounts', variables('luisAccountsName')), '2016-02-01-preview').key1]"
                 },
                 {
                   "name": "AzureWebJobsStorage",
@@ -337,7 +393,7 @@
           "dependsOn": [
             "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
             "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
-            "[resourceId('Microsoft.CognitiveServices/accounts', variables('speechAccountsName'))]"
+            "[resourceId('Microsoft.CognitiveServices/accounts', variables('luisAccountsName'))]"
           ],
           "resources": [
             {
