@@ -22,13 +22,17 @@ namespace LuisCacheClient
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        TextProcessor _processor;
+        static TextProcessor _processor;
 
         public MainPage()
         {
             this.InitializeComponent();
+            var luisSubscriptionKey = "LUIS_KEY";
+            var luisAppId = "LUIS_APP_ID";
+            var mobileAppUri = "http://XXXXXXXXX.azurewebsites.net/";
 
-            _processor = TextProcessor.Instance;
+            _processor = new TextProcessor(luisAppId, luisSubscriptionKey, mobileAppUri);
+            
         }
 
         private async void submitButton_Click(object sender, RoutedEventArgs e)
@@ -36,11 +40,13 @@ namespace LuisCacheClient
             ResultLabel.Text = String.Empty;
             FromCacheLabel.Text = String.Empty;
 
-            _processor = TextProcessor.Instance;
-
             var result = await _processor.Predict(txtInput.Text);
 
-            if (result == null) { return; }
+            if (result == null)
+            {
+                ResultLabel.Text = "No results - Error or Offline - "+DateTime.Now.ToString();
+                return;
+            }
 
             var resultLabel = result.Intent;
 

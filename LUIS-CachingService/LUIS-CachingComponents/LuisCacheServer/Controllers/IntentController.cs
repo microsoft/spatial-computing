@@ -14,11 +14,15 @@ using System;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Queue;
 using Microsoft.Azure;
+using Microsoft.ApplicationInsights;
 
 namespace KsparkAPI.Controllers
 {
     public class IntentItemController : TableController<IntentItem>
     {
+
+        TelemetryClient ai = new TelemetryClient();
+
         protected override void Initialize(HttpControllerContext controllerContext)
         {
             base.Initialize(controllerContext);
@@ -52,49 +56,10 @@ namespace KsparkAPI.Controllers
         public async Task<IHttpActionResult> PostIntentItem(IntentItem item)
         {
             System.Diagnostics.Trace.TraceInformation("Positing new intent: " + item.Utterance);
+            
+            var current = await InsertAsync(item);
 
-            IntentItem current;
-            bool proceessInQueue = false;
-
-
-            if (!item.IsProcessed)
-            {
-                proceessInQueue = true;
-                current = await CreateIntentItem(item);
-                current.IsProcessed = true;
-            }
-            else
-            {
-                current = item;
-            }
-
-            current = await InsertAsync(current);
-
-            if (proceessInQueue)
-            {
-                // Get storage queue connection string
-                var queueConStr = CloudConfigurationManager.GetSetting("StorageQueueConnectionString");
-                // Get queue name
-                var queueName = CloudConfigurationManager.GetSetting("StorageQueueName");
-
-                // Parse the connection string and return a reference to the storage account.
-                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(queueConStr);
-
-                // Create the queue client.
-                CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-
-                // Retrieve a reference to a queue.
-                CloudQueue queue = queueClient.GetQueueReference(queueName);
-
-                // Create the queue if it doesn't already exist.
-                queue.CreateIfNotExists();
-
-                // Create a message and add it to the queue.
-                CloudQueueMessage message = new CloudQueueMessage(current.Id);
-                queue.AddMessage(message);
-            }
-
-                return CreatedAtRoute("Tables", new { id = current.Id }, current);
+            return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }
 
         private async Task<IntentItem> CreateIntentItem(IntentItem item)

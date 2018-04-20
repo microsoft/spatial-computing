@@ -15,9 +15,6 @@ namespace LuisCacheFunctions
         {
             // check if there is untrained 
             log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
-            //var uri = "https://{location}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appId}/versions/{versionId}/train?" + queryString;
-            // https://westus.api.cognitive.microsoft.com/luis/api/v2.0/apps/?skip=0&take=100 
-            //"https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/?skip=0&take=100"
             var versionId = Environment.GetEnvironmentVariable("LuisAppId");
             var appId = Environment.GetEnvironmentVariable("LuisAppId");
             var subscriptionKey = Environment.GetEnvironmentVariable("LuisSubscriptionKey");
@@ -25,7 +22,6 @@ namespace LuisCacheFunctions
             var request = $"{LUISendpoint}/apps/?skip=0&take=100";
 
             // Final LUIS Query
-
             log.Info("LUIS query:" + request);
             var httpClient = new HttpClient();
 
@@ -34,7 +30,7 @@ namespace LuisCacheFunctions
                 // Can add the query at the end
             var response = await httpClient.GetAsync(request);
 
-            // If LUIS error, return 204 - YOU SHOULD CHANGE THIS!!!
+            // 
             if (!response.IsSuccessStatusCode)
             {
                 // Log (HttpStatusCode.NoContent);

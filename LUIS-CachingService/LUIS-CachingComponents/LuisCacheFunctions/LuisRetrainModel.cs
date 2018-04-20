@@ -46,13 +46,22 @@ namespace LuisCacheFunctions
 
             log.Info($"Response {apiResult}");
 
-            // Publish to prod
+            #region auto publish
+            // Model is trained above but not automatically published as this operation can cause unexpected behaviors and
+            // you might want to test it befor publishing
+
+            // Uncomment the code below to enable the feature (send a post request with the following settings)
+
+            // Body to post
             //            {
             //                "versionId": "0.1",
             //   "isStaging": false,
             //   "region": "westus"
             //}
+
             // POST https://westus.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appId}/publish
+            #endregion
+        
         }
     }
 }
