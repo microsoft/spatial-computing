@@ -21,9 +21,8 @@ namespace LuisCacheFunctions
             var versionId = Environment.GetEnvironmentVariable("LuisAppId");
             var appId = Environment.GetEnvironmentVariable("LuisAppId");
             var subscriptionKey = Environment.GetEnvironmentVariable("LuisSubscriptionKey");
-            var LUISendpoint = Environment.GetEnvironmentVariable("LuisEndpoint");
+            var LUISendpoint = Environment.GetEnvironmentVariable("LuisApiEndpoint");
             var request = $"{LUISendpoint}/apps/?skip=0&take=100";
-            var query = "";
 
             // Final LUIS Query
 

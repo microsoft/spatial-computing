@@ -20,7 +20,7 @@ namespace LuisCacheLib
     public class TextProcessor
     {
         // TODO: Refactor to get from App Settings
-        public static MobileServiceClient MobileService = new MobileServiceClient("https://insertappservicename.azurewebsites.net");
+        public static MobileServiceClient MobileService = new MobileServiceClient("http://myapp-luiscache-4wie64ucspon6.azurewebsites.net/");
         private IMobileServiceSyncTable<IntentItem> intentTable = MobileService.GetSyncTable<IntentItem>(); // offline sync
         private MobileServiceCollection<IntentItem, IntentItem> items;
 
