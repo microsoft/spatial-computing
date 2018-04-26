@@ -33,6 +33,7 @@
     },
     "sqlDatabaseEdition": {
       "type": "string",
+      "defaultValue" :  "Basic",
       "metadata": {
         "description": "The type of database to create."
       },
@@ -58,6 +59,7 @@
     },
     "repoURL": {
       "type": "string",
+      "defaultValue": "https://github.com/dacoppet/mixedreality-azure-samples",
       "metadata": {
         "description": "Repo URL"
       }
