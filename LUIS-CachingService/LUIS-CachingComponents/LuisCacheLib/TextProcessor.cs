@@ -19,43 +19,70 @@ namespace LuisCacheLib
 {
     public class TextProcessor
     {
-        public static MobileServiceClient MobileService = new MobileServiceClient("https://insertappservicename.azurewebsites.net");
-        private IMobileServiceSyncTable<IntentItem> intentTable = MobileService.GetSyncTable<IntentItem>(); // offline sync
+        // TODO: Refactor to get from App Settings
+        string luisAppId = null;
+        // TODO: Refactor to get from App Settings
+        string luisSubscriptionKey = null;
+        // TODO: Refactor to get from App Settings
+        string mobileAppUri = null;
+        public MobileServiceClient MobileService { get; set; }
+
+        private IMobileServiceSyncTable<IntentItem> intentTable = null; // offline sync
         private MobileServiceCollection<IntentItem, IntentItem> items;
 
-        private IMobileServiceSyncTable<TelemetryItem> telemetryTable = MobileService.GetSyncTable<TelemetryItem>();
+        private IMobileServiceSyncTable<TelemetryItem> telemetryTable = null;
         private MobileServiceCollection<TelemetryItem, TelemetryItem> telemetryItems;
 
         private LuisClient _client;
 
-        private static TextProcessor instance = null;
+        //private static TextProcessor instance = null;
 
-        private TextProcessor()
+        public TextProcessor(string luisAppId, string luisSubscriptionKey, string mobileAppUri) //:base()
         {
-            var t = Task.Run(async () =>
-            {
-                await InitLocalStoreAsync();
-            });
-            t.Wait();
+            this.mobileAppUri = mobileAppUri;
+            this.luisAppId = luisAppId;
+            this.luisSubscriptionKey = luisSubscriptionKey;
 
-            string appId = "APP_ID";
-            string subscriptionKey = "SUBSCRIPTION_KEY";
+            MobileService = new MobileServiceClient(mobileAppUri);
+            intentTable = MobileService.GetSyncTable<IntentItem>();
+            telemetryTable = MobileService.GetSyncTable<TelemetryItem>();
+
+            try
+            {
+                var t = Task.Run(async () =>
+                {
+                    await InitLocalStoreAsync();
+                });
+                t.Wait();
+            }
+            // Case of offline start
+            // TODO imporve error handling
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
             bool preview = true;
 
-            _client = new LuisClient(appId, subscriptionKey, preview);
+            _client = new LuisClient(luisAppId, luisSubscriptionKey, preview);
+
         }
 
-        public static TextProcessor Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new TextProcessor();
-                }
-                return instance;
-            }
-        }
+        //private TextProcessor()
+        //{
+        //}
+
+        //public static TextProcessor Instance
+        //{
+        //    get
+        //    {
+        //        if (instance == null)
+        //        {
+        //            instance = new TextProcessor();
+        //        }
+        //        return instance;
+        //    }
+        //}
 
         public async Task<ProcessingResult> Predict(string textToPredict)
         {
@@ -91,7 +118,10 @@ namespace LuisCacheLib
             catch (MobileServiceInvalidOperationException e)
             {
                 exception = e;
+                Debug.WriteLine(e);
+                throw e;
             }
+            
 
             await Track(TelemetryEvents.CACHE_MISS, textToPredict);
 
@@ -109,7 +139,7 @@ namespace LuisCacheLib
                 var intentItem = new IntentItem();
                 intentItem.Intent = temp.Intent;
                 intentItem.Utterance = textToPredict;
-
+                intentItem.IsProcessed = true;
                 intentItem.JsonEntities = JsonConvert.SerializeObject(temp.Entities);
 
                 // Insert into database
@@ -118,11 +148,22 @@ namespace LuisCacheLib
 
                 return intent;
             }
+            catch (MobileServicePushFailedException push)
+            {
+                //
+                Debug.WriteLine(push);
+                throw push;
+            }
+            // TODO: Refactor to have a better error handling
             catch (System.Exception e)
             {
+                // Check App ID,  Luis Key , Luis URL
+                // Trace error
                 Debug.WriteLine(e.Message);
+                Debug.WriteLine(e);
             }
 
+            // Save offline
             var offlineIntent = new IntentItem();
             offlineIntent.Utterance = textToPredict;
             offlineIntent.IsProcessed = false;
@@ -199,7 +240,7 @@ namespace LuisCacheLib
 
         private async Task InitLocalStoreAsync()
         {
-            string databaseFilename = "localstore1.db";
+            string databaseFilename = "localstoreluis.db";
 
             if (!MobileService.SyncContext.IsInitialized)
             {
@@ -212,7 +253,7 @@ namespace LuisCacheLib
                 }
                 catch (FileNotFoundException e)
                 {
-
+                    Debug.WriteLine("DB does not exit - " + e);
                 }                
 
                 var store = new MobileServiceSQLiteStore(databaseFilename);
@@ -230,12 +271,15 @@ namespace LuisCacheLib
             try
             {
                 await MobileService.SyncContext.PushAsync();
-                await intentTable.PullAsync("IntentItems", intentTable.CreateQuery());
-                await telemetryTable.PullAsync("TelemetryItems", telemetryTable.CreateQuery().Take(1));
+                await intentTable.PullAsync("IntentItems", intentTable.Where(i => i.IsProcessed == true ));
+                //await intentTable.PullAsync(null, intentTable.Where(i => i.IsProcessed == true));
+                await telemetryTable.PullAsync("Telemetry", telemetryTable.Where(t => t.UserId == "1"));
             }
+            // TODO: improve error handling
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
+                throw ex;
             }
         }
         #endregion

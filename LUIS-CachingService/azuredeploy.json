@@ -1,0 +1,405 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appName": {
+      "type": "string",
+      "defaultValue": "luiscache",
+      "metadata": {
+        "description": "The name of the mobile app that you wish to create."
+      }
+    },
+    "hostingPlanSettings": {
+      "type": "object",
+      "defaultValue": {
+        "tier": "Standard",
+        "skuName": "S1",
+        "capacity": "0"
+      },
+      "metadata": {
+        "description": "The settings of the existing hosting plan."
+      }
+    },
+    "sqlServerAdminLogin": {
+      "type": "string",
+      "metadata": {
+        "description": "The account name to use for the database server administrator."
+      }
+    },
+    "sqlServerAdminPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "The password to use for the database server administrator."
+      }
+    },
+    "sqlDatabaseEdition": {
+      "type": "string",
+      "defaultValue" :  "Basic",
+      "metadata": {
+        "description": "The type of database to create."
+      },
+      "allowedValues": [
+        "Basic",
+        "Standard",
+        "Premium"
+      ]
+    },
+    "sqlDatabaseCollation": {
+      "type": "string",
+      "defaultValue": "SQL_Latin1_General_CP1_CI_AS",
+      "metadata": {
+        "description": "The database collation for governing the proper use of characters."
+      }
+    },
+    "sqlDatabaseMaxSizeBytes": {
+      "type": "string",
+      "defaultValue": "1073741824",
+      "metadata": {
+        "description": "The maximum size, in bytes, for the database"
+      }
+    },
+    "repoURL": {
+      "type": "string",
+      "defaultValue": "https://github.com/dacoppet/mixedreality-azure-samples",
+      "metadata": {
+        "description": "Repo URL"
+      }
+    },
+    "branch": {
+      "type": "string",
+      "defaultValue": "feature/LUIScache",
+      "metadata": {
+        "description": "Repo branch"
+      }
+    },
+    "manualIntegration": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": {
+        "description": "Use 'true' if you are deploying from the base repo, 'false' if you are deploying from your own fork. If you're using 'false', make sure you have admin permissions to the repo. If you get an error, you should add GitHub integration to another web app manually, so that you get a GitHub access token associated with your Azure Subscription."
+      }
+    },
+    "luisSku": {
+      "type": "string",
+      "defaultValue": "S0",
+      "allowedValues": [
+        "F0",
+        "S0",
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "metadata": {
+        "description": "SKU for LUIS API"
+      }
+    },
+
+    "sku": {
+      "type": "string",
+      "allowedValues": [
+        "Free",
+        "Shared",
+        "Basic",
+        "Standard"
+      ],
+      "defaultValue": "Standard",
+      "metadata": {
+        "description": "The pricing tier for the hosting plan."
+      }
+    },
+    "workerSize": {
+      "type": "string",
+      "allowedValues": [
+        "0",
+        "1",
+        "2"
+      ],
+      "defaultValue": "0",
+      "metadata": {
+        "description": "The instance size of the hosting plan (small, medium, or large)."
+      }
+    },
+    "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Premium_LRS"
+      ],
+      "metadata": {
+        "description": "Storage Account type"
+      }
+    }
+
+  },
+  "variables": {
+    "uniqueName": "[uniqueString(resourceGroup().id)]",
+    "uniqueAppName": "[concat(parameters('appName'),variables('uniqueName'))]",
+    "hostingPlanName": "[concat(variables('uniqueAppName'), '-plan')]",
+    "databaseServerName": "[concat(variables('uniqueAppName'), '-sqlserver')]",
+    "databaseName": "[concat(variables('uniqueAppName'), '-sqldb')]",
+    "notificationHubNamespace": "[concat(variables('uniqueAppName'), '-namespace')]",
+    "notificationHubName": "[concat(variables('uniqueAppName'), '-hub')]",
+    "storageAccountName": "[concat(variables('uniqueName'), 'storage')]",
+    "luisAccountsName": "[concat(variables('uniqueAppName'),'luis')]",
+    "functionAppName": "[concat(variables('uniqueAppName'),'func')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2015-08-01",
+      "name": "[variables('hostingPlanName')]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "[parameters('hostingPlanSettings').skuName]",
+        "tier": "[parameters('hostingPlanSettings').tier]",
+        "capacity": "[parameters('hostingPlanSettings').capacity]"
+      },
+      "properties": {
+        "numberOfWorkers": 1
+      }
+    },
+    {
+      "apiVersion": "2015-08-01",
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('uniqueAppName')]",
+      "location": "[resourceGroup().location]",
+      "kind": "mobileapp",
+      "properties": {
+        "name": "[variables('uniqueAppName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+      },
+      "dependsOn": [
+        "[variables('hostingPlanName')]"
+      ],
+      "resources": [
+        {
+          "apiVersion": "2015-08-01",
+          "name": "appsettings",
+          "type": "config",
+          "dependsOn": [
+            "[variables('uniqueAppName')]",
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
+          ],
+          "properties": {
+            "MS_MobileServiceName": "[variables('uniqueAppName')]",
+            "MS_NotificationHubName": "[variables('notificationHubName')]",
+            "PROJECT": "LUIS-CachingService\\LUIS-CachingComponents\\LuisCacheServer\\LuisCacheServer.csproj"
+          }
+        },
+        {
+          "apiVersion": "2015-08-01",
+          "name": "connectionstrings",
+          "type": "config",
+          "dependsOn": [
+            "[variables('uniqueAppName')]",
+            "[variables('notificationHubName')]",
+            "[variables('databaseName')]"
+          ],
+          "properties": {
+            "MS_TableConnectionString": {
+              "value": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', variables('databaseServerName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', variables('databaseName'), ';User Id=', parameters('sqlServerAdminLogin'), '@', variables('databaseServerName'), ';Password=', parameters('sqlServerAdminPassword'), ';')]",
+              "type": "SQLServer"
+            },
+            "MS_NotificationHubConnectionString": {
+              "value": "[listkeys(resourceId('Microsoft.NotificationHubs/namespaces/notificationHubs/authorizationRules', variables('notificationHubNamespace'), variables('notificationHubName'), 'DefaultFullSharedAccessSignature'), '2014-09-01').primaryConnectionString]",
+              "type": "Custom"
+            },
+            "StorageQueueConnectionString": {
+              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1,';')]",
+              "type": "Custom"
+            }
+          }
+        },
+        {
+          "apiVersion": "2015-01-01",
+          "type": "providers/links",
+          "name": "Microsoft.Resources/SiteToHub",
+          "dependsOn": [
+            "[variables('uniqueAppName')]",
+            "[variables('notificationHubName')]"
+          ],
+          "properties": {
+            "targetId": "[resourceId('Microsoft.NotificationHubs/namespaces/NotificationHubs', variables('notificationHubNamespace'), variables('notificationHubName'))]"
+          }
+        },
+        {
+          "apiVersion": "2015-08-01",
+          "name": "web",
+          "type": "sourcecontrols",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/Sites', variables('uniqueAppName'))]",
+            "[resourceId('Microsoft.Web/Sites/config', variables('uniqueAppName'), 'appsettings')]",
+            "[resourceId('Microsoft.Web/Sites/config', variables('uniqueAppName'), 'connectionstrings')]"
+          ],
+          "properties": {
+            "RepoUrl": "[parameters('repoUrl')]",
+            "branch": "[parameters('branch')]",
+            "IsManualIntegration": "[parameters('manualIntegration')]"
+          }
+        }
+      ]
+    },
+    {
+      "apiVersion": "2015-08-01",
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('functionAppName')]",
+      "location": "[resourceGroup().location]",
+      "kind": "functionapp",
+      "properties": {
+        "name": "[variables('functionAppName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+        "hostingEnvironment": "",
+        "clientAffinityEnabled": false,
+        "siteConfig": {
+          "alwaysOn": true,
+          "cors": {
+            "allowedOrigins": [
+              "*"
+            ]
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+        "[resourceId('Microsoft.CognitiveServices/accounts', variables('luisAccountsName'))]"
+      ],
+      "resources": [
+        {
+          "apiVersion": "2015-08-01",
+          "name": "appsettings",
+          "type": "config",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/Sites', variables('functionAppName'))]",
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+            "[resourceId('Microsoft.CognitiveServices/accounts', variables('luisAccountsName'))]"
+          ],
+          "properties": {
+            "PROJECT": "LUIS-CachingService\\LUIS-CachingComponents\\LuisCacheFunctions\\LuisCacheFunctions.csproj",
+            "FUNCTIONS_EXTENSION_VERSION": "~1",
+            "LuisApiEndpoint": "https://westus.api.cognitive.microsoft.com/luis/api/v2.0",
+            "LuisEndpoint": "https://westus.api.cognitive.microsoft.com/luis/v2.0",
+            "LuisAppId": "8ab015c6-a3f1-44f6-a6bb-e7d1c46ab80a",
+            "LuisAppVersion": "0.1",
+            "LuisSubscriptionKey": "[listkeys(resourceId('Microsoft.CognitiveServices/accounts', variables('luisAccountsName')), '2016-02-01-preview').key1]",
+            "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1,';')]",
+            "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1,';')]"
+          }
+        },
+        {
+          "apiVersion": "2015-08-01",
+          "name": "web",
+          "type": "sourcecontrols",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/Sites', variables('functionAppName'))]",
+            "[resourceId('Microsoft.Web/Sites/config', variables('functionAppName'), 'appsettings')]"
+          ],
+          "properties": {
+            "RepoUrl": "[parameters('repoUrl')]",
+            "branch": "[parameters('branch')]",
+            "IsManualIntegration": "[parameters('manualIntegration')]"
+          }
+        }
+      ]
+    },
+    {
+      "name": "[variables('databaseServerName')]",
+      "type": "Microsoft.Sql/servers",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2014-04-01-preview",
+      "properties": {
+        "administratorLogin": "[parameters('sqlServerAdminLogin')]",
+        "administratorLoginPassword": "[parameters('sqlServerAdminPassword')]",
+        "version": "12.0"
+      },
+      "resources": [
+        {
+          "name": "[variables('databaseName')]",
+          "type": "databases",
+          "location": "[resourceGroup().location]",
+          "apiVersion": "2014-04-01-preview",
+          "dependsOn": [
+            "[variables('databaseServerName')]"
+          ],
+          "properties": {
+            "edition": "[parameters('sqlDatabaseEdition')]",
+            "collation": "[parameters('sqlDatabaseCollation')]",
+            "maxSizeBytes": "[parameters('sqlDatabaseMaxSizeBytes')]"
+          }
+        },
+        {
+          "type": "firewallrules",
+          "apiVersion": "2014-04-01-preview",
+          "dependsOn": [
+            "[variables('databaseServerName')]"
+          ],
+          "location": "[resourceGroup().location]",
+          "name": "open",
+          "properties": {
+            "endIpAddress": "255.255.255.255",
+            "startIpAddress": "0.0.0.0"
+          }
+        }
+      ]
+    },
+    {
+      "apiVersion": "2014-09-01",
+      "type": "Microsoft.NotificationHubs/namespaces",
+      "name": "[variables('notificationHubNamespace')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "region": "[resourceGroup().location]",
+        "namespaceType": "NotificationHub"
+      }
+    },
+    {
+      "apiVersion": "2014-09-01",
+      "name": "[concat(variables('notificationHubNamespace'), '/', variables('uniqueAppName'), '-hub')]",
+      "type": "Microsoft.NotificationHubs/namespaces/notificationHubs",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[variables('notificationHubNamespace')]"
+      ],
+      "properties": {}
+    },
+    {
+      "comments": "Luis ",
+      "type": "Microsoft.CognitiveServices/accounts",
+      "sku": {
+        "name": "[parameters('luisSku')]"
+      },
+      "kind": "LUIS",
+      "name": "[variables('uniqueAppName')]",
+      "apiVersion": "2016-02-01-preview",
+      "location": "[resourceGroup().location]",
+      "scale": null,
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "accountType": "[parameters('storageAccountType')]"
+      }
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "sku": {
+        "name": "[parameters('luisSku')]"
+      },
+      "kind": "LUIS",
+      "name": "[variables('luisAccountsName')]",
+      "apiVersion": "2016-02-01-preview",
+      "location": "westus",
+      "properties": {}
+    }
+  ],
+  "outputs": {}
+}

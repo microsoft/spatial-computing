@@ -10,11 +10,19 @@ using Microsoft.Cognitive.LUIS;
 using LuisCacheModel;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Queue;
+using Microsoft.Azure;
+using Microsoft.ApplicationInsights;
 
 namespace KsparkAPI.Controllers
 {
     public class IntentItemController : TableController<IntentItem>
     {
+
+        TelemetryClient ai = new TelemetryClient();
+
         protected override void Initialize(HttpControllerContext controllerContext)
         {
             base.Initialize(controllerContext);
@@ -48,26 +56,16 @@ namespace KsparkAPI.Controllers
         public async Task<IHttpActionResult> PostIntentItem(IntentItem item)
         {
             System.Diagnostics.Trace.TraceInformation("Positing new intent: " + item.Utterance);
+            
+            var current = await InsertAsync(item);
 
-            IntentItem current;
-            if (!item.IsProcessed)
-            {
-                current = await CreateIntentItem(item);
-                current.IsProcessed = true;
-            }
-            else
-            {
-                current = item;
-            }
-
-            current = await InsertAsync(current);
             return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }
 
         private async Task<IntentItem> CreateIntentItem(IntentItem item)
         {
-            string appId = "9f25daaa-3d94-4988-b201-f10a2d41a6a5";
-            string subscriptionKey = "07f77f9e723140aeb54b4ed346752851";
+            string appId = Environment.GetEnvironmentVariable("LuisAppId");
+            string subscriptionKey = Environment.GetEnvironmentVariable("LuisSubscriptionKey");
             bool preview = true;
 
             var client = new LuisClient(appId, subscriptionKey, preview);

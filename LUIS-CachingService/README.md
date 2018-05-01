@@ -24,3 +24,15 @@ LUIS Caching Service includes the following components:
 * **LUIS Cache Client**: Test client application for UWP built with XAML & C# used to test & demonstrate the features of the LUIS Caching Service. 
 
 ![Solution Architecture](LuisCacheServiceDiagram.jpg)
+
+
+## How To: Deploy the Demo
+
+1. Check to ensure that the bulid is passing 
+    
+    ![VSTS Build](https://azureappconsult.visualstudio.com/_apis/public/build/definitions/1d060d9e-a26e-46df-b635-ad9e3c64d8dc/7/badge)
+1. Fork this repository to your GitHub account 
+1. Click on the **Deploy to Azure** Button
+
+    [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdacoppet%2Fmixedreality-azure-samples%2Ffeature%2FLUIScache%2FLUIS-CachingService%2Fazuredeploy.json)
+1. Open the solution (LuisCacheClient.sln) and publish the project LuisCacheServer to the Azure Mobile App
