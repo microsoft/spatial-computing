@@ -26,13 +26,22 @@ LUIS Caching Service includes the following components:
 ![Solution Architecture](LuisCacheServiceDiagram.jpg)
 
 
-## How To: Deploy the Demo
+## Getting Started: How to Deploy the Sample Solution
 
-1. Check to ensure that the bulid is passing 
+1. You will need an Azure subscription to deploy and use this solution. If you do not have one, you can [get started with a free trial here](https://azure.microsoft.com/free/).
+2. Check to ensure that the build is passing 
     
     ![VSTS Build](https://azureappconsult.visualstudio.com/_apis/public/build/definitions/1d060d9e-a26e-46df-b635-ad9e3c64d8dc/7/badge)
-1. Fork this repository to your GitHub account 
-1. Click on the **Deploy to Azure** Button
+3. (Optional) Fork this repository to your GitHub account. You can also deploy from this page on the Microsoft account but you won't be able to commit changes back. 
+4. Click on the **Deploy to Azure** button below. You will be redirected to the Azure portal.
 
     [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdacoppet%2Fmixedreality-azure-samples%2Ffeature%2FLUIScache%2FLUIS-CachingService%2Fazuredeploy.json)
-1. Open the solution (LuisCacheClient.sln) and publish the project LuisCacheServer to the Azure Mobile App
+5. Once logged in, you will be presented with a custom deployment template form. This form is used to capture all the settings required to configure the required cloud components in Azure.
+* Select your **Azure subscription** if you have access to more than one.
+* It is recommended to create a new **resource group** for this solution. This ensures that all associated cloud services are grouped together without being cluttered with other unrelated services you may already have.
+* Select the **location** (i.e. region) where the services will be located. You should pick the region that is closest to you to reduce latency. 
+* Change the **App name** to the one you want to use. This is only a prefix used to name all the related Azure services consistently. You can keep the default if you prefer.
+* An Azure SQL Database will be created for you. Enter your **SQL Server admin credentials** in the required fields.
+*  Update the **repo url** and **branch** settings to match your own fork (as applicable).
+6. Once you're ready to deploy, select the checkbox to agree to the terms and click the **Purchase** button. 
+7. Open the solution (LuisCacheClient.sln) and publish the project LuisCacheServer to the Azure Mobile App that was created for you.

@@ -16,7 +16,7 @@
           },
           
         "repoURL": {
-            "value": "https://github.com/dacoppet/mixedreality-azure-samples"
+            "value": "https://github.com/Microsoft/mixedreality-azure-samples"
         },
         "branch": {
             "value": "feature/LUIScache"
