@@ -42,6 +42,9 @@ namespace Microsoft.MR
 	/// <summary>
 	/// An attribute that can be used to designate where a secret value is held.
 	/// </summary>
+	/// <remarks>
+	/// This attribute is used by <see cref="SecretHelper"/>. Please see that class for usage.
+	/// </remarks>
 	[AttributeUsage(validOn: AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
 	public class SecretValueAttribute : Attribute
 	{
@@ -75,14 +78,51 @@ namespace Microsoft.MR
 	}
 
 	/// <summary>
-	/// A class that helps deal with secret keys and other values that should not be 
-	/// checked into source control.
+	/// A class built to help keep API keys and other secret values out of public source control.
 	/// </summary>
+	/// <remarks>
+	/// <para>
+	/// To use <see cref="SecretHelper"/>, apply the <see cref="SecretValueAttribute">SecretValue</see> 
+	/// attribute to any inspector fields that you would like kept secret. Next, place the values in the 
+	/// corresponding environment variable. Finally, in your behavior's <c>Awake</c> or <c>Start</c> method, call 
+	/// <see cref="SecretHelper.LoadSecrets(object)">SecretHelper.LoadSecrets(this)</see>.
+	/// </para>
+	/// <para>
+	/// For an example of using <see cref="SecretHelper"/>, please see <see cref="Microsoft.MR.LUIS.LuisManager">LuisManager</see>.
+	/// </para>
+	/// <para>
+	/// <b>IMPORTANT:</b> Please be aware that Unity Editor only loads environment variables once on start.
+	/// You will need to close Unity and open it again for changes to environment variables to take effect. 
+	/// Also, Unity Hub acts as a parent process when starting Unity from the Hub. Therefore you will need 
+	/// to close not only Unity but also Unity Hub (which runs in the tray) before changes will take effect.
+	/// </para>
+	/// </remarks>
 	static public class SecretHelper
 	{
 		#region Internal Methods
 		/// <summary>
-		/// Attempts to load a secret value into the specified field.
+		/// Gets the default value for a specified type.
+		/// </summary>
+		/// <param name="t">
+		/// The type to obtain the default for.
+		/// </param>
+		/// <returns>
+		/// The default value for the type.
+		/// </returns>
+		static private object GetDefaultValue(Type t)
+		{
+			if (t.IsValueType)
+			{
+				return Activator.CreateInstance(t);
+			}
+			else
+			{
+				return null;
+			}
+		}
+
+		/// <summary>
+		/// Attempts to load a secret value into the specified field. 
 		/// </summary>
 		/// <param name="sva">
 		/// A <see cref="SecretValueAttribute"/> that indicates the source of the secret value.
@@ -93,15 +133,46 @@ namespace Microsoft.MR
 		/// <param name="obj">
 		/// The object instance where the value will be set.
 		/// </param>
-		static private void TryLoadValue(SecretValueAttribute sva, FieldInfo field, object obj)
+		/// <param name="overwrite">
+		/// <c>true</c> to overwrite non-default values; otherwise <c>false</c>. The default is <c>false</c>.
+		/// </param>
+		/// <remarks>
+		/// By default <see cref="SecretHelper"/> will only update fields that are set to default values 
+		/// (e.g. 0 for int and null or "" for string). This allows values set in the Unity inspector to 
+		/// override values stored in the environment. If values in the environment should always take 
+		/// precedence over values stored in the field set <paramref name="overwrite"/> to <c>true</c>.
+		/// </remarks>
+		static private void TryLoadValue(SecretValueAttribute sva, FieldInfo field, object obj, bool overwrite = false)
 		{
-			// Try to get the environment variable
+			// Validate
+			if (sva == null) throw new ArgumentNullException(nameof(sva));
+			if (field == null) throw new ArgumentNullException(nameof(field));
+			if (obj == null) throw new ArgumentNullException(nameof(obj));
+
+			// Now get the current value of the field
+			object curValue = field.GetValue(obj);
+
+			// If we're not overwriting values, we need to check to check and make sure a non-default value is not already set
+			if (!overwrite)
+			{
+				// What is the default value for the field?
+				object defValue = GetDefaultValue(field.FieldType);
+
+				// Is it the current value the same as the default value?
+				bool isDefaultValue = ((curValue == defValue) || ((field.FieldType == typeof(string)) && (string.IsNullOrEmpty((string)curValue))));
+
+				// If the current value is not the default value, the secret has already been supplied
+				// and we don't need to do any more work.
+				if (!isDefaultValue) { return; }
+			}
+
+			// Either in overwrite mode or a default value. Let's try to read the environment variable.
 			string svalue = Environment.GetEnvironmentVariable(sva.Name);
 
-			// No variable or no value?
+			// Check for no environment variable or no value set.
 			if (string.IsNullOrEmpty(svalue))
 			{
-				Debug.LogWarning($"The environment variable {sva.Name} is either missing or has no value.");
+				Debug.LogWarning($"{obj.GetType().Name}.{field.Name} has the default value '{curValue}' but the environment variable {sva.Name} is missing or not set.");
 				return;
 			}
 

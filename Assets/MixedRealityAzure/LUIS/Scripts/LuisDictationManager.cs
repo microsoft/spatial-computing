@@ -45,7 +45,7 @@ namespace Microsoft.MR.LUIS
         private bool isRecording;
         private bool isTransitioning;
         private int samplingRate; // The device audio sampling rate.
-        private StringBuilder textSoFar; // Caches the text currently being displayed in dictation display text.
+        private StringBuilder textSoFar = new StringBuilder(); // Caches the text currently being displayed in dictation display text.
         #endregion // Member Variables
 
         #region Unity Inspector Variables
@@ -172,7 +172,7 @@ namespace Microsoft.MR.LUIS
 
             // Start recording from the microphone.
             Microphone.Start(deviceName, false, recordingTime, samplingRate);
-            textSoFar = new StringBuilder();
+			textSoFar.Clear();
             isTransitioning = false;
             
             LogInfo("Listening");

@@ -957,7 +957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AppId: 
   AppKey: 
-  Domain: southcentralus
+  Domain: 
   MinimumIntentScore: 0.5
   Preview: 1
   Verbose: 1

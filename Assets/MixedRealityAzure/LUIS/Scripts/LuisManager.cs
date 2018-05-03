@@ -61,17 +61,18 @@ namespace Microsoft.MR.LUIS
 		public string AppKey;
 
 		[Tooltip("String that represents the domain of the LUIS endpoint.")]
-		public string Domain = "westus";
+		[SecretValue("LUIS.Domain")]
+		public string Domain = "";
 
         [Tooltip("The minimum confidence level for an intent to be handled.")]
         [Range(0,1)]
         public double MinimumIntentScore = 0.5;
 
         [Tooltip("Whether to use preview LUIS features.")]
-		public bool Preview = false;
+		public bool Preview = true;
 
 		[Tooltip("Whether to return full result of all intents not just the top scoring intent (for preview features only).")]
-		public bool Verbose = false;
+		public bool Verbose = true;
 	    #endregion // Unity Inspector Variables
 
         #region Internal Methods
@@ -80,9 +81,9 @@ namespace Microsoft.MR.LUIS
         /// </summary>
         private void EnsureClient()
 		{
-			this.AssertEnabled();
 			if (client == null)
 			{
+				if (!this.enabled) { throw new InvalidOperationException($"Attempting to connect to LUIS but {nameof(LuisManager)} is not enabled."); }
 				client = new LuisClient(AppId, AppKey, Verbose, Domain);
 			}
 		}
@@ -108,18 +109,24 @@ namespace Microsoft.MR.LUIS
 			// Make sure we have enough to continue
 			if (string.IsNullOrEmpty(AppId))
 			{
-				Debug.LogErrorFormat("'{0}' is required but is not set. {1} has been disabled.", "AppId", this.GetType().Name);
+				Debug.LogErrorFormat($"'{nameof(AppId)}' is required but is not set. {nameof(LuisManager)} has been disabled.");
 				this.enabled = false;
 			}
 
 			if (string.IsNullOrEmpty(AppKey))
 			{
-				Debug.LogErrorFormat("'{0}' is required but is not set. {1} has been disabled.", "AppKey", this.GetType().Name);
+				Debug.LogErrorFormat($"'{nameof(AppKey)}' is required but is not set. {nameof(LuisManager)} has been disabled.");
 				this.enabled = false;
 			}
-            
-            // Add default strategies (can be overridden)
-		    AddDefaultStrategies();
+
+			if (string.IsNullOrEmpty(Domain))
+			{
+				Debug.LogErrorFormat($"'{nameof(Domain)}' is required but is not set. {nameof(LuisManager)} has been disabled.");
+				this.enabled = false;
+			}
+
+			// Add default strategies (can be overridden)
+			AddDefaultStrategies();
         }
         #endregion // Unity Overrides
 
