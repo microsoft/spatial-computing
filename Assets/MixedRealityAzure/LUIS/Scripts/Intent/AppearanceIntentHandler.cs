@@ -23,6 +23,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+using Microsoft.MR;
 using Microsoft.MR.LUIS;
 using System.Collections;
 using System.Collections.Generic;
@@ -44,7 +45,7 @@ public class AppearanceIntentHandler : MonoBehaviour, IIntentHandler
 
 		// Try to convert the entity color to a Unity color
 		Color color;
-		if (!ColorUtility.TryParseHtmlString(colorEntity.Value.ToLower(), out color)) { return; }
+		if (!ColorMapper.TryParseCssString(colorEntity.Value.ToLower(), out color)) { return; }
 
 		// Get renderer
 		var renderer = GetComponent<Renderer>();

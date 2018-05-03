@@ -1,5 +1,5 @@
 {
-  "luis_schema_version": "2.2.0",
+  "luis_schema_version": "3.0.0",
   "versionId": "0.1",
   "name": "MRLUIS",
   "desc": "The main app for MR LUIS Samples",
@@ -20,16 +20,20 @@
   ],
   "entities": [
     {
-      "name": "MR.CharacterAction"
+      "name": "MR.CharacterAction",
+      "roles": []
     },
     {
-      "name": "MR.Color"
+      "name": "MR.Color",
+      "roles": []
     },
     {
-      "name": "MR.InstanceName"
+      "name": "MR.InstanceName",
+      "roles": []
     },
     {
-      "name": "MR.InstanceType"
+      "name": "MR.InstanceType",
+      "roles": []
     }
   ],
   "composites": [],
@@ -61,7 +65,8 @@
             "invisible"
           ]
         }
-      ]
+      ],
+      "roles": []
     },
     {
       "name": "MR.Axis",
@@ -78,7 +83,8 @@
           "canonicalForm": "Z",
           "list": []
         }
-      ]
+      ],
+      "roles": []
     },
     {
       "name": "MR.Focus",
@@ -103,7 +109,8 @@
             "it"
           ]
         }
-      ]
+      ],
+      "roles": []
     },
     {
       "name": "MR.RotateDirection",
@@ -116,7 +123,8 @@
           "canonicalForm": "Counterclockwise",
           "list": []
         }
-      ]
+      ],
+      "roles": []
     },
     {
       "name": "MR.ScaleDirection",
@@ -139,7 +147,8 @@
             "down"
           ]
         }
-      ]
+      ],
+      "roles": []
     },
     {
       "name": "MR.TransformDirection",
@@ -182,7 +191,8 @@
             "back"
           ]
         }
-      ]
+      ],
+      "roles": []
     },
     {
       "name": "MR.TransformType",
@@ -207,15 +217,21 @@
             "push"
           ]
         }
-      ]
+      ],
+      "roles": []
     }
   ],
+  "patternAnyEntities": [],
   "regex_entities": [],
-  "bing_entities": [
-    "number"
+  "prebuiltEntities": [
+    {
+      "name": "number",
+      "roles": []
+    }
   ],
   "model_features": [],
   "regex_features": [],
+  "patterns": [],
   "utterances": [
     {
       "text": "alter the ball to blue",
@@ -230,6 +246,22 @@
           "entity": "MR.Color",
           "startPos": 18,
           "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "change bouncy ball to medium sea green",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 7,
+          "endPos": 17
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 22,
+          "endPos": 37
         }
       ]
     },
@@ -294,6 +326,22 @@
           "entity": "MR.Color",
           "startPos": 20,
           "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "change the box to deep sky blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 11,
+          "endPos": 13
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 18,
+          "endPos": 30
         }
       ]
     },
@@ -508,6 +556,38 @@
           "entity": "MR.Color",
           "startPos": 18,
           "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "lets change boxey to be fuschia",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 12,
+          "endPos": 16
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 24,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "lets make the cube dark orange",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 14,
+          "endPos": 17
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 19,
+          "endPos": 29
         }
       ]
     },
@@ -2046,6 +2126,22 @@
       ]
     },
     {
+      "text": "set the cube to lime green",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 8,
+          "endPos": 11
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 16,
+          "endPos": 25
+        }
+      ]
+    },
+    {
       "text": "show the globe",
       "intent": "MR.ChangeAppearance",
       "entities": [
@@ -2272,6 +2368,22 @@
           "entity": "MR.Color",
           "startPos": 13,
           "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "turn the car alice blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 11
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 13,
+          "endPos": 22
         }
       ]
     },
