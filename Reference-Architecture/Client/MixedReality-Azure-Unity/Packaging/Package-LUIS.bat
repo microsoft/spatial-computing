@@ -8,7 +8,7 @@ SET AssetDir=%ProjectDir%\Assets
 SET PackageDir=%ProjectDir%\UnityPackages
 
 REM Set Package Info
-SET PackageName=LUIS
+SET PackageName=MR-LUIS
 SET PackageVersion=1.0.0
 SET PackageFileName=%PackageName%-%PackageVersion%.unitypackage
 
