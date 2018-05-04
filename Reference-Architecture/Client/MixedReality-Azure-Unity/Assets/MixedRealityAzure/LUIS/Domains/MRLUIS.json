@@ -1458,6 +1458,22 @@
       ]
     },
     {
+      "text": "make the cylinder dark slate gray",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 16
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 18,
+          "endPos": 32
+        }
+      ]
+    },
+    {
       "text": "make the cylinder grey",
       "intent": "MR.ChangeAppearance",
       "entities": [
@@ -1625,6 +1641,70 @@
           "entity": "MR.Color",
           "startPos": 24,
           "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "make the sphere dark slate blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 14
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 16,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "make the sphere dark slate gray",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 14
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 16,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "make the sphere fire brick",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 14
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 16,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "make the sphere hot pink",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 14
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 16,
+          "endPos": 23
         }
       ]
     },
@@ -2030,6 +2110,22 @@
       ]
     },
     {
+      "text": "set bouncy ball to dark slate gray",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 4,
+          "endPos": 14
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 19,
+          "endPos": 33
+        }
+      ]
+    },
+    {
       "text": "set bouncy ball to yellow",
       "intent": "MR.ChangeAppearance",
       "entities": [
@@ -2191,6 +2287,22 @@
           "entity": "MR.Color",
           "startPos": 11,
           "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "turn george dark slate blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 12,
+          "endPos": 26
         }
       ]
     },

@@ -41,6 +41,7 @@ namespace Microsoft.MR.LUIS
 	public class EntityMetaDataResolver : IEntityResolver
 	{
 		#region Member Variables
+		private bool debugMessages = true;
 		private string[] entityNames = new string[]
 			{
 				"MR.InstanceName",
@@ -56,13 +57,20 @@ namespace Microsoft.MR.LUIS
 		public void Resolve(LuisMRResult result)
 		{
 			// Collect any entities that match the entity names we're looking for
-			var predictionEntities = result.PredictionResult.Entities.Where(x => entityNames.Contains(x.Key)).SelectMany(y => y.Value);
+			List<Entity> predictionEntities = result.PredictionResult.Entities.Where(x => entityNames.Contains(x.Key)).SelectMany(y => y.Value).ToList();
 
-			if (predictionEntities.Count() < 1)
+			// If there are no entities in the prediction that we're looking for, nothing to do
+			if (predictionEntities.Count < 1)
+			{
+				if (debugMessages)
+				{
+					Debug.Log("No entities in the prediction match the names configured for the resolver.");
+				}
 				return;
+			}
 
 			// Join the list of scene objects with prediction entities to get matches in the scene
-			IEnumerable<EntityMap> matchedEntities =
+			IEnumerable<EntityMap> meq =
 				from entity in predictionEntities
 				let entityName = entity.Value.ToLower()
 				from sceneEntity in GameObject.FindObjectsOfType<EntityMetaData>()
@@ -73,16 +81,48 @@ namespace Microsoft.MR.LUIS
 					GameObject = sceneEntity.gameObject,
 					Resolver = this
 				};
+			List<EntityMap> matchedEntities = meq.ToList();
 
 			//Add all our found entities to the result's entity map, which maps LUIS entities with scene entities.
 			foreach (EntityMap entityMap in matchedEntities)
 			{
+				// Create map entry
 				result.Map(entityMap);
+
+				// Remove the entity from the prediction list to mark it as "mapped"
+				predictionEntities.Remove(entityMap.Entity);
+			}
+
+			// If any entity is still in the prediction list, it was not matched. Log a warning.
+			if (debugMessages)
+			{
+				foreach (var entity in predictionEntities)
+				{
+					Debug.LogWarning($"Warning: {entity.Name} \"{entity.Value}\" could not be mapped to the scene.");
+				}
 			}
 		}
 		#endregion // Public Methods
 
 		#region Public Properties
+		/// <summary>
+		/// Gets or sets a value that indicates if debug messages will be printed during resolution.
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if debug messages will be printed during resolution; otherwise <c>false</c>.
+		/// </value>
+		public bool DebugMessages
+		{
+			get
+			{
+				return debugMessages;
+			}
+			set
+			{
+				debugMessages = value;
+			}
+		}
+
 		/// <summary>
 		/// Gets or sets the list of entity names that will be resolved from the result.
 		/// </summary>

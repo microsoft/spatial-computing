@@ -54,17 +54,22 @@ public class DebugIntentHandler : IIntentHandler
 	{
 		//Build up a string of information about the result we got from LUIS
 		StringBuilder sb = new StringBuilder();
-		sb.AppendLine("Utterance: " + result.Context.PredictionText);
-		sb.AppendLine("Intent: " + intent.Name);
-		sb.AppendLine("  Score: " + intent.Score.ToString("P"));
+		sb.AppendLine($"Utterance: {result.Context.PredictionText}");
+		sb.Append($"Intent: {intent.Name}");
+		foreach (string entityKey in result.PredictionResult.Entities.Keys)
+		{
+			sb.Append($" [{entityKey}]");
+		}
+		sb.AppendLine();
+		sb.AppendLine($"Intent Score: {intent.Score.ToString("P")}");
 		sb.AppendLine("Entities: ");
 		foreach (string entityKey in result.PredictionResult.Entities.Keys)
 		{
-			sb.AppendLine("  Entity: " + entityKey);
+			sb.AppendLine($"  Entity: {entityKey}");
 			foreach (Entity e in result.PredictionResult.Entities[entityKey])
 			{
-				sb.AppendLine("    Value:  " + e.Value);
-				sb.AppendLine("    Score:  " + e.Score);
+				sb.AppendLine($"    Value:  {e.Value}");
+				sb.AppendLine($"    Score:  {e.Score}");
 			}
 		}
 		//Then write it to the console

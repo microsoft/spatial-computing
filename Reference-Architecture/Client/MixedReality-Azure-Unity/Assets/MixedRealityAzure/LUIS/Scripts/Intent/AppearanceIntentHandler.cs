@@ -45,7 +45,11 @@ public class AppearanceIntentHandler : MonoBehaviour, IIntentHandler
 
 		// Try to convert the entity color to a Unity color
 		Color color;
-		if (!ColorMapper.TryParseCssString(colorEntity.Value.ToLower(), out color)) { return; }
+		if (!ColorMapper.TryParseCssString(colorEntity.Value.ToLower(), out color))
+		{
+			Debug.LogWarning($"The value \"{colorEntity.Value}\" does not map to a known color.");
+			return;
+		}
 
 		// Get renderer
 		var renderer = GetComponent<Renderer>();
