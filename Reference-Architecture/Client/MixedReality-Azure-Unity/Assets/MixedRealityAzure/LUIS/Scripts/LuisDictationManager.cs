@@ -279,17 +279,11 @@ namespace Microsoft.MR.LUIS
             textSoFar.Clear();
             dictationResult = string.Empty;
 
-            // If Timeout occurs, the user has been silent for too long.
-            if (cause == DictationCompletionCause.TimeoutExceeded)
-            {
-                LogInfo("Dictation timed out");
-            }
-
             // If continuous, start again. Otherwise stop.
             if (continuousRecognition)
             {
-				StartListening();
-            }
+				dictationRecognizer.Start();
+			}
 			else
 			{
 				StopListening();
