@@ -241,7 +241,7 @@ namespace Microsoft.MR.LUIS
         /// </summary>
         /// <param name="text">The text that was heard by the recognizer.</param>
         /// <param name="confidence">A representation of how confident (rejected, low, medium, high) the recognizer is of this recognition.</param>
-        private void DictationRecognizer_DictationResult(string text, ConfidenceLevel confidence)
+        private async void DictationRecognizer_DictationResult(string text, ConfidenceLevel confidence)
         {
 			// We have final text
 			dictationResult = text;
@@ -259,7 +259,7 @@ namespace Microsoft.MR.LUIS
                 if (luisManager != null)
                 {
                     LogInfo($"Heard '{dictationResult}', sending to LUIS.");
-                    luisManager.PredictAndHandle(text);
+                    await luisManager.PredictAndHandleAsync(text);
                 }
                 else
                 {

@@ -248,7 +248,7 @@ namespace Microsoft.MR.LUIS
         /// <remarks>
         /// At a minimum, <see cref="PredictionContext.PredictionText"/> must be included within the context.
         /// </remarks>
-        public virtual async Task<LuisMRResult> PredictAndHandle(PredictionContext context)
+        public virtual async Task<LuisMRResult> PredictAndHandleAsync(PredictionContext context)
         {
             // Validate
             if (context == null) throw new ArgumentNullException(nameof(context));
@@ -288,7 +288,7 @@ namespace Microsoft.MR.LUIS
         /// <returns>
         /// A <see cref="Task"/> that yields the result of the operation as a <see cref="LuisMRResult"/>.
         /// </returns>
-        public virtual Task<LuisMRResult> PredictAndHandle(string text)
+        public virtual Task<LuisMRResult> PredictAndHandleAsync(string text)
         {
             // Validate
             if (string.IsNullOrEmpty(text)) throw new ArgumentException(nameof(text));
@@ -297,7 +297,7 @@ namespace Microsoft.MR.LUIS
             PredictionContext context = new PredictionContext() { PredictionText = text };
 
             // Pass to context override
-            return PredictAndHandle(context);
+            return PredictAndHandleAsync(context);
         }
         #endregion // Public Methods
 

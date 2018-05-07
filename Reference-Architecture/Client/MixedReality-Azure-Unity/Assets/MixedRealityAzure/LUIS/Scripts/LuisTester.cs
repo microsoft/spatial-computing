@@ -92,7 +92,7 @@ public class LuisTester : MonoBehaviour
 		}
 
 		// Predict!
-		await LuisManager.PredictAndHandle(TestUtterance);
+		await LuisManager.PredictAndHandleAsync(TestUtterance);
 	}
 	#endregion // Public Methods
 }
