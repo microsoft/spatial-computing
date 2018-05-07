@@ -339,8 +339,16 @@ namespace Microsoft.MR.LUIS
                 luisManager = GetComponent<LuisManager>();
             }
 
-            // Start listening?
-            if (autoStartListening)
+			// Validate components
+			if (luisManager == null)
+			{
+				Debug.LogError($"{nameof(luisManager)} is not set to a valid instance. {nameof(LuisDictationManager)} is disabled.");
+				enabled = false;
+				return;
+			}
+
+			// Start listening?
+			if (autoStartListening)
             {
                 StartListening();
             }

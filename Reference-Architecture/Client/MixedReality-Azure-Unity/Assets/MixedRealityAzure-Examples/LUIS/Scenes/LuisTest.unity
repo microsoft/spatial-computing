@@ -959,7 +959,6 @@ MonoBehaviour:
   AppKey: 
   Domain: 
   MinimumIntentScore: 0.5
-  Preview: 1
   Verbose: 1
 --- !u!4 &1776187686
 Transform:
@@ -986,9 +985,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnableDebugging: 1
-  LuisManager: {fileID: 1776187685}
+  LuisManager: {fileID: 0}
   PredictOnStart: 1
-  TestUtterance: Make the cube bigger
+  TestUtterance: make the cube bigger
 --- !u!114 &1776187688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1005,6 +1004,6 @@ MonoBehaviour:
   continuousRecognition: 1
   debugOutput: {fileID: 1764009441}
   initialSilenceTimeout: 5
-  luisManager: {fileID: 1776187685}
+  luisManager: {fileID: 0}
   minimumConfidenceLevel: 1
   recordingTime: 10

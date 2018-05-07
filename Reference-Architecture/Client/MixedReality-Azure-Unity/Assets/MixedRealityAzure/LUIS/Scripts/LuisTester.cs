@@ -51,6 +51,12 @@ public class LuisTester : MonoBehaviour
 	#region Unity Overrides
 	void Start()
 	{
+		// If no manager specified, see if one is on the same GameObject
+		if (LuisManager == null)
+		{
+			LuisManager = GetComponent<LuisManager>();
+		}
+
 		// Validate components
 		if (LuisManager == null)
 		{
@@ -66,7 +72,7 @@ public class LuisTester : MonoBehaviour
 		}
 
 		// Predict on start?
-		if (PredictOnStart)
+		if ((PredictOnStart) && (!string.IsNullOrEmpty(TestUtterance)))
 		{
 			TryPredict();
 		}
@@ -79,6 +85,12 @@ public class LuisTester : MonoBehaviour
 	/// </summary>
 	public async void TryPredict()
 	{
+		if (!enabled)
+		{
+			Debug.LogError($"{nameof(LuisTester)} is not enabled. Can't predict.");
+			return;
+		}
+
 		if (LuisManager == null)
 		{
 			Debug.LogError($"{nameof(LuisManager)} is not set to a valid instance.");
