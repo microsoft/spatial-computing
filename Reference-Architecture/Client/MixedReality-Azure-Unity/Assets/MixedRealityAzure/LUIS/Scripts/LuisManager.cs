@@ -68,10 +68,7 @@ namespace Microsoft.MR.LUIS
         [Range(0,1)]
         public double MinimumIntentScore = 0.5;
 
-        [Tooltip("Whether to use preview LUIS features.")]
-		public bool Preview = true;
-
-		[Tooltip("Whether to return full result of all intents not just the top scoring intent (for preview features only).")]
+		[Tooltip("Whether to return all intents and not just the top scoring intent.")]
 		public bool Verbose = true;
 	    #endregion // Unity Inspector Variables
 
