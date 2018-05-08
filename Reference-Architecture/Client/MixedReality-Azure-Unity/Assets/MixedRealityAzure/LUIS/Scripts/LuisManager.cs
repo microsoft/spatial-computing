@@ -134,7 +134,7 @@ namespace Microsoft.MR.LUIS
         protected virtual void AddDefaultStrategies()
         {
 			// Default Resolvers
-			EntityResolvers.Add(new EntityMetaDataResolver());
+			EntityResolvers.Add(new EntityMetadataResolver());
 
 			// Default Handlers
 			IntentHandlers.Add(new ResolvedIntentForwarder());

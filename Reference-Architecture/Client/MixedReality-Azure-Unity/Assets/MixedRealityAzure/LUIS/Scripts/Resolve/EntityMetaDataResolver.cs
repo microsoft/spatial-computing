@@ -36,9 +36,9 @@ namespace Microsoft.MR.LUIS
 {
 	/// <summary>
 	/// Resolves entities in our prediction with entities in the scene. This resolver finds scene GameObjects by name or type.
-	/// The name and type of a GameObject in the scene is defined with the <see cref="EntityMetaData"/> behavior.
+	/// The name and type of a GameObject in the scene is defined with the <see cref="EntityMetadata"/> behavior.
 	/// </summary>
-	public class EntityMetaDataResolver : IEntityResolver
+	public class EntityMetadataResolver : IEntityResolver
 	{
 		#region Member Variables
 		private bool debugMessages = true;
@@ -73,7 +73,7 @@ namespace Microsoft.MR.LUIS
 			IEnumerable<EntityMap> meq =
 				from entity in predictionEntities
 				let entityName = entity.Value.ToLower()
-				from sceneEntity in GameObject.FindObjectsOfType<EntityMetaData>()
+				from sceneEntity in GameObject.FindObjectsOfType<EntityMetadata>()
 				where entityName.Equals(sceneEntity.EntityName.ToLower()) || entityName.Equals(sceneEntity.EntityType.ToLower())
 				select new EntityMap()
 				{

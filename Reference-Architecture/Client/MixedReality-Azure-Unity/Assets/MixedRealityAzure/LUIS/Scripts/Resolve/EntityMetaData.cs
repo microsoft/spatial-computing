@@ -23,21 +23,15 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using Microsoft.Cognitive.LUIS;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Microsoft.MR.LUIS
 {
 	/// <summary>
-	/// Provides data about a <see cref="GameObject"/> so that <see cref="EntityMetaDataResolver"/> 
+	/// Provides data about a <see cref="GameObject"/> so that <see cref="EntityMetadataResolver"/> 
 	/// can map a Luis <see cref="Entity"/> in a result to the object.
 	/// </summary>
-	public class EntityMetaData : MonoBehaviour
+	public class EntityMetadata : MonoBehaviour
 	{
 		[Tooltip("The Name of the Luis Entity that will be mapped to this object.")]
 		public string EntityName;

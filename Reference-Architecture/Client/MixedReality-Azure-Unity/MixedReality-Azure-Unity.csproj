@@ -282,8 +282,8 @@
     <Compile Include="Assets\MixedRealityAzure\LUIS\Scripts\LuisMRResult.cs" />
     <Compile Include="Assets\MixedRealityAzure\LUIS\Scripts\LuisTester.cs" />
     <Compile Include="Assets\MixedRealityAzure\LUIS\Scripts\Resolve\EntityMap.cs" />
-    <Compile Include="Assets\MixedRealityAzure\LUIS\Scripts\Resolve\EntityMetaData.cs" />
-    <Compile Include="Assets\MixedRealityAzure\LUIS\Scripts\Resolve\EntityMetaDataResolver.cs" />
+    <Compile Include="Assets\MixedRealityAzure\LUIS\Scripts\Resolve\EntityMetadata.cs" />
+    <Compile Include="Assets\MixedRealityAzure\LUIS\Scripts\Resolve\EntityMetadataResolver.cs" />
     <Compile Include="Assets\MixedRealityAzure\LUIS\Scripts\Resolve\IEntityResolver.cs" />
     <Compile Include="Assets\MixedRealityAzure\LUIS\Scripts\Route\ResolvedIntentForwarder.cs" />
     <Compile Include="Assets\MixedRealityAzure-Examples\LUIS\Scripts\GenericEntityIntentHandler.cs" />
