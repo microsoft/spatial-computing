@@ -7,19 +7,18 @@
 
 This project is organized into 3 key areas:
 
-#### Standalone Samples ####
-**Standalone Samples** - (coming soon) are concise projects that demonstrate a capability quickly and don't have external dependencies. These samples can be downloaded independently and tested quickly with little or no server setup.
+### Standalone Samples ###
+(Coming soon) are concise projects that demonstrate a capability quickly and don't have external dependencies. These samples can be downloaded independently and tested quickly with little or no server setup.
 
 
-#### Solutions ####
-**Solutions** - (coming soon) also demonstrate a single capability but require additional setup. Solutions, for example, may require deploying an Azure workload like a bot, a function, or a database.
+### Solutions ###
+(Coming soon) also demonstrate a single capability but require additional setup. Solutions, for example, may require deploying an Azure workload like a bot, a function, or a database.
  
 
-#### Reference Architectures ####
-**Reference Architectures** - Are *set of capabilities* that have all been designed to work together. For example, Speech Recognition may be used on its own but it is also designed to work with Language Understanding. 
+### Reference Architectures ###
+Are *set of capabilities* that have all been designed to work together. For example, Speech Recognition may be used on its own but it is also designed to work with Language Understanding. 
 
-**Current Modules**
-
+**Modules**
 - [LUIS for XR](Assets/MixedRealityAzure/LUIS) - A powerful Natural Language replacement for voice commands.
 
 
