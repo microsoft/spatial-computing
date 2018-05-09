@@ -1,54 +1,36 @@
-# LUIS Reference for Mixed Reality Applications
+# LUIS for XR
 
-This project serves as a reference for integrating the [Language Understanding Intelligence Service](https://www.luis.ai/home) (LUIS) into Mixed Reality applications. Though **Mixed Reality** is in the title, this reference is not exclusive to Windows Mixed Reality devices.
+LUIS for XR is a reference implementation for Natural Language Understanding in XR applications using [LUIS](https://www.luis.ai/home).
 
-
-- [Objective](#objective)
-- [Minimum requirements](#minimum-requirements)
-- [Running the demo scene](#running-the-demo-scene)
-- [Adding these components to your project](#setting-up-components)
-- [What's next](#next-steps)
+- [Why Natural Language](#why-natural-language)
+- [Getting Started](#getting-started)
+- [System Requirements](#system-requirements)
+- [Special Thanks](#special-thanks)
  
 
-## Objective
+## Why Natural Language
 
-### Challenges with Voice Commands
-It's quite easy to leverage voice commands in Unity through the [KeywordRecognizer](https://docs.unity3d.com/ScriptReference/Windows.Speech.KeywordRecognizer.html) class. Voice commands are very powerful, but they also present their own set of challenges:
+For an overview of Natural Language and why it's more powerful than traditional voice commands, please see:
 
-- **Voice commands don't have context** - They work great for global commands like "Save", but targeting voice commands at an object in the scene requires additional code. The [MRTK](https://github.com/Microsoft/MixedRealityToolkit-Unity) attempts to help with this through the [ISpeechHandler](https://github.com/Microsoft/MixedRealityToolkit-Unity/blob/master/Assets/HoloToolkit/Input/Scripts/InputHandlers/ISpeechHandler.cs) interface. This interface allows voice commands to be routed to whichever object the user is gazing at, but gaze is currently the only way to route or target voice commands. 
-
-- **Voice commands are explicit** - Being able to say "move the box" and "move the cube" requires two different voice commands (even though "box" and "cube" may mean the same object). Similarly, "move the box left" and "move the box right" require two different voice commands just to support those two directions. As you can imagine, the number of objects in the scene and the ways you can interact with them exponentially increases the commands required to support them. 
-
-### How Natural Language Solves These Problems
-By adding support for LUIS in Unity you can use natural language to control Unity game objects. 
-
-TODO: More background 
+[Natural Language for Simulations](http://www.roadtomr.com/2018/05/08/2508/natural-language-for-simulations)
+[![](http://www.roadtomr.com/wp-content/uploads/2018/05/NLSimFeature.png)](http://www.roadtomr.com/2018/05/08/2508/natural-language-for-simulations)
 
 
-## Minimum Requirements
-- Unity 2017.2+
-- Enable `.NET 4.6 (experimental)` under player settings
-- Enable `.NET backend` under player settings
+## Getting Started
 
-## Running the Demo Scene ##
-The primary demo scene is **MixedRealityAzure-Examples\LUIS\Scenes\LUISTest.unity**. You will need to provide your AppID and AppKey on the LuisManager component (which is on the LUIS GameObject). It is safe to ignore the warning about missing values when the scene starts. This is a bug we need to address. 
+This reference is easy to use and is distributed as a [Unity Package](http://aka.ms/mrluispack). For a complete step-by-step guide on how to get started using it in your own applications, please see the article:
 
-TODO: More info about the demo scene
+[NLU For XR With LUIS](http://www.roadtomr.com/2018/05/08/2555/nlu-for-xr-with-luis)
+[![](http://www.roadtomr.com/wp-content/uploads/2018/05/LuisXRFeat.png)](http://www.roadtomr.com/2018/05/08/2555/nlu-for-xr-with-luis)
 
-## Setting Up Components ##
-TODO
- 
-### UNITY ###
-TODO
 
-### LUIS ###
-TODO
+## System Requirements
+- Unity 2017.2 or later
+- `.NET 4.6` under player settings
+- `.NET backend` under player settings
 
-## Next Steps ##
-TODO
+Though you will see "Mixed Reality" mentioned throughout this reference, it is not exclusive to Windows Mixed Reality devices. This code will work with all Unity projects that support .NET 4.6. The only exception to this rule is the **Luis Dictation Manager** which needs Windows 10 APIs to access the microphone. This component is optional and will work on all devices that run Windows 10, including HoloLens.
 
 
 ## Special Thanks ##
-The [earliest prototype](https://github.com/ashanhol/LUISMR) of this project was developed during an internal Microsoft Mixed Reality hack in December of 2017. That team consisted of [Adina Shanholtz](http://adinashanholtz.com), [Anna Fear](https://www.linkedin.com/in/avfear) and  [David Douglas](http://www.deadlyfingers.net).
-
-This reference architecture evolve from that prototype during a Microsoft + Partner hack in February 2018. The primary contributors included [Jared Bienz](http://www.roadtomr.com) (Microsoft), [Michael House](https://www.linkedin.com/in/housemichael) (Object Theory) and [Stephen Hodgson](https://www.linkedin.com/in/stephenjhodgson) (Valorem).
+The [earliest prototype](https://github.com/ashanhol/LUISMR) of this project was developed during an internal Microsoft hack in December 2017. That team consisted of [Adina Shanholtz](http://adinashanholtz.com), [Anna Fear](https://www.linkedin.com/in/avfear) and [David Douglas](http://www.deadlyfingers.net). The Reference Architecture here evolved out that prototype during a Microsoft + Partner hack in February 2018. The primary contributors to this reference included [Jared Bienz](https://www.linkedin.com/in/jbienz) from [Microsoft](http://www.microsoft.com), [Michael House](https://www.linkedin.com/in/housemichael) from [Object Theory](http://objecttheory.com) and [Stephen Hodgson](https://www.linkedin.com/in/stephenjhodgson) from [Valorem](https://www.valorem.com).
