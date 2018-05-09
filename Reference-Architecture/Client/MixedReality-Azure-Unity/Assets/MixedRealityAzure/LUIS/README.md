@@ -13,6 +13,7 @@ LUIS for XR is a reference implementation for Natural Language Understanding in 
 For an overview of Natural Language and why it's more powerful than traditional voice commands, please see:
 
 [Natural Language for Simulations](http://www.roadtomr.com/2018/05/08/2508/natural-language-for-simulations)
+
 [![](http://www.roadtomr.com/wp-content/uploads/2018/05/NLSimFeature.png)](http://www.roadtomr.com/2018/05/08/2508/natural-language-for-simulations)
 
 
@@ -21,6 +22,7 @@ For an overview of Natural Language and why it's more powerful than traditional 
 This reference is easy to use and is distributed as a [Unity Package](http://aka.ms/mrluispack). For a complete step-by-step guide on how to get started using it in your own applications, please see the article:
 
 [NLU For XR With LUIS](http://www.roadtomr.com/2018/05/08/2555/nlu-for-xr-with-luis)
+
 [![](http://www.roadtomr.com/wp-content/uploads/2018/05/LuisXRFeat.png)](http://www.roadtomr.com/2018/05/08/2555/nlu-for-xr-with-luis)
 
 
