@@ -19,7 +19,7 @@ Also demonstrate a  capability but require additional setup. Solutions, for exam
 Are a *set of capabilities* that have all been designed to work together. For example, Speech Recognition may be used on its own but it is also designed to work with Language Understanding. 
 
 **Modules**
-- [LUIS for XR](Assets/MixedRealityAzure/LUIS) - A powerful Natural Language replacement for voice commands.
+- [LUIS for XR](Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/MixedRealityAzure/LUIS) - A powerful Natural Language replacement for voice commands.
 
 
 ## Contributing
