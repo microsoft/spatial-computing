@@ -1,0 +1,9 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <UnityWSASolutionName>HoloML</UnityWSASolutionName>
+        <UnityWSASolutionDir>D:\wks\mixedreality-winml\UWP\</UnityWSASolutionDir>
+        <UnityProjectDir>D:\wks\mixedreality-winml\</UnityProjectDir>
+        <UnityWSAPlayerDir>C:\Program Files\Unity\Hub\Editor\2017.4.1f1\Editor\Data\PlaybackEngines\MetroSupport\</UnityWSAPlayerDir>
+        <UnityWSAToolsDir>$(UnityWSASolutionDir)Unity\Tools\</UnityWSAToolsDir>
+    </PropertyGroup>
+</Project>
