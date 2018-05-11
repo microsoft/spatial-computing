@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloML", "HoloML.csproj", "{4D9D3579-CE2B-5AF8-4719-0B0B9B1BB9B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloML.Editor", "HoloML.Editor.csproj", "{EB549A36-A48A-7390-113D-B2813C43EE24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D9D3579-CE2B-5AF8-4719-0B0B9B1BB9B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D9D3579-CE2B-5AF8-4719-0B0B9B1BB9B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D9D3579-CE2B-5AF8-4719-0B0B9B1BB9B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D9D3579-CE2B-5AF8-4719-0B0B9B1BB9B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB549A36-A48A-7390-113D-B2813C43EE24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB549A36-A48A-7390-113D-B2813C43EE24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB549A36-A48A-7390-113D-B2813C43EE24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB549A36-A48A-7390-113D-B2813C43EE24}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
