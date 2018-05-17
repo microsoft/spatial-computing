@@ -2,12 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.AI.MachineLearning.Preview;
 using Windows.Media;
 using Windows.Storage;
+using Windows.Storage.Streams;
 
 public sealed class Image_RecoModelInput
 {
@@ -48,11 +50,6 @@ public sealed class Image_RecoModel
     Image_RecoModelOutput output = new Image_RecoModelOutput();
     public async Task<Image_RecoModelOutput> EvaluateAsync(Image_RecoModelInput input)
     {
-        if (input.data.Direct3DSurface == null)
-        {
-            return output;
-        }
-
         var d = input.data.Direct3DSurface.Description;
         binding.Bind("data", input.data);
         LearningModelEvaluationResultPreview evalResult = await learningModel.EvaluateAsync(binding, string.Empty);

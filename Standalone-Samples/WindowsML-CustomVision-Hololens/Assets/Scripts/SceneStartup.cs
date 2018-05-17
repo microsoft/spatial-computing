@@ -44,7 +44,7 @@ public class SceneStartup : MonoBehaviour
 #if UNITY_WSA && !UNITY_EDITOR
     public async void InitializeModel()
     {
-        StorageFile imageRecoModelFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri($"ms-appx:///Assets/model.onnx"));
+        StorageFile imageRecoModelFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri($"ms-appx:///Data/StreamingAssets/model.onnx"));
         imageRecoModel = await Image_RecoModel.CreateImage_RecoModel(imageRecoModelFile);
     }
 

@@ -15,6 +15,9 @@ Players/
 # Unity3D Exported Data files
 Data/
 
+# UWP generated project
+/**/UWP/
+
 # UWP Exported Binaries
 /**/UWP/**/*.dll
 /**/UWP/**/*.exe
