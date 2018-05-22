@@ -7,8 +7,11 @@
 
 This project is organized into 3 key areas:
 
-### Standalone Samples (Coming soon)
+### Standalone Samples
 Concise projects that demonstrate a capability quickly and don't have external dependencies. These samples can be downloaded independently and tested quickly with little or no server setup.
+
+Samples:
+- [Custom Vision with Windows ML in Hololens](https://github.com/meulta/mixedreality-azure-samples/tree/master/Standalone-Samples/WindowsML-CustomVision-Hololens)
 
 
 ### Solutions (Coming soon)
