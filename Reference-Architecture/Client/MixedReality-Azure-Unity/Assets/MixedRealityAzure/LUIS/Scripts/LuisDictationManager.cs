@@ -32,14 +32,12 @@ using UnityEngine.Windows.Speech;
 
 namespace Microsoft.MR.LUIS
 {
-	/// <summary>
-	/// Provides a method of invoking LUIS using speech recognized by <see cref="DictationRecognizer"/>.
-	/// </summary>
+    /// <summary>
+    /// Provides a method of invoking LUIS using speech recognized by <see cref="DictationRecognizer"/>.
+    /// </summary>
     public class LuisDictationManager : MonoBehaviour
     {
         #region Member Variables
-        private string deviceName = string.Empty; // Empty string specifies the default microphone.
-        private DictationRecognizer dictationRecognizer;
         private string dictationResult; // String result of the current dictation.
         private bool isListening;
         private bool isRecording;
@@ -47,6 +45,11 @@ namespace Microsoft.MR.LUIS
         private int samplingRate; // The device audio sampling rate.
         private StringBuilder textSoFar = new StringBuilder(); // Caches the text currently being displayed in dictation display text.
         #endregion // Member Variables
+
+        #if UNITY_WSA || UNITY_STANDALONE_WIN
+        private string deviceName = string.Empty; // Empty string specifies the default microphone.
+        private DictationRecognizer dictationRecognizer;
+        #endif // UNITY_WSA || UNITY_STANDALONE_WIN
 
         #region Unity Inspector Variables
         [Tooltip("The time length in seconds before dictation recognizer session ends due to lack of audio input.")]
@@ -110,7 +113,6 @@ namespace Microsoft.MR.LUIS
                 debugOutput.color = Color.red;
                 debugOutput.text = message;
             }
-
         }
 
         private void LogWarn(string message, bool toConsole = true)
@@ -126,6 +128,34 @@ namespace Microsoft.MR.LUIS
             }
         }
 
+        #if UNITY_WSA || UNITY_STANDALONE_WIN
+        private void AwakeWin()
+        {
+            // Query the maximum frequency of the default microphone.
+            int minSamplingRate; // Not used.
+            Microphone.GetDeviceCaps(deviceName, out minSamplingRate, out samplingRate);
+
+            dictationRecognizer = new DictationRecognizer();
+            dictationRecognizer.DictationHypothesis += DictationRecognizer_DictationHypothesis;
+            dictationRecognizer.DictationResult += DictationRecognizer_DictationResult;
+            dictationRecognizer.DictationComplete += DictationRecognizer_DictationComplete;
+            dictationRecognizer.DictationError += DictationRecognizer_DictationError;
+        }
+
+        private void OnDestroyWin()
+        {
+            if (dictationRecognizer != null)
+            {
+                dictationRecognizer.Dispose();
+                dictationRecognizer = null;
+            }
+        }
+
+        private void StartListeningWin()
+        {
+            StartCoroutine(StartListeningWinRoutine(initialSilenceTimeout, autoSilenceTimeout, recordingTime));
+        }
+
         /// <summary>
         /// Turns on the dictation recognizer and begins recording audio from the default microphone.
         /// </summary>
@@ -133,9 +163,8 @@ namespace Microsoft.MR.LUIS
         /// <param name="autoSilenceTimeout">The time length in seconds before dictation recognizer session ends due to lack of audio input.</param>
         /// <param name="recordingTime">Length in seconds for the manager to listen.</param>
         /// <returns></returns>
-        private IEnumerator StartListeningInternal(float initialSilenceTimeout = 5f, float autoSilenceTimeout = 20f, int recordingTime = 10)
+        private IEnumerator StartListeningWinRoutine(float initialSilenceTimeout = 5f, float autoSilenceTimeout = 20f, int recordingTime = 10)
         {
-            #if UNITY_WSA || UNITY_STANDALONE_WIN
             if (isListening || isTransitioning)
             {
                 Debug.LogWarning("Unable to start recording");
@@ -176,18 +205,18 @@ namespace Microsoft.MR.LUIS
             isTransitioning = false;
             
             LogInfo("Listening");
+        }
 
-            #else
-            return null;
-            #endif
+        private void StopListeningWin()
+        {
+            StartCoroutine(StopListeningWinRoutine());
         }
 
         /// <summary>
         /// Ends the recording session.
         /// </summary>
-        private IEnumerator StopListeningInternal()
+        private IEnumerator StopListeningWinRoutine()
         {
-            #if UNITY_WSA || UNITY_STANDALONE_WIN
             if (!isListening || isTransitioning)
             {
                 LogWarn("Unable to stop recording");
@@ -216,11 +245,8 @@ namespace Microsoft.MR.LUIS
             isTransitioning = false;
             
             LogInfo("Stopped listening");
-
-            #else
-            return null;
-            #endif
         }
+        #endif // UNITY_WSA || UNITY_STANDALONE_WIN
         #endregion // Internal Methods
 
         #region Overrides / Event Handlers
@@ -310,25 +336,18 @@ namespace Microsoft.MR.LUIS
             }
 
             Debug.LogError(error);
-            StartCoroutine(StopListeningInternal());
+            StartCoroutine(StopListeningWinRoutine());
 
         }
-        #endif
+        #endif // UNITY_WSA || UNITY_STANDALONE_WIN
         #endregion // Overrides / Event Handlers
 
         #region Unity Overrides
         protected virtual void Awake()
         {
-            luisManager = gameObject.GetComponent<LuisManager>();
-            // Query the maximum frequency of the default microphone.
-            int minSamplingRate; // Not used.
-            Microphone.GetDeviceCaps(deviceName, out minSamplingRate, out samplingRate);
-
-            dictationRecognizer = new DictationRecognizer();
-            dictationRecognizer.DictationHypothesis += DictationRecognizer_DictationHypothesis;
-            dictationRecognizer.DictationResult += DictationRecognizer_DictationResult;
-            dictationRecognizer.DictationComplete += DictationRecognizer_DictationComplete;
-            dictationRecognizer.DictationError += DictationRecognizer_DictationError;
+            #if UNITY_WSA || UNITY_STANDALONE_WIN
+            AwakeWin();
+            #endif // UNITY_WSA || UNITY_STANDALONE_WIN
         }
 
         protected virtual void Start()
@@ -356,11 +375,9 @@ namespace Microsoft.MR.LUIS
 
         protected virtual void OnDestroy()
         {
-            if (dictationRecognizer != null)
-            {
-                dictationRecognizer.Dispose();
-                dictationRecognizer = null;
-            }
+            #if UNITY_WSA || UNITY_STANDALONE_WIN
+            OnDestroyWin();
+            #endif // UNITY_WSA || UNITY_STANDALONE_WIN
         }
         #endregion // Unity Overrides
 
@@ -376,7 +393,9 @@ namespace Microsoft.MR.LUIS
             }
             else
             {
-                StartCoroutine(StartListeningInternal(initialSilenceTimeout, autoSilenceTimeout, recordingTime));
+                #if UNITY_WSA || UNITY_STANDALONE_WIN
+                StartListeningWin();
+                #endif // UNITY_WSA || UNITY_STANDALONE_WIN
             }
         }
 
@@ -391,7 +410,9 @@ namespace Microsoft.MR.LUIS
             }
             else
             {
-                StartCoroutine(StopListeningInternal());
+                #if UNITY_WSA || UNITY_STANDALONE_WIN
+                StopListeningWin();
+                #endif // UNITY_WSA || UNITY_STANDALONE_WIN
             }
         }
         #endregion // Public Methods
