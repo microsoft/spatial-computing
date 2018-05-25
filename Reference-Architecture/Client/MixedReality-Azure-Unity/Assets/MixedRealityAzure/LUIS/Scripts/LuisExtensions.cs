@@ -84,9 +84,11 @@ namespace Microsoft.MR.LUIS
             {
                 var resolution = entity.Resolution["values"];
 
-                // Remove extra characters
+                // HACK: Remove extra carriage returns and line feeds
                 var resString = resolution.ToString().Replace("[\r\n  \"", "");
                 resString = resString.Replace("\"\r\n]", "");
+                resString = resolution.ToString().Replace("[\n  \"", "");
+                resString = resString.Replace("\"\n]", "");
 
                 // Return cleaned resolution
                 return resString;
