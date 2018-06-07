@@ -35,7 +35,7 @@ LUIS Caching Service includes the following components:
 3. (Optional) Fork this repository to your GitHub account. You can also deploy from this page on the Microsoft account but you won't be able to commit changes back. 
 4. Click on the **Deploy to Azure** button below. You will be redirected to the Azure portal.
 
-    [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdacoppet%2Fmixedreality-azure-samples%2Ffeature%2FLUIScache%2FLUIS-CachingService%2Fazuredeploy.json)
+    [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fmixedreality-azure-samples%2Ffeature%2FLUIScache%2FSolutions%2FLUIS-CachingService%2Fazuredeploy.json)
 5. Once logged in, you will be presented with a custom deployment template form. This form is used to capture all the settings required to configure the required cloud components in Azure.
 * Select your **Azure subscription** if you have access to more than one.
 * It is recommended to create a new **resource group** for this solution. This ensures that all associated cloud services are grouped together without being cluttered with other unrelated services you may already have.

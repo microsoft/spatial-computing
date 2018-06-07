@@ -60,7 +60,7 @@
     },
     "repoURL": {
       "type": "string",
-      "defaultValue": "https://github.com/microsoft/mixedreality-azure-samples",
+      "defaultValue": "https://github.com/Microsoft/mixedreality-azure-samples",
       "metadata": {
         "description": "Repo URL"
       }
