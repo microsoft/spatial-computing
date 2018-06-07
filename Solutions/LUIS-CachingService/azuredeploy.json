@@ -264,7 +264,7 @@
             "[resourceId('Microsoft.CognitiveServices/accounts', variables('luisAccountsName'))]"
           ],
           "properties": {
-            "PROJECT": "LUIS-CachingService\\LUIS-CachingComponents\\LuisCacheFunctions\\LuisCacheFunctions.csproj",
+            "PROJECT": "Solutions\\LUIS-CachingService\\LUIS-CachingComponents\\LuisCacheFunctions\\LuisCacheFunctions.csproj",
             "FUNCTIONS_EXTENSION_VERSION": "~1",
             "LuisApiEndpoint": "https://westus.api.cognitive.microsoft.com/luis/api/v2.0",
             "LuisEndpoint": "https://westus.api.cognitive.microsoft.com/luis/v2.0",
