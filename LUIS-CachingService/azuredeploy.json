@@ -34,7 +34,7 @@
     },
     "sqlDatabaseEdition": {
       "type": "string",
-      "defaultValue" :  "Basic",
+      "defaultValue": "Basic",
       "metadata": {
         "description": "The type of database to create."
       },
@@ -60,7 +60,7 @@
     },
     "repoURL": {
       "type": "string",
-      "defaultValue": "https://github.com/dacoppet/mixedreality-azure-samples",
+      "defaultValue": "https://github.com/microsoft/mixedreality-azure-samples",
       "metadata": {
         "description": "Repo URL"
       }
@@ -225,21 +225,6 @@
           "properties": {
             "targetId": "[resourceId('Microsoft.NotificationHubs/namespaces/NotificationHubs', variables('notificationHubNamespace'), variables('notificationHubName'))]"
           }
-        },
-        {
-          "apiVersion": "2015-08-01",
-          "name": "web",
-          "type": "sourcecontrols",
-          "dependsOn": [
-            "[resourceId('Microsoft.Web/Sites', variables('uniqueAppName'))]",
-            "[resourceId('Microsoft.Web/Sites/config', variables('uniqueAppName'), 'appsettings')]",
-            "[resourceId('Microsoft.Web/Sites/config', variables('uniqueAppName'), 'connectionstrings')]"
-          ],
-          "properties": {
-            "RepoUrl": "[parameters('repoUrl')]",
-            "branch": "[parameters('branch')]",
-            "IsManualIntegration": "[parameters('manualIntegration')]"
-          }
         }
       ]
     },
@@ -289,20 +274,6 @@
             "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1,';')]",
             "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1,';')]"
           }
-        },
-        {
-          "apiVersion": "2015-08-01",
-          "name": "web",
-          "type": "sourcecontrols",
-          "dependsOn": [
-            "[resourceId('Microsoft.Web/Sites', variables('functionAppName'))]",
-            "[resourceId('Microsoft.Web/Sites/config', variables('functionAppName'), 'appsettings')]"
-          ],
-          "properties": {
-            "RepoUrl": "[parameters('repoUrl')]",
-            "branch": "[parameters('branch')]",
-            "IsManualIntegration": "[parameters('manualIntegration')]"
-          }
         }
       ]
     },
@@ -340,7 +311,7 @@
           "location": "[resourceGroup().location]",
           "name": "open",
           "properties": {
-            "endIpAddress": "255.255.255.255",
+            "endIpAddress": "0.0.0.0",
             "startIpAddress": "0.0.0.0"
           }
         }
