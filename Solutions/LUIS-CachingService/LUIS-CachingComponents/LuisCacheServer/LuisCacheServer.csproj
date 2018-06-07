@@ -234,8 +234,7 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\PublishProfiles\kspark-luis - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\myapp-luiscache-4wie64ucspon6 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\luiscacheey42of7tswuvs - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LuisCacheModel\LuisCacheModel.csproj">

@@ -40,8 +40,17 @@ LUIS Caching Service includes the following components:
 * Select your **Azure subscription** if you have access to more than one.
 * It is recommended to create a new **resource group** for this solution. This ensures that all associated cloud services are grouped together without being cluttered with other unrelated services you may already have.
 * Select the **location** (i.e. region) where the services will be located. You should pick the region that is closest to you to reduce latency. 
-* Change the **App name** to the one you want to use. This is only a prefix used to name all the related Azure services consistently. You can keep the default if you prefer.
+* Change the **App name** to the one you want to use. This is only a prefix used to name all the related Azure services consistently and a random suffix will be added to this name to insure uniqueness in Azure. You can keep the default if you prefer.
 * An Azure SQL Database will be created for you. Enter your **SQL Server admin credentials** in the required fields.
 *  Update the **repo url** and **branch** settings to match your own fork (as applicable).
 6. Once you're ready to deploy, select the checkbox to agree to the terms and click the **Purchase** button. 
-7. Open the solution (LuisCacheClient.sln) and publish the project LuisCacheServer to the Azure Mobile App that was created for you.
+7. Open the cloud components solution **LuisCacheCloud.sln** and publish the project **LuisCacheServer** to the Azure Mobile App that was created for you:
+* Right-click the **LuisCacheServer** project and select **Publish**.
+* Select **App Service** as the publish target.
+* Pick the **Select Existing** option and click the **Publish** button.
+* In the App Service publishing dialog that appears, select your subscription and expand the resource group you created during the ARM template deployment.
+* Select the App Service under that group. There should be only one, named using the prefix you selected with a random suffix appended. 
+* Select the **OK** button to start deployment.
+8. Repeat the steps above to publish the project **LuisCacheFunctions** to the Azure Function that was created for you. Note that functions are also published as Azure App services. The existing function name will start with your prefix, followed by the same random suffix, and ends with "func".
+9. Open the client components solution **LuisCacheClient.sln** and edit the file **Mainpage.xaml.cs** in the UWP client project **LuisCacheClient**:
+* In the **MainPage()** constructor, populate the three variables with your LUIS Subscription key, LUIS App Id, and App Service web uri. Note that while the LUIS service was created for you by the ARM template, you'll have to build your own LUIS model [in the LUIS portal](https://www.luis.ai) and publish it to Azure.
