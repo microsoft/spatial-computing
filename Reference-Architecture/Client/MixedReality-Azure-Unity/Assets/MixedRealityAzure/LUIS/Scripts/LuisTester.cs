@@ -28,6 +28,7 @@ using Microsoft.MR.LUIS;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Provides a quick way to test LUIS in a Unity scene.
@@ -43,6 +44,12 @@ public class LuisTester : MonoBehaviour
 
 	[Tooltip("Predict the Test Utterance automatically on start.")]
 	public bool PredictOnStart = true;
+
+    [Tooltip("Optional UI Button in the scene that can initiate the prediction.")]
+    public Button SceneTestButton;
+
+    [Tooltip("Optional UI Input field in the scene that supplies the test utterance.")]
+    public InputField SceneUtteranceInput;
 
 	[Tooltip("The utterance to test")]
 	public string TestUtterance = "";
@@ -65,6 +72,21 @@ public class LuisTester : MonoBehaviour
 			return;
 		}
 
+        // If there is a test button in the scene, wire up the click handler.
+        if (SceneTestButton != null)
+        {
+            SceneTestButton.onClick.AddListener(() =>
+            {
+                TryPredict();
+            });
+        }
+
+        // If there is a test text field, setup the default
+        if ((SceneUtteranceInput != null) && (string.IsNullOrEmpty(SceneUtteranceInput.text)))
+        {
+            SceneUtteranceInput.text = TestUtterance;
+        }
+
 		// Enable debugging?
 		if (EnableDebugging)
 		{
@@ -85,18 +107,27 @@ public class LuisTester : MonoBehaviour
 	/// </summary>
 	public async void TryPredict()
 	{
+        // Make sure we're enabled
 		if (!enabled)
 		{
 			Debug.LogError($"{nameof(LuisTester)} is not enabled. Can't predict.");
 			return;
 		}
 
+        // Make sure we have a Luis Manager assigned
 		if (LuisManager == null)
 		{
 			Debug.LogError($"{nameof(LuisManager)} is not set to a valid instance.");
 			return;
 		}
 
+        // If there is a scene text control and its contents aren't empty use that
+        if ((SceneUtteranceInput != null) && (!string.IsNullOrEmpty(SceneUtteranceInput.text)))
+        {
+            TestUtterance = SceneUtteranceInput.text;
+        }
+
+        // Make sure we have something to predict
 		if (string.IsNullOrEmpty(TestUtterance))
 		{
 			Debug.LogError($"{nameof(TestUtterance)} is empty. Nothing to predict.");
