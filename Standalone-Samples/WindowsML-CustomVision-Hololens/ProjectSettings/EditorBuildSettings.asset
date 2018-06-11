@@ -6,5 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MixedRealityAzure-Examples/LUIS/Scenes/LuisTest.unity
-    guid: 017fcfbfe9263b1459783ab0eed8f7f4
+    path: Assets/main.unity
+    guid: e1eb891a0043dad4faa4cad4b678f474

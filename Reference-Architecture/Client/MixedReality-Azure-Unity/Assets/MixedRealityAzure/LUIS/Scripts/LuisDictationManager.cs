@@ -27,25 +27,61 @@ using System;
 using System.Collections;
 using System.Text;
 using UnityEngine;
+
+#if UNITY_WSA || UNITY_STANDALONE_WIN
 using UnityEngine.Windows.Speech;
+#endif // UNITY_WSA || UNITY_STANDALONE_WIN
 
 
 namespace Microsoft.MR.LUIS
 {
-	/// <summary>
-	/// Provides a method of invoking LUIS using speech recognized by <see cref="DictationRecognizer"/>.
-	/// </summary>
+    /// <summary>
+    /// Used by <see cref="LuisDictationManager"/>. Phrases under the specified minimum level will be ignored.
+    /// </summary>
+    public enum DictationConfidenceLevel
+    {
+        /// <summary>
+        /// High confidence level.
+        /// </summary>
+        High = 0,
+
+        /// <summary>
+        /// Medium confidence level.
+        /// </summary>
+        Medium = 1,
+
+        /// <summary>
+        /// Low confidence level.
+        /// </summary>
+        Low = 2,
+    }
+
+    /// <summary>
+    /// Provides a method of invoking LUIS using speech recognized by <see cref="DictationRecognizer"/>.
+    /// </summary>
     public class LuisDictationManager : MonoBehaviour
     {
+        #region Constants
+        #if UNITY_ANDROID
+        private const string PLUGIN_CLASS = "com.microsoft.androidspeech.SpeechPlugin";
+        #endif // UNITY_ANDROID
+        #endregion // Constants
+
         #region Member Variables
-        private string deviceName = string.Empty; // Empty string specifies the default microphone.
-        private DictationRecognizer dictationRecognizer;
         private string dictationResult; // String result of the current dictation.
         private bool isListening;
-        private bool isRecording;
+        private StringBuilder textSoFar = new StringBuilder(); // Caches the text currently being displayed in dictation display text.
+
+        #if UNITY_ANDROID
+        static private AndroidJavaClass pluginInstance;
+        #endif // UNITY_ANDROID
+
+        #if UNITY_WSA || UNITY_STANDALONE_WIN
+        private string deviceName = string.Empty; // Empty string specifies the default microphone.
+        private DictationRecognizer dictationRecognizer;
         private bool isTransitioning;
         private int samplingRate; // The device audio sampling rate.
-        private StringBuilder textSoFar = new StringBuilder(); // Caches the text currently being displayed in dictation display text.
+        #endif // UNITY_WSA || UNITY_STANDALONE_WIN
         #endregion // Member Variables
 
         #region Unity Inspector Variables
@@ -77,7 +113,7 @@ namespace Microsoft.MR.LUIS
 
         [Tooltip("The minimum confidence level for the recognition to be passed to LuisManager.")]
         [SerializeField]
-        private ConfidenceLevel minimumConfidenceLevel = ConfidenceLevel.Medium;
+        private DictationConfidenceLevel minimumConfidenceLevel = DictationConfidenceLevel.Medium;
 
         [Tooltip("Length in seconds for the manager to listen.")]
         [Range(1, 60)]
@@ -110,7 +146,6 @@ namespace Microsoft.MR.LUIS
                 debugOutput.color = Color.red;
                 debugOutput.text = message;
             }
-
         }
 
         private void LogWarn(string message, bool toConsole = true)
@@ -126,6 +161,60 @@ namespace Microsoft.MR.LUIS
             }
         }
 
+        #if UNITY_ANDROID
+        static private void PluginExecute(string methodName, params object[] args)
+        {
+            #if !UNITY_EDITOR
+            if (pluginInstance == null)
+            {
+                pluginInstance = new AndroidJavaClass(PLUGIN_CLASS);
+            }
+            pluginInstance.CallStatic(methodName, args);
+            #endif // !UNITY_EDITOR
+        }
+
+        private void StartListeningAndroid()
+        {
+            PluginExecute("StartListening");
+        }
+
+        private void StopListeningAndroid()
+        {
+            PluginExecute("StopListening");
+        }
+        #endif // UNITY_ANDROID
+
+        #if UNITY_WSA || UNITY_STANDALONE_WIN
+        private void AwakeWin()
+        {
+            // Query the maximum frequency of the default microphone.
+            int minSamplingRate; // Not used.
+            Microphone.GetDeviceCaps(deviceName, out minSamplingRate, out samplingRate);
+
+            dictationRecognizer = new DictationRecognizer();
+            dictationRecognizer.DictationHypothesis += DictationRecognizer_DictationHypothesis;
+            dictationRecognizer.DictationResult += DictationRecognizer_DictationResult;
+            dictationRecognizer.DictationComplete += DictationRecognizer_DictationComplete;
+            dictationRecognizer.DictationError += DictationRecognizer_DictationError;
+        }
+
+        private void OnDestroyWin()
+        {
+            if (dictationRecognizer != null)
+            {
+                dictationRecognizer.Dispose();
+                dictationRecognizer = null;
+            }
+        }
+
+        private void StartListeningWin()
+        {
+            if (!isTransitioning)
+            {
+                StartCoroutine(StartListeningWinRoutine(initialSilenceTimeout, autoSilenceTimeout, recordingTime));
+            }
+        }
+
         /// <summary>
         /// Turns on the dictation recognizer and begins recording audio from the default microphone.
         /// </summary>
@@ -133,9 +222,8 @@ namespace Microsoft.MR.LUIS
         /// <param name="autoSilenceTimeout">The time length in seconds before dictation recognizer session ends due to lack of audio input.</param>
         /// <param name="recordingTime">Length in seconds for the manager to listen.</param>
         /// <returns></returns>
-        private IEnumerator StartListeningInternal(float initialSilenceTimeout = 5f, float autoSilenceTimeout = 20f, int recordingTime = 10)
+        private IEnumerator StartListeningWinRoutine(float initialSilenceTimeout = 5f, float autoSilenceTimeout = 20f, int recordingTime = 10)
         {
-            #if UNITY_WSA || UNITY_STANDALONE_WIN
             if (isListening || isTransitioning)
             {
                 Debug.LogWarning("Unable to start recording");
@@ -176,18 +264,21 @@ namespace Microsoft.MR.LUIS
             isTransitioning = false;
             
             LogInfo("Listening");
+        }
 
-            #else
-            return null;
-            #endif
+        private void StopListeningWin()
+        {
+            if (!isTransitioning)
+            {
+                StartCoroutine(StopListeningWinRoutine());
+            }
         }
 
         /// <summary>
         /// Ends the recording session.
         /// </summary>
-        private IEnumerator StopListeningInternal()
+        private IEnumerator StopListeningWinRoutine()
         {
-            #if UNITY_WSA || UNITY_STANDALONE_WIN
             if (!isListening || isTransitioning)
             {
                 LogWarn("Unable to stop recording");
@@ -216,14 +307,63 @@ namespace Microsoft.MR.LUIS
             isTransitioning = false;
             
             LogInfo("Stopped listening");
-
-            #else
-            return null;
-            #endif
         }
+        #endif // UNITY_WSA || UNITY_STANDALONE_WIN
         #endregion // Internal Methods
 
         #region Overrides / Event Handlers
+        #if UNITY_ANDROID
+        public void OnSpeechBegin()
+        {
+            
+        }
+
+        public void OnSpeechEnd()
+        {
+            isListening = false;
+        }
+
+        public void OnSpeechError(int error, string message)
+        {
+            isListening = false;
+        }
+
+        public void OnSpeechPartialResult(string partialResult)
+        {
+            LogInfo(partialResult, toConsole: false);
+        }
+
+        public void OnSpeechRead()
+        {
+            isListening = true;
+        }
+
+        public async void OnSpeechResult(string speechResult)
+        {
+            // No longer listening
+            isListening = false;
+
+            // We have final text
+            dictationResult = speechResult;
+
+            if (luisManager != null)
+            {
+                LogInfo($"Heard '{dictationResult}', sending to LUIS.");
+                await luisManager.PredictAndHandleAsync(dictationResult);
+            }
+            else
+            {
+                LogError($"Heard '{dictationResult}' but no LuisManager available.");
+            }
+
+            // If continuous, start again.
+            if (continuousRecognition)
+            {
+                StartListeningAndroid();
+            }
+        }
+        #endif // UNITY_ANDROID
+
         #if UNITY_WSA || UNITY_STANDALONE_WIN
         /// <summary>
         /// This event is fired while the user is talking. As the recognizer listens, it provides text of what it's heard so far.
@@ -250,7 +390,7 @@ namespace Microsoft.MR.LUIS
 			textSoFar.Clear();
 
             // Make sure we have a minimum confidence level
-            if (confidence > minimumConfidenceLevel) // Numerically this is inverted. Lower confidence levels are higher numbers.
+            if (confidence > (ConfidenceLevel)minimumConfidenceLevel) // Numerically this is inverted. Lower confidence levels are higher numbers.
             {
                 LogWarn($"Heard '{dictationResult}' but confidence was too low.");
             }
@@ -259,7 +399,7 @@ namespace Microsoft.MR.LUIS
                 if (luisManager != null)
                 {
                     LogInfo($"Heard '{dictationResult}', sending to LUIS.");
-                    await luisManager.PredictAndHandleAsync(text);
+                    await luisManager.PredictAndHandleAsync(dictationResult);
                 }
                 else
                 {
@@ -310,25 +450,18 @@ namespace Microsoft.MR.LUIS
             }
 
             Debug.LogError(error);
-            StartCoroutine(StopListeningInternal());
+            StartCoroutine(StopListeningWinRoutine());
 
         }
-        #endif
+        #endif // UNITY_WSA || UNITY_STANDALONE_WIN
         #endregion // Overrides / Event Handlers
 
         #region Unity Overrides
         protected virtual void Awake()
         {
-            luisManager = gameObject.GetComponent<LuisManager>();
-            // Query the maximum frequency of the default microphone.
-            int minSamplingRate; // Not used.
-            Microphone.GetDeviceCaps(deviceName, out minSamplingRate, out samplingRate);
-
-            dictationRecognizer = new DictationRecognizer();
-            dictationRecognizer.DictationHypothesis += DictationRecognizer_DictationHypothesis;
-            dictationRecognizer.DictationResult += DictationRecognizer_DictationResult;
-            dictationRecognizer.DictationComplete += DictationRecognizer_DictationComplete;
-            dictationRecognizer.DictationError += DictationRecognizer_DictationError;
+            #if UNITY_WSA || UNITY_STANDALONE_WIN
+            AwakeWin();
+            #endif // UNITY_WSA || UNITY_STANDALONE_WIN
         }
 
         protected virtual void Start()
@@ -356,11 +489,9 @@ namespace Microsoft.MR.LUIS
 
         protected virtual void OnDestroy()
         {
-            if (dictationRecognizer != null)
-            {
-                dictationRecognizer.Dispose();
-                dictationRecognizer = null;
-            }
+            #if UNITY_WSA || UNITY_STANDALONE_WIN
+            OnDestroyWin();
+            #endif // UNITY_WSA || UNITY_STANDALONE_WIN
         }
         #endregion // Unity Overrides
 
@@ -370,14 +501,11 @@ namespace Microsoft.MR.LUIS
         /// </summary>
         public void StartListening()
         {
-            if (isTransitioning)
-            {
-                return;
-            }
-            else
-            {
-                StartCoroutine(StartListeningInternal(initialSilenceTimeout, autoSilenceTimeout, recordingTime));
-            }
+            #if UNITY_ANDROID
+            StartListeningAndroid();
+            #elif UNITY_WSA || UNITY_STANDALONE_WIN
+            StartListeningWin();
+            #endif
         }
 
         /// <summary>
@@ -385,14 +513,11 @@ namespace Microsoft.MR.LUIS
         /// </summary>
         public void StopListening()
         {
-            if (isTransitioning)
-            {
-                return;
-            }
-            else
-            {
-                StartCoroutine(StopListeningInternal());
-            }
+            #if UNITY_ANDROID
+            StopListeningAndroid();
+            #elif UNITY_WSA || UNITY_STANDALONE_WIN
+            StopListeningWin();
+            #endif
         }
         #endregion // Public Methods
 
