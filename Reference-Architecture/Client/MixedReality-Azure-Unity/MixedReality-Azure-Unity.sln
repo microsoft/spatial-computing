@@ -1,9 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MixedReality-Azure-Unity", "Assembly-CSharp.csproj", "{6208DB9F-F8AC-EBCB-7B18-67F4C4065086}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MixedReality-Azure-Unity", "MixedReality-Azure-Unity.csproj", "{4440C6AA-B958-1E90-8BF6-9741696C9C4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MixedReality-Azure-Unity", "Assembly-CSharp-Editor.csproj", "{EDA4797C-B86C-95C4-91A7-0692260042EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.PackageManagerUI.Editor", "Unity.PackageManagerUI.Editor.csproj", "{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MixedReality-Azure-Unity.Editor", "MixedReality-Azure-Unity.Editor.csproj", "{A7775F69-050F-CC87-3441-23EDC710AFFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEditor.StandardEvents", "UnityEditor.StandardEvents.csproj", "{6800202F-4402-D405-F8CB-03DC7BD78B92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,19 +15,24 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6208DB9F-F8AC-EBCB-7B18-67F4C4065086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6208DB9F-F8AC-EBCB-7B18-67F4C4065086}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6208DB9F-F8AC-EBCB-7B18-67F4C4065086}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6208DB9F-F8AC-EBCB-7B18-67F4C4065086}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EDA4797C-B86C-95C4-91A7-0692260042EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EDA4797C-B86C-95C4-91A7-0692260042EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EDA4797C-B86C-95C4-91A7-0692260042EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EDA4797C-B86C-95C4-91A7-0692260042EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4440C6AA-B958-1E90-8BF6-9741696C9C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4440C6AA-B958-1E90-8BF6-9741696C9C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4440C6AA-B958-1E90-8BF6-9741696C9C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4440C6AA-B958-1E90-8BF6-9741696C9C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7775F69-050F-CC87-3441-23EDC710AFFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7775F69-050F-CC87-3441-23EDC710AFFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7775F69-050F-CC87-3441-23EDC710AFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7775F69-050F-CC87-3441-23EDC710AFFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6800202F-4402-D405-F8CB-03DC7BD78B92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6800202F-4402-D405-F8CB-03DC7BD78B92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6800202F-4402-D405-F8CB-03DC7BD78B92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6800202F-4402-D405-F8CB-03DC7BD78B92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
