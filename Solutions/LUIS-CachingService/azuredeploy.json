@@ -266,13 +266,27 @@
           "properties": {
             "PROJECT": "Solutions\\LUIS-CachingService\\LUIS-CachingComponents\\LuisCacheFunctions\\LuisCacheFunctions.csproj",
             "FUNCTIONS_EXTENSION_VERSION": "~1",
-            "LuisApiEndpoint": "https://westus.api.cognitive.microsoft.com/luis/api/v2.0",
-            "LuisEndpoint": "https://westus.api.cognitive.microsoft.com/luis/v2.0",
-            "LuisAppId": "8ab015c6-a3f1-44f6-a6bb-e7d1c46ab80a",
+            "LuisApiEndpoint": "[concat('http://',resourceId('Microsoft.CognitiveServices/accounts', variables('luisAccountsName')).location,'.api.cognitive.microsoft.com/luis/v2.0')]",
+            "LuisAppId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "LuisLocation": "[resourceGroup().location]",
             "LuisAppVersion": "0.1",
             "LuisSubscriptionKey": "[listkeys(resourceId('Microsoft.CognitiveServices/accounts', variables('luisAccountsName')), '2016-02-01-preview').key1]",
             "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1,';')]",
             "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1,';')]"
+          }
+        },
+        {
+          "apiVersion": "2015-08-01",
+          "name": "web",
+          "type": "sourcecontrols",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/Sites', variables('functionAppName'))]",
+            "[resourceId('Microsoft.Web/Sites/config', variables('functionAppName'), 'appsettings')]"
+          ],
+          "properties": {
+            "RepoUrl": "[parameters('repoUrl')]",
+            "branch": "[parameters('branch')]",
+            "IsManualIntegration": "[parameters('manualIntegration')]"
           }
         }
       ]
@@ -344,7 +358,7 @@
         "name": "[parameters('luisSku')]"
       },
       "kind": "LUIS",
-      "name": "[variables('uniqueAppName')]",
+      "name": "[variables('luisAccountsName')]",
       "apiVersion": "2016-02-01-preview",
       "location": "[resourceGroup().location]",
       "scale": null,
@@ -359,17 +373,6 @@
       "properties": {
         "accountType": "[parameters('storageAccountType')]"
       }
-    },
-    {
-      "type": "Microsoft.CognitiveServices/accounts",
-      "sku": {
-        "name": "[parameters('luisSku')]"
-      },
-      "kind": "LUIS",
-      "name": "[variables('luisAccountsName')]",
-      "apiVersion": "2016-02-01-preview",
-      "location": "westus",
-      "properties": {}
     }
   ],
   "outputs": {}
