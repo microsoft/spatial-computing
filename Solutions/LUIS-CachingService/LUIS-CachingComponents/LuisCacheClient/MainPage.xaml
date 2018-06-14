@@ -9,10 +9,13 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Margin="12">
-            <TextBox x:Name="txtInput" />
-            <Button x:Name="submitButton" Click="submitButton_Click" Content="Submit"/>
-            <TextBlock x:Name="ResultLabel"></TextBlock>
-            <TextBlock x:Name="FromCacheLabel"></TextBlock>
+            <TextBlock Text="LUIS Caching Service Test Client" Style="{ThemeResource HeaderTextBlockStyle}"/>
+            <TextBox x:Name="txtInput" PlaceholderText="Enter the utterance to process with LUIS here." Margin="0,12,0,0"/>
+            <Button x:Name="submitButton" Click="submitButton_Click" Content="Submit Utterance" Margin="0,12,0,12" Width="200"/>
+            <TextBlock Text="Resulting LUIS intent and associated entities:" Margin="0,12,0,0" FontWeight="Bold"/>
+            <TextBlock x:Name="ResultLabel" />
+            <TextBlock Text="LUIS result in cache? (true/false)" Margin="0,12,0,0" FontWeight="Bold"/>
+            <TextBlock x:Name="FromCacheLabel" />
         </StackPanel>
     </Grid>
 </Page>
