@@ -266,7 +266,7 @@
           "properties": {
             "PROJECT": "Solutions\\LUIS-CachingService\\LUIS-CachingComponents\\LuisCacheFunctions\\LuisCacheFunctions.csproj",
             "FUNCTIONS_EXTENSION_VERSION": "~1",
-            "LuisApiEndpoint": "[concat('https://',resourceId('Microsoft.CognitiveServices/accounts', variables('luisAccountsName')).location,'.api.cognitive.microsoft.com/luis/v2.0')]",
+            "LuisApiEndpoint": "[concat('https://',resourceGroup().location,'.api.cognitive.microsoft.com/luis/v2.0')]",
             "LuisAppId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             "LuisLocation": "[resourceGroup().location]",
             "LuisAppVersion": "0.1",
