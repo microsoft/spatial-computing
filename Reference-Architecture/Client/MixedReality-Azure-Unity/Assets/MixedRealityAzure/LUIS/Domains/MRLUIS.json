@@ -1,0 +1,2567 @@
+{
+  "luis_schema_version": "3.0.0",
+  "versionId": "0.1",
+  "name": "MRLUIS",
+  "desc": "The main app for MR LUIS Samples",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "MR.ChangeAppearance"
+    },
+    {
+      "name": "MR.PerformAction"
+    },
+    {
+      "name": "MR.Transform"
+    },
+    {
+      "name": "None"
+    }
+  ],
+  "entities": [
+    {
+      "name": "MR.CharacterAction",
+      "roles": []
+    },
+    {
+      "name": "MR.Color",
+      "roles": []
+    },
+    {
+      "name": "MR.InstanceName",
+      "roles": []
+    },
+    {
+      "name": "MR.InstanceType",
+      "roles": []
+    }
+  ],
+  "composites": [],
+  "closedLists": [
+    {
+      "name": "MR.AppearanceAction",
+      "subLists": [
+        {
+          "canonicalForm": "Fade In",
+          "list": []
+        },
+        {
+          "canonicalForm": "Fade Out",
+          "list": []
+        },
+        {
+          "canonicalForm": "Show",
+          "list": [
+            "appear",
+            "turn on",
+            "visible"
+          ]
+        },
+        {
+          "canonicalForm": "Hide",
+          "list": [
+            "disappear",
+            "turn off",
+            "invisible"
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "MR.Axis",
+      "subLists": [
+        {
+          "canonicalForm": "X",
+          "list": []
+        },
+        {
+          "canonicalForm": "Y",
+          "list": []
+        },
+        {
+          "canonicalForm": "Z",
+          "list": []
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "MR.Focus",
+      "subLists": [
+        {
+          "canonicalForm": "Gaze",
+          "list": [
+            "looking"
+          ]
+        },
+        {
+          "canonicalForm": "Pointer",
+          "list": [
+            "pointing"
+          ]
+        },
+        {
+          "canonicalForm": "Nondescript",
+          "list": [
+            "here",
+            "there",
+            "it"
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "MR.RotateDirection",
+      "subLists": [
+        {
+          "canonicalForm": "Clockwise",
+          "list": []
+        },
+        {
+          "canonicalForm": "Counterclockwise",
+          "list": []
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "MR.ScaleDirection",
+      "subLists": [
+        {
+          "canonicalForm": "Increase",
+          "list": [
+            "grow",
+            "bigger",
+            "bigger",
+            "up",
+            "larger"
+          ]
+        },
+        {
+          "canonicalForm": "Decrease",
+          "list": [
+            "shrink",
+            "smaller",
+            "down"
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "MR.TransformDirection",
+      "subLists": [
+        {
+          "canonicalForm": "XPlus",
+          "list": [
+            "right"
+          ]
+        },
+        {
+          "canonicalForm": "XMinus",
+          "list": [
+            "left"
+          ]
+        },
+        {
+          "canonicalForm": "YPlus",
+          "list": [
+            "up",
+            "raise"
+          ]
+        },
+        {
+          "canonicalForm": "YMinus",
+          "list": [
+            "down",
+            "lower"
+          ]
+        },
+        {
+          "canonicalForm": "ZPlus",
+          "list": [
+            "forward"
+          ]
+        },
+        {
+          "canonicalForm": "ZMinus",
+          "list": [
+            "back"
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "MR.TransformType",
+      "subLists": [
+        {
+          "canonicalForm": "Rotate",
+          "list": [
+            "turn"
+          ]
+        },
+        {
+          "canonicalForm": "Scale",
+          "list": [
+            "size"
+          ]
+        },
+        {
+          "canonicalForm": "Translate",
+          "list": [
+            "move",
+            "pull",
+            "push"
+          ]
+        }
+      ],
+      "roles": []
+    }
+  ],
+  "patternAnyEntities": [],
+  "regex_entities": [],
+  "prebuiltEntities": [
+    {
+      "name": "number",
+      "roles": []
+    }
+  ],
+  "model_features": [],
+  "regex_features": [],
+  "patterns": [],
+  "utterances": [
+    {
+      "text": "alter the ball to blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 10,
+          "endPos": 13
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 18,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "change bouncy ball to medium sea green",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 7,
+          "endPos": 17
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 22,
+          "endPos": 37
+        }
+      ]
+    },
+    {
+      "text": "change steve to be grey",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 7,
+          "endPos": 11
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 19,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "change test tube to gree",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 7,
+          "endPos": 15
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 20,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "change test tube to green",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 7,
+          "endPos": 15
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 20,
+          "endPos": 24
+        }
+      ]
+    },
+    {
+      "text": "change test tube to yellow",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 7,
+          "endPos": 15
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 20,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "change the box to deep sky blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 11,
+          "endPos": 13
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 18,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "change the color of steve to cyan",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 20,
+          "endPos": 24
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 29,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "change the color of the cylinder to black",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 24,
+          "endPos": 31
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 36,
+          "endPos": 40
+        }
+      ]
+    },
+    {
+      "text": "change the color of the cylinder to orange",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 24,
+          "endPos": 31
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 36,
+          "endPos": 41
+        }
+      ]
+    },
+    {
+      "text": "change the color of the rocket ship to purple",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 24,
+          "endPos": 34
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 39,
+          "endPos": 44
+        }
+      ]
+    },
+    {
+      "text": "change the color of the sphere to green",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 24,
+          "endPos": 29
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 34,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "change the cube to red",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 11,
+          "endPos": 14
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 19,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "configure the big cube to be dark red",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 14,
+          "endPos": 21
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 29,
+          "endPos": 36
+        }
+      ]
+    },
+    {
+      "text": "fade in the plant",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 12,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "have frank sit down",
+      "intent": "MR.PerformAction",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 9
+        },
+        {
+          "entity": "MR.CharacterAction",
+          "startPos": 11,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "have george climb on the box",
+      "intent": "MR.PerformAction",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.CharacterAction",
+          "startPos": 12,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "have john stand up",
+      "intent": "MR.PerformAction",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 8
+        },
+        {
+          "entity": "MR.CharacterAction",
+          "startPos": 10,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "have mary wave at john",
+      "intent": "MR.PerformAction",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 8
+        },
+        {
+          "entity": "MR.CharacterAction",
+          "startPos": 10,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "hide the minimap",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "let make the tree orange",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 13,
+          "endPos": 16
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 18,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "lets change boxey to be fuschia",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 12,
+          "endPos": 16
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 24,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "lets make the cube dark orange",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 14,
+          "endPos": 17
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 19,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "lower the cube 3 units",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 10,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "make bobby be blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 9
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 14,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "make bouncey ball orange",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 16
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 18,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "make bouncey ball yellow",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 16
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 18,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "make bouncy ball yellow",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 15
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 17,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "make boxey red",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 9
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 11,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "make boxey turquoise",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 9
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 11,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "make cube blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 8
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 10,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "make cylinder smaller",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "make danny white",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 9
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 11,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "make eggplant eggplant",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 12
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 14,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "make it bigger",
+      "intent": "MR.Transform",
+      "entities": []
+    },
+    {
+      "text": "make john walk towards joe",
+      "intent": "MR.PerformAction",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 8
+        },
+        {
+          "entity": "MR.CharacterAction",
+          "startPos": 10,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "make michael green",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 11
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 13,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "make mount hood light blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 14
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 16,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "make my muffins be teal",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 8,
+          "endPos": 14
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 19,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "make pill bigger",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "make roundy and the sphere green",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 20,
+          "endPos": 25
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 27,
+          "endPos": 31
+        }
+      ]
+    },
+    {
+      "text": "make roundy and the text azure",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 20,
+          "endPos": 23
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 25,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "make roundy and the text black",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 20,
+          "endPos": 23
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 25,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "make roundy and the text blue three",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 20,
+          "endPos": 23
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 25,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "make roundy and the text chartreuse",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 20,
+          "endPos": 23
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 25,
+          "endPos": 34
+        }
+      ]
+    },
+    {
+      "text": "make roundy and the text cobolt",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 20,
+          "endPos": 23
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 25,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "make roundy and the text deeppink",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 20,
+          "endPos": 23
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 25,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "make roundy and the text fuchsia",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 20,
+          "endPos": 23
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 25,
+          "endPos": 31
+        }
+      ]
+    },
+    {
+      "text": "make roundy and the text grey",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 20,
+          "endPos": 23
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 25,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "make roundy and the text maroon",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 20,
+          "endPos": 23
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 25,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "make roundy and the text olive",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 20,
+          "endPos": 23
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 25,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "make roundy and the text orange",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 20,
+          "endPos": 23
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 25,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "make roundy and the text pink",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 20,
+          "endPos": 23
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 25,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "make roundy and the text pink 1",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 20,
+          "endPos": 23
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 25,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "make roundy and the text pink two",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 20,
+          "endPos": 23
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 25,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "make roundy and the text silver",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 20,
+          "endPos": 23
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 25,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "make roundy green",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 12,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "make roundy purple",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 12,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "make sam red",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 7
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 9,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "make steve blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 9
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 11,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "make test tube bigger",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "make test tube green",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 13
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 15,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "make test tube larger",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "make test tube smaller",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "make the ball bigger",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 14,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "make the ball orange",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 14,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "make the bouncy ball yellow",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 19
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 21,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "make the box bigger",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "make the box blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 11
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 13,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "make the color of the car to black",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 22,
+          "endPos": 24
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 29,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "make the cube black",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 14,
+          "endPos": 18
+        }
+      ]
+    },
+    {
+      "text": "make the cube blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 14,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "make the cube eggplant",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 14,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "make the cube green",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 14,
+          "endPos": 18
+        }
+      ]
+    },
+    {
+      "text": "make the cube yellow",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 14,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "make the cylinder dark slate gray",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 16
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 18,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "make the cylinder grey",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 16
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 18,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "make the cylinder orange",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 16
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 18,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "make the cylinder plum",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 16
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 18,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "make the cylinder smaller",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "make the cylinder tan",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 16
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 18,
+          "endPos": 20
+        }
+      ]
+    },
+    {
+      "text": "make the cylinder white",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 16
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 18,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "make the cylinder yellow",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 16
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 18,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "make the flowers blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 15
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 17,
+          "endPos": 20
+        }
+      ]
+    },
+    {
+      "text": "make the human red colored",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 13
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 15,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "make the map visible",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "make the sphere and tim blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 14
+        },
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 20,
+          "endPos": 22
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 24,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "make the sphere dark slate blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 14
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 16,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "make the sphere dark slate gray",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 14
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 16,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "make the sphere fire brick",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 14
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 16,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "make the sphere hot pink",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 14
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 16,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "make the sphere purple",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 14
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 16,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "make the television pink",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 18
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 20,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "make tim and roundy blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 7
+        },
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 13,
+          "endPos": 18
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 20,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "make tim and the sphere blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 7
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 17,
+          "endPos": 22
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 24,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "make tim and the sphere green",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 7
+        },
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 17,
+          "endPos": 22
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 24,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "make tim green",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 7
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 9,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "make what i'm looking at bigger",
+      "intent": "MR.Transform",
+      "entities": []
+    },
+    {
+      "text": "move it to the right",
+      "intent": "MR.Transform",
+      "entities": []
+    },
+    {
+      "text": "move the ball -3 z",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "move the box forward",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "move the box up 3 units",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "move the car left",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "move the cone 3 on the x",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "move the cube 3 units on the y axis",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "move the tree right",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "pull the ball forward",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "push the cone back",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "raise the box by 5",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 10,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "roll the ball right 5",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "rotate the car clockwise",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 11,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "rotate the cube left",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 11,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "scale boxey down",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 6,
+          "endPos": 10
+        }
+      ]
+    },
+    {
+      "text": "scale cube up",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 6,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "scale george bigger",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 6,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "scale pill bigger",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 6,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "scale pill down",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 6,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "scale pill up",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 6,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "scale test tube bigger",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 6,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "scale test tube down",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 6,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "scale test tube larger",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 6,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "scale test tube smaller",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 6,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "scale the box up",
+      "intent": "MR.Transform",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 10,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "set bambi to teal",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 4,
+          "endPos": 8
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 13,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "set bouncy ball to dark slate gray",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 4,
+          "endPos": 14
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 19,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "set bouncy ball to yellow",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 4,
+          "endPos": 14
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 19,
+          "endPos": 24
+        }
+      ]
+    },
+    {
+      "text": "set mike to be orange",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 4,
+          "endPos": 7
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 15,
+          "endPos": 20
+        }
+      ]
+    },
+    {
+      "text": "set test tube orange",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 4,
+          "endPos": 12
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 14,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "set the box to blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 8,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 15,
+          "endPos": 18
+        }
+      ]
+    },
+    {
+      "text": "set the cube the purple",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 8,
+          "endPos": 11
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 17,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "set the cube to blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 8,
+          "endPos": 11
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 16,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "set the cube to lime green",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 8,
+          "endPos": 11
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 16,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "show the globe",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "shrink it",
+      "intent": "MR.Transform",
+      "entities": []
+    },
+    {
+      "text": "shrink what i'm looking at",
+      "intent": "MR.Transform",
+      "entities": []
+    },
+    {
+      "text": "tell john to jump",
+      "intent": "MR.PerformAction",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 8
+        },
+        {
+          "entity": "MR.CharacterAction",
+          "startPos": 13,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "turn boxey blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 9
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 11,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "turn george dark slate blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 12,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "turn mary invisible",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "turn off the light",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 13,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "turn on statistics",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 8,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "turn roundy black",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 12,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "turn roundy blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 12,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "turn roundy chartreuse",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 10
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 12,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "turn sam black",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 7
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 9,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "turn sam chartreuse",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 7
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 9,
+          "endPos": 18
+        }
+      ]
+    },
+    {
+      "text": "turn sam green",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 7
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 9,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "turn sam red",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 7
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 9,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "turn steve blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceName",
+          "startPos": 5,
+          "endPos": 9
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 11,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "turn the box blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 11
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 13,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "turn the car alice blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 11
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 13,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "turn the cone red",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 14,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "turn the cube blue",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 14,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "turn the cube green",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 12
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 14,
+          "endPos": 18
+        }
+      ]
+    },
+    {
+      "text": "turn the plane purple",
+      "intent": "MR.ChangeAppearance",
+      "entities": [
+        {
+          "entity": "MR.InstanceType",
+          "startPos": 9,
+          "endPos": 13
+        },
+        {
+          "entity": "MR.Color",
+          "startPos": 15,
+          "endPos": 20
+        }
+      ]
+    }
+  ]
+}
