@@ -37,7 +37,7 @@ namespace LuisCacheLib
 
         //private static TextProcessor instance = null;
 
-        public TextProcessor(string luisAppId, string luisSubscriptionKey, string mobileAppUri) //:base()
+        public TextProcessor(string luisAppId, string luisSubscriptionKey, string mobileAppUri, string luisregion) //:base()
         {
             this.mobileAppUri = mobileAppUri;
             this.luisAppId = luisAppId;
@@ -64,8 +64,7 @@ namespace LuisCacheLib
 
             bool preview = true;
 
-            _client = new LuisClient(luisAppId, luisSubscriptionKey, preview);
-
+            _client = new LuisClient(luisAppId, luisSubscriptionKey, preview, luisregion);
         }
 
         //private TextProcessor()

@@ -27,12 +27,15 @@ namespace LuisCacheClient
         public MainPage()
         {
             this.InitializeComponent();
-            var luisSubscriptionKey = "LUIS_KEY";
-            var luisAppId = "LUIS_APP_ID";
-            var mobileAppUri = "http://XXXXXXXXX.azurewebsites.net/";
+            // MAKE SURE TO POPULATE THE VALUES BELOW WITH THE VALUES FROM YOUR OWN LUIS AND APP SERVICE
+            // DEPLOYMENT IN AZURE.
+            // See the instruction on the README page on GitHub for the LUIS Cachine Service.
+            var luisSubscriptionKey = "INSERT YOUR LUIS SECRET KEY HERE";
+            var luisAppId = "INSERT YOUR LUIS APPLICATION ID HERE";
+            var mobileAppUri = "https://INSERT-YOU-APPSERVICE-NAME-HERE.azurewebsites.net";
+            var luisregion = "westus";  // Must match the exact region spelling where you deployed your LUIS service
 
-            _processor = new TextProcessor(luisAppId, luisSubscriptionKey, mobileAppUri);
-            
+            _processor = new TextProcessor(luisAppId, luisSubscriptionKey, mobileAppUri, luisregion);            
         }
 
         private async void submitButton_Click(object sender, RoutedEventArgs e)

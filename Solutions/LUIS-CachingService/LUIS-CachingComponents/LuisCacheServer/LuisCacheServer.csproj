@@ -235,6 +235,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\PublishProfiles\luiscacheey42of7tswuvs - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\luiscachen7vjs63ikakmo - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LuisCacheModel\LuisCacheModel.csproj">
