@@ -1,0 +1,28 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "appName": {
+            "value": "myapp-luiscache"
+          },
+          "sqlServerAdminLogin": {
+            "value": "NewAdmin"
+          },
+          "sqlServerAdminPassword": {
+            "value": "Secure-P@$$w0rd"
+          },
+          "sqlDatabaseEdition": {
+            "value": "Basic"
+          },
+          
+        "repoURL": {
+            "value": "https://github.com/Microsoft/mixedreality-azure-samples"
+        },
+        "branch": {
+            "value": "feature/LUIScache"
+        },
+        "manualIntegration": {
+            "value": true
+        }
+    } 
+}
