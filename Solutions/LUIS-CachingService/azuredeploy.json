@@ -67,7 +67,7 @@
     },
     "branch": {
       "type": "string",
-      "defaultValue": "feature/LUIScache",
+      "defaultValue": "master",
       "metadata": {
         "description": "Repo branch"
       }

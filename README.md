@@ -14,15 +14,17 @@ Samples:
 - [Custom Vision with Windows ML in Hololens](https://github.com/meulta/mixedreality-azure-samples/tree/master/Standalone-Samples/WindowsML-CustomVision-Hololens)
 
 
-### Solutions (Coming soon)
+### Solutions
 Also demonstrate a  capability but require additional setup. Solutions, for example, may require deploying an Azure workload like a bot, a function, or a database.
- 
+
+Solutions:
+- [LUIS Caching Service](https://github.com/Microsoft/mixedreality-azure-samples/tree/master/Solutions/LUIS-CachingService): Reusable solution that showcases how to cache results from LUIS in Cognitive Services.
 
 ### Reference Architectures ###
 Are a *set of capabilities* that have all been designed to work together. For example, Speech Recognition may be used on its own but it is also designed to work with Language Understanding. 
 
 **Modules**
-- [LUIS for XR](Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/MixedRealityAzure/LUIS) - A powerful Natural Language replacement for voice commands.
+- [LUIS for XR](Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/MixedRealityAzure/LUIS): A powerful Natural Language replacement for voice commands.
 
 
 ## Contributing

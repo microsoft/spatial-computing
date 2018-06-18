@@ -19,7 +19,7 @@
             "value": "https://github.com/Microsoft/mixedreality-azure-samples"
         },
         "branch": {
-            "value": "feature/LUIScache"
+            "value": "master"
         },
         "manualIntegration": {
             "value": true
