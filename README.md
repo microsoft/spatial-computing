@@ -12,7 +12,7 @@ Concise projects that demonstrate a capability quickly and don't have external d
 
 Samples:
 - [Custom Vision with Windows ML in Hololens](https://github.com/meulta/mixedreality-azure-samples/tree/master/Standalone-Samples/WindowsML-CustomVision-Hololens)
-
+- [Unity Text-to-Speech](https://github.com/Microsoft/mixedreality-azure-samples/tree/master/Standalone-Samples/Unity-Text-to-Speech)
 
 ### Solutions
 Also demonstrate a  capability but require additional setup. Solutions, for example, may require deploying an Azure workload like a bot, a function, or a database.
