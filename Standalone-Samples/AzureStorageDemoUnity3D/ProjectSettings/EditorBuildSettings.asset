@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/AzureBlobStorageTest.unity
+    guid: d7b3f71076ee5714da80bdc298df8237
+  - enabled: 1
+    path: Assets/Scenes/AzureBlobStorageVideoTest.unity
+    guid: fbaaf9125cb0d574b9e9909249b13c8f
