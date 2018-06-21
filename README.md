@@ -11,8 +11,9 @@ This project is organized into 3 key areas:
 Concise projects that demonstrate a capability quickly and don't have external dependencies. These samples can be downloaded independently and tested quickly with little or no server setup.
 
 Samples:
-- [Custom Vision with Windows ML in Hololens](https://github.com/meulta/mixedreality-azure-samples/tree/master/Standalone-Samples/WindowsML-CustomVision-Hololens)
-- [Unity Text-to-Speech](https://github.com/Microsoft/mixedreality-azure-samples/tree/master/Standalone-Samples/Unity-Text-to-Speech)
+- [Custom Vision with Windows ML in HoloLens](https://github.com/meulta/mixedreality-azure-samples/tree/master/Standalone-Samples/WindowsML-CustomVision-Hololens)
+- [Unity with Cognitive Services Text-to-Speech](https://github.com/Microsoft/mixedreality-azure-samples/tree/master/Standalone-Samples/Unity-Text-to-Speech)
+- [Unity with Azure Storage](https://github.com/Microsoft/mixedreality-azure-samples/tree/master/Standalone-Samples/AzureStorageDemoUnity3D)
 
 ### Solutions
 Also demonstrate a  capability but require additional setup. Solutions, for example, may require deploying an Azure workload like a bot, a function, or a database.
