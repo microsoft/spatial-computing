@@ -289,3 +289,5 @@ FakesAssemblies/
 mixedreality-azure-samples.sln
 mixedreality-azure-samples.csproj
 mixedreality-azure-samples.Player.csproj
+Standalone-Samples/SharedAlignment/Assets/HoloToolkit/
+Standalone-Samples/SharedAlignment/Assets/HoloToolkit-Examples/

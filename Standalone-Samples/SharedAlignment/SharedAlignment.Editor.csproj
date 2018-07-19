@@ -5,9 +5,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}</ProjectGuid>
+    <ProjectGuid>{C6DCF879-E5E4-51AD-1182-EDCF688B3C45}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Unity.PackageManagerUI.Editor</AssemblyName>
+    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
@@ -240,6 +240,15 @@
     </Reference>
     <Reference Include="UnityEditor.Networking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TestRunner">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Timeline">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
@@ -657,43 +666,98 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\AssemblyInfo.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\External\SemVersion.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\External\SemVersionExtension.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Common\OperationSignal.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Common\ThreadedDelay.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Interfaces\IAddOperation.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Interfaces\IBaseOperation.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Interfaces\IListOperation.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Interfaces\IOperationFactory.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Interfaces\IRemoveOperation.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Interfaces\ISearchOperation.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\OperationFactory.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Packages\Package.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Packages\PackageCollection.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Packages\PackageFilter.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Packages\PackageGroupOrigins.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Packages\PackageInfo.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Packages\PackageInfoListExtensions.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Packages\PackageListExtensions.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Packages\PackageOrigin.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Packages\PackageState.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Packages\PackageTag.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Upm\UpmAddOperation.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Upm\UpmBaseOperation.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Upm\UpmListOperation.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Upm\UpmOperationFactory.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Upm\UpmRemoveOperation.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\Services\Upm\UpmSearchOperation.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\UI\Common\Alert.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\UI\Common\LoadingSpinner.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\UI\Common\UIUtils.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\UI\PackageDetails.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\UI\PackageGroup.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\UI\PackageItem.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\UI\PackageList.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\UI\PackageManagerWindow.cs" />
-    <Compile Include="C:\Users\jbienz\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Sources\UI\PackageSearchFilterTabs.cs" />
+    <ProjectReference Include="SharedAlignment.csproj">
+      <Project>{822160F1-D84B-4B71-F9E7-6D66D3834A0B}</Project>
+      <Name>SharedAlignment</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.StandardEvents.csproj">
+      <Project>{6800202F-4402-D405-F8CB-03DC7BD78B92}</Project>
+      <Name>UnityEditor.StandardEvents</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.PackageManagerUI.Editor.csproj">
+      <Project>{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}</Project>
+      <Name>Unity.PackageManagerUI.Editor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\BuildDeployPortal.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\BuildDeployPrefs.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\BuildDeployTools.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\BuildDeployWindow.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\BuildInfo.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\BuildSLNUtilities.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\CertificatePasswordWindow.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\DataStructures\AdapterInfo.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\DataStructures\AppDetails.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\DataStructures\AppList.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\DataStructures\ConnectInfo.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\DataStructures\CopyDirectoryInfo.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\DataStructures\DevicePortalConnections.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\DataStructures\DHCPInfo.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\DataStructures\InstallStatus.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\DataStructures\IpAddressInfo.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\DataStructures\MachineName.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\DataStructures\NetworkInfo.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\DataStructures\ProcessDesc.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\DataStructures\ProcessList.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\DataStructures\Response.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\HoloToolkitCommands.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\USB\USBDeviceInfo.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\USB\USBDeviceListener.cs" />
+    <Compile Include="Assets\HoloToolkit\BuildAndDeploy\Editor\UwpProjectPostProcess.cs" />
+    <Compile Include="Assets\HoloToolkit\Common\Scripts\Editor\EditorPrefsUtility.cs" />
+    <Compile Include="Assets\HoloToolkit\Common\Scripts\Editor\ExternalProcess.cs" />
+    <Compile Include="Assets\HoloToolkit\Common\Scripts\Editor\Obsolete\CustomMaterialEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\Common\Scripts\Editor\Obsolete\FastConfigurable2SidedGUI.cs" />
+    <Compile Include="Assets\HoloToolkit\Common\Scripts\Editor\Obsolete\FastConfigurableGUI.cs" />
+    <Compile Include="Assets\HoloToolkit\Common\Scripts\Editor\Obsolete\ShaderGUIUtils.cs" />
+    <Compile Include="Assets\HoloToolkit\Common\Scripts\Editor\StandardShaderGUI.cs" />
+    <Compile Include="Assets\HoloToolkit\Input\Scripts\Editor\AttachToControllerEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\Input\Scripts\Editor\ControllerFinderEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\Input\Scripts\Editor\EditorHandsMaterialInspector.cs" />
+    <Compile Include="Assets\HoloToolkit\Input\Scripts\Editor\KeywordAndKeyCodeDrawer.cs" />
+    <Compile Include="Assets\HoloToolkit\Input\Scripts\Editor\MixedRealityCameraManagerEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\Input\Scripts\Editor\MixedRealityTeleportEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\Input\Scripts\Editor\SpeechInputHandlerEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\Input\Scripts\Editor\SpeechInputSourceEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\Input\Scripts\Editor\XboxControllerInputSourceEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Editor\SharingMenu.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Editor\SharingStageEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\RemoteMapping\Editor\RoomMeshExporter.cs" />
+    <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\SpatialProcessing\Editor\SurfaceMeshesToPlanesEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\Editor\AudioEventBankEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\Editor\AudioEventPropertyDrawer.cs" />
+    <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\Editor\UAudioManagerBaseEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\Editor\UAudioManagerEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\Editor\UAudioProfiler.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\AtlasReferenceUpdater\Editor\AtlasReferenceUpdater.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\AtlasReferenceUpdater\Editor\Extensions\SerializedPropertyExtensions.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\AtlasReferenceUpdater\Editor\Extensions\SpriteAtlasExtensions.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\AutoConfigureMenu.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\AutoConfigureWindow.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\CanvasEditorExtension.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\CapabilitySettingsWindow.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\CustomHeaderDrawer.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\EditorGUIExtensions.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\EditorGUILayoutExtensions.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\EnforceEditorSettings.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\EnumFlagsPropertyDrawer.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\HeadsetAdjustmentEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\Int3Drawer.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\LayerMaskExtensions.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\OpenLocalFileEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\OpenLocalFolderEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\ProjectSettingsWindow.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\SaveLocalFileEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\SceneLauncherEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\SceneSettingsWindow.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\SetIconsWindow.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\SolverHandlerEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Editor\TextureScale.cs" />
+    <Compile Include="Assets\HoloToolkit\UX\Scripts\Collections\Editor\CollectionEditor.cs" />
+    <Compile Include="Assets\HoloToolkit\UX\Scripts\Editor\CompoundButtonSaveInterceptor.cs" />
+    <Compile Include="Assets\HoloToolkit\UX\Scripts\Editor\KeyboardInputFieldEditor.cs" />
+    <Compile Include="Assets\HoloToolkit-Examples\Medical\Editor\VolumeInformationEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\HoloToolkit-Examples\Medical\Shaders\PlaneCut.cginc" />
