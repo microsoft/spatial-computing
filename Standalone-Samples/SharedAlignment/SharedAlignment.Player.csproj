@@ -5,9 +5,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{822160F1-D84B-4B71-F9E7-6D66D3834A0B}</ProjectGuid>
+    <ProjectGuid>{035EB7C2-8746-2628-7438-0AAD0CCF7EB5}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-player</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
@@ -35,7 +35,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_1_2;UNITY_2018_1;UNITY_2018;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_TRANSFORM_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_METRO;UNITY_METRO;UNITY_METRO_API;PLATFORM_WINRT;UNITY_WINRT;ENABLE_WINRT_PINVOKE;ENABLE_LAZY_METHOD_CACHING;ENABLE_MOVIES;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_NETWORK;ENABLE_EVENT_QUEUE;UNITY_PLATFORM_THREAD_TO_CORE_MAPPING;ENABLE_SUBSTANCE;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;CURL_STATICLIB;ENABLE_VR;ENABLE_AR;UNITY_WSA;ENABLE_DOTNET;ENABLE_PROFILER;UNITY_WSA_10_0;UNITY_WINRT_10_0;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_1_2;UNITY_2018_1;UNITY_2018;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_TRANSFORM_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_METRO;UNITY_METRO;UNITY_METRO_API;PLATFORM_WINRT;UNITY_WINRT;ENABLE_WINRT_PINVOKE;ENABLE_LAZY_METHOD_CACHING;ENABLE_MOVIES;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_NETWORK;ENABLE_EVENT_QUEUE;UNITY_PLATFORM_THREAD_TO_CORE_MAPPING;ENABLE_SUBSTANCE;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;CURL_STATICLIB;ENABLE_VR;ENABLE_AR;UNITY_WSA;ENABLE_DOTNET;UNITY_WSA_10_0;UNITY_WINRT_10_0;ENABLE_WINMD_SUPPORT;WINDOWS_UWP;</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -45,219 +45,210 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_1_2;UNITY_2018_1;UNITY_2018;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_TRANSFORM_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_METRO;UNITY_METRO;UNITY_METRO_API;PLATFORM_WINRT;UNITY_WINRT;ENABLE_WINRT_PINVOKE;ENABLE_LAZY_METHOD_CACHING;ENABLE_MOVIES;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_NETWORK;ENABLE_EVENT_QUEUE;UNITY_PLATFORM_THREAD_TO_CORE_MAPPING;ENABLE_SUBSTANCE;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;CURL_STATICLIB;ENABLE_VR;ENABLE_AR;UNITY_WSA;ENABLE_DOTNET;ENABLE_PROFILER;UNITY_WSA_10_0;UNITY_WINRT_10_0;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;</DefineConstants>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_1_2;UNITY_2018_1;UNITY_2018;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_TRANSFORM_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_METRO;UNITY_METRO;UNITY_METRO_API;PLATFORM_WINRT;UNITY_WINRT;ENABLE_WINRT_PINVOKE;ENABLE_LAZY_METHOD_CACHING;ENABLE_MOVIES;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_NETWORK;ENABLE_EVENT_QUEUE;UNITY_PLATFORM_THREAD_TO_CORE_MAPPING;ENABLE_SUBSTANCE;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;CURL_STATICLIB;ENABLE_VR;ENABLE_AR;UNITY_WSA;ENABLE_DOTNET;UNITY_WSA_10_0;UNITY_WINRT_10_0;ENABLE_WINMD_SUPPORT;WINDOWS_UWP;</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MetroSupport/Tools/UnityEngine">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.AIModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.AIModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.AIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.AIModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.ARModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.ARModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.ARModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.ARModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.AccessibilityModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.AccessibilityModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.AccessibilityModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.AccessibilityModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.AnimationModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.AnimationModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.AnimationModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.AnimationModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.AssetBundleModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.AssetBundleModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.AssetBundleModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.AudioModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.AudioModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.AudioModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.AudioModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.BaselibModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.BaselibModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.BaselibModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.BaselibModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.ClothModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.ClothModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.ClothModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.ClothModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.CloudWebServicesModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.CloudWebServicesModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.CloudWebServicesModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.CloudWebServicesModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.CoreModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.CoreModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.CoreModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.CoreModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.CrashReportingModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.CrashReportingModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.CrashReportingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.CrashReportingModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.DirectorModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.DirectorModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.DirectorModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.DirectorModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.FacebookModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.FacebookModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.FacebookModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.FacebookModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.GameCenterModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.GameCenterModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.GameCenterModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.GameCenterModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.GridModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.GridModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.GridModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.GridModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.HotReloadModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.HotReloadModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.HotReloadModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.HotReloadModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.IMGUIModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.IMGUIModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.IMGUIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.ImageConversionModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.ImageConversionModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.ImageConversionModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.InputModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.InputModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.InputModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.InputModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.JSONSerializeModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.JSONSerializeModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.JSONSerializeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.JSONSerializeModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.ParticleSystemModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.ParticleSystemModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.ParticleSystemModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.ParticlesLegacyModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.ParticlesLegacyModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.ParticlesLegacyModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.ParticlesLegacyModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.PerformanceReportingModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.PerformanceReportingModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.PerformanceReportingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.PerformanceReportingModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.PhysicsModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.PhysicsModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.PhysicsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.Physics2DModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.Physics2DModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.Physics2DModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.Physics2DModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.ScreenCaptureModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.ScreenCaptureModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.ScreenCaptureModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.ScreenCaptureModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.SharedInternalsModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.SharedInternalsModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.SharedInternalsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.SharedInternalsModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.SpatialTrackingModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.SpatialTrackingModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.SpatialTrackingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.SpatialTrackingModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.SpriteMaskModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.SpriteMaskModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.SpriteMaskModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.SpriteMaskModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.SpriteShapeModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.SpriteShapeModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.SpriteShapeModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.SpriteShapeModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.StyleSheetsModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.StyleSheetsModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.StyleSheetsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.StyleSheetsModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.SubstanceModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.SubstanceModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.SubstanceModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.SubstanceModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.TLSModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.TLSModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.TLSModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.TLSModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.TerrainModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.TerrainModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.TerrainModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.TerrainModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.TerrainPhysicsModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.TerrainPhysicsModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.TerrainPhysicsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.TerrainPhysicsModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.TextRenderingModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.TextRenderingModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.TextRenderingModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.TilemapModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.TilemapModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.TilemapModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.TilemapModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.TimelineModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.TimelineModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.TimelineModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.TimelineModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.UIModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.UIModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.UIModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.UIModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.UIElementsModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.UIElementsModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.UIElementsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.UIElementsModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.UNETModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.UNETModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.UNETModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.UNETModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.UmbraModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.UmbraModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.UmbraModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.UmbraModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.UnityAnalyticsModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.UnityAnalyticsModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.UnityAnalyticsModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.UnityConnectModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.UnityConnectModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.UnityConnectModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.UnityConnectModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.UnityWebRequestModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.UnityWebRequestModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.UnityWebRequestModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.UnityWebRequestModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.UnityWebRequestAssetBundleModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.UnityWebRequestAudioModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.UnityWebRequestTextureModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.UnityWebRequestWWWModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.VRModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.VRModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.VRModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.VRModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.VehiclesModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.VehiclesModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.VehiclesModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.VehiclesModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.VideoModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.VideoModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.VideoModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.VideoModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.WebModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.WebModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.WebModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.WebModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.WindModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.WindModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.WindModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.WindModule.dll</HintPath>
     </Reference>
-    <Reference Include="MetroSupport/Tools/UnityEngine.XRModule">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.XRModule.dll</HintPath>
+    <Reference Include="MetroSupport/Managed/il2cpp/UnityEngine.XRModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\PlaybackEngines\MetroSupport/Managed/il2cpp/UnityEngine.XRModule.dll</HintPath>
     </Reference>
-    <Reference Include="Managed/UnityEditor">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\Managed/UnityEditor.dll</HintPath>
+    <Reference Include="UnityEditor.StandardEvents">
+      <HintPath>Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
-    <Reference Include="Managed/Unity.Locator">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\Managed/Unity.Locator.dll</HintPath>
+    <Reference Include="Unity.PackageManagerUI.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/GUISystem/Standalone/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/Networking/Standalone/UnityEngine.Networking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Timeline">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIAutomation">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.GoogleAudioSpatializer">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/Timeline/Runtime/UnityEngine.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Runtime/UnityEngine.HoloLens.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.2f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Runtime/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/jbienz/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>C:/Users/jbienz/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/jbienz/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
-    <Reference Include="GLTFSerialization">
-      <HintPath>Assets/HoloToolkit/Utilities/Scripts/GLTF/Plugins/GLTFSerialization/GLTFSerialization.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>Assets/HoloToolkit/Utilities/Scripts/GLTF/Plugins/JsonNet/Newtonsoft.Json.dll</HintPath>
+      <HintPath>Assets/HoloToolkit/Utilities/Scripts/GLTF/Plugins/JsonNet/WSA/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="GLTFSerializationUWP">
+      <HintPath>Assets/HoloToolkit/Utilities/Scripts/GLTF/Plugins/GLTFSerialization/WSA/GLTFSerializationUWP.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll</HintPath>
@@ -598,16 +589,237 @@
     <Reference Include="Boo.Lang">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\MonoBleedingEdge\lib\mono\unityscript\Boo.Lang.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="UnityEditor.StandardEvents.csproj">
-      <Project>{6800202F-4402-D405-F8CB-03DC7BD78B92}</Project>
-      <Name>UnityEditor.StandardEvents</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.PackageManagerUI.Editor.csproj">
-      <Project>{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}</Project>
-      <Name>Unity.PackageManagerUI.Editor</Name>
-    </ProjectReference>
+    <Reference Include="Windows">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.15063.0\Facade\Windows.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.Calls.CallsVoipContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.Calls.CallsVoipContract\1.0.0.0\Windows.ApplicationModel.Calls.CallsVoipContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.SocialInfo.SocialInfoContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.SocialInfo.SocialInfoContract\2.0.0.0\Windows.ApplicationModel.SocialInfo.SocialInfoContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Devices.DevicesLowLevelContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Devices.DevicesLowLevelContract\3.0.0.0\Windows.Devices.DevicesLowLevelContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Devices.Printers.PrintersContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Devices.Printers.PrintersContract\1.0.0.0\Windows.Devices.Printers.PrintersContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Foundation.FoundationContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Foundation.FoundationContract\3.0.0.0\Windows.Foundation.FoundationContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Foundation.UniversalApiContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Foundation.UniversalApiContract\4.0.0.0\Windows.Foundation.UniversalApiContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Graphics.Printing3D.Printing3DContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Graphics.Printing3D.Printing3DContract\3.0.0.0\Windows.Graphics.Printing3D.Printing3DContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Networking.Connectivity.WwanContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Networking.Connectivity.WwanContract\1.0.0.0\Windows.Networking.Connectivity.WwanContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Services.Store.StoreContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Services.Store.StoreContract\2.0.0.0\Windows.Services.Store.StoreContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Services.TargetedContent.TargetedContentContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Services.TargetedContent.TargetedContentContract\1.0.0.0\Windows.Services.TargetedContent.TargetedContentContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.System.Profile.ProfileHardwareTokenContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.System.Profile.ProfileHardwareTokenContract\1.0.0.0\Windows.System.Profile.ProfileHardwareTokenContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.System.Profile.ProfileSharedModeContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.System.Profile.ProfileSharedModeContract\2.0.0.0\Windows.System.Profile.ProfileSharedModeContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.UI.ViewManagement.ViewManagementViewScalingContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.UI.ViewManagement.ViewManagementViewScalingContract\1.0.0.0\Windows.UI.ViewManagement.ViewManagementViewScalingContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.Activation.ActivatedEventsContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.Activation.ActivatedEventsContract\1.0.0.0\Windows.ApplicationModel.Activation.ActivatedEventsContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.Activation.ActivationCameraSettingsContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.Activation.ActivationCameraSettingsContract\1.0.0.0\Windows.ApplicationModel.Activation.ActivationCameraSettingsContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.Activation.ContactActivatedEventsContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.Activation.ContactActivatedEventsContract\1.0.0.0\Windows.ApplicationModel.Activation.ContactActivatedEventsContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.Activation.WebUISearchActivatedEventsContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.Activation.WebUISearchActivatedEventsContract\1.0.0.0\Windows.ApplicationModel.Activation.WebUISearchActivatedEventsContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.Background.BackgroundAlarmApplicationContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.Background.BackgroundAlarmApplicationContract\1.0.0.0\Windows.ApplicationModel.Background.BackgroundAlarmApplicationContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.Calls.Background.CallsBackgroundContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.Calls.Background.CallsBackgroundContract\1.0.0.0\Windows.ApplicationModel.Calls.Background.CallsBackgroundContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.Calls.LockScreenCallContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.Calls.LockScreenCallContract\1.0.0.0\Windows.ApplicationModel.Calls.LockScreenCallContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.FullTrustAppContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.FullTrustAppContract\1.0.0.0\Windows.ApplicationModel.FullTrustAppContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.Preview.InkWorkspace.PreviewInkWorkspaceContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.Preview.InkWorkspace.PreviewInkWorkspaceContract\1.0.0.0\Windows.ApplicationModel.Preview.InkWorkspace.PreviewInkWorkspaceContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.Preview.Notes.PreviewNotesContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.Preview.Notes.PreviewNotesContract\2.0.0.0\Windows.ApplicationModel.Preview.Notes.PreviewNotesContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.Resources.Management.ResourceIndexerContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.Resources.Management.ResourceIndexerContract\1.0.0.0\Windows.ApplicationModel.Resources.Management.ResourceIndexerContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.Search.Core.SearchCoreContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.Search.Core.SearchCoreContract\1.0.0.0\Windows.ApplicationModel.Search.Core.SearchCoreContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.Search.SearchContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.Search.SearchContract\1.0.0.0\Windows.ApplicationModel.Search.SearchContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.StartupTaskContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.StartupTaskContract\1.0.0.0\Windows.ApplicationModel.StartupTaskContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.Wallet.WalletContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.Wallet.WalletContract\1.0.0.0\Windows.ApplicationModel.Wallet.WalletContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Devices.Custom.CustomDeviceContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Devices.Custom.CustomDeviceContract\1.0.0.0\Windows.Devices.Custom.CustomDeviceContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Devices.Portable.PortableDeviceContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Devices.Portable.PortableDeviceContract\1.0.0.0\Windows.Devices.Portable.PortableDeviceContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Devices.Printers.Extensions.ExtensionsContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Devices.Printers.Extensions.ExtensionsContract\2.0.0.0\Windows.Devices.Printers.Extensions.ExtensionsContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Devices.Scanners.ScannerDeviceContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Devices.Scanners.ScannerDeviceContract\1.0.0.0\Windows.Devices.Scanners.ScannerDeviceContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Devices.Sms.LegacySmsApiContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Devices.Sms.LegacySmsApiContract\1.0.0.0\Windows.Devices.Sms.LegacySmsApiContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Gaming.Input.GamingInputPreviewContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Gaming.Input.GamingInputPreviewContract\1.0.0.0\Windows.Gaming.Input.GamingInputPreviewContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Gaming.Preview.GamesEnumerationContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Gaming.Preview.GamesEnumerationContract\1.0.0.0\Windows.Gaming.Preview.GamesEnumerationContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Gaming.UI.GameChatOverlayContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Gaming.UI.GameChatOverlayContract\1.0.0.0\Windows.Gaming.UI.GameChatOverlayContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Globalization.GlobalizationJapanesePhoneticAnalyzerContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Globalization.GlobalizationJapanesePhoneticAnalyzerContract\1.0.0.0\Windows.Globalization.GlobalizationJapanesePhoneticAnalyzerContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Management.Deployment.Preview.DeploymentPreviewContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Management.Deployment.Preview.DeploymentPreviewContract\1.0.0.0\Windows.Management.Deployment.Preview.DeploymentPreviewContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Management.Workplace.WorkplaceSettingsContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Management.Workplace.WorkplaceSettingsContract\1.0.0.0\Windows.Management.Workplace.WorkplaceSettingsContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Media.Capture.AppBroadcastContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Media.Capture.AppBroadcastContract\1.0.0.0\Windows.Media.Capture.AppBroadcastContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Media.Capture.AppCaptureContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Media.Capture.AppCaptureContract\4.0.0.0\Windows.Media.Capture.AppCaptureContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Media.Capture.CameraCaptureUIContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Media.Capture.CameraCaptureUIContract\1.0.0.0\Windows.Media.Capture.CameraCaptureUIContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Media.Capture.GameBarContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Media.Capture.GameBarContract\1.0.0.0\Windows.Media.Capture.GameBarContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Media.Devices.CallControlContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Media.Devices.CallControlContract\1.0.0.0\Windows.Media.Devices.CallControlContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Media.MediaControlContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Media.MediaControlContract\1.0.0.0\Windows.Media.MediaControlContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Media.Playlists.PlaylistsContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Media.Playlists.PlaylistsContract\1.0.0.0\Windows.Media.Playlists.PlaylistsContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Media.Protection.ProtectionRenewalContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Media.Protection.ProtectionRenewalContract\1.0.0.0\Windows.Media.Protection.ProtectionRenewalContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Networking.NetworkOperators.LegacyNetworkOperatorsContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Networking.NetworkOperators.LegacyNetworkOperatorsContract\1.0.0.0\Windows.Networking.NetworkOperators.LegacyNetworkOperatorsContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Networking.Sockets.ControlChannelTriggerContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Networking.Sockets.ControlChannelTriggerContract\2.0.0.0\Windows.Networking.Sockets.ControlChannelTriggerContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Perception.Automation.Core.PerceptionAutomationCoreContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Perception.Automation.Core.PerceptionAutomationCoreContract\1.0.0.0\Windows.Perception.Automation.Core.PerceptionAutomationCoreContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Security.EnterpriseData.EnterpriseDataContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Security.EnterpriseData.EnterpriseDataContract\4.0.0.0\Windows.Security.EnterpriseData.EnterpriseDataContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Security.ExchangeActiveSyncProvisioning.EasContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Security.ExchangeActiveSyncProvisioning.EasContract\1.0.0.0\Windows.Security.ExchangeActiveSyncProvisioning.EasContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Services.Maps.GuidanceContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Services.Maps.GuidanceContract\2.0.0.0\Windows.Services.Maps.GuidanceContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Services.Maps.LocalSearchContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Services.Maps.LocalSearchContract\3.0.0.0\Windows.Services.Maps.LocalSearchContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.System.Profile.SystemManufacturers.SystemManufacturersContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.System.Profile.SystemManufacturers.SystemManufacturersContract\1.0.0.0\Windows.System.Profile.SystemManufacturers.SystemManufacturersContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.System.Profile.ProfileRetailInfoContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.System.Profile.ProfileRetailInfoContract\1.0.0.0\Windows.System.Profile.ProfileRetailInfoContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.System.UserProfile.UserProfileContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.System.UserProfile.UserProfileContract\1.0.0.0\Windows.System.UserProfile.UserProfileContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.System.UserProfile.UserProfileLockScreenContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.System.UserProfile.UserProfileLockScreenContract\1.0.0.0\Windows.System.UserProfile.UserProfileLockScreenContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.UI.ApplicationSettings.ApplicationsSettingsContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.UI.ApplicationSettings.ApplicationsSettingsContract\1.0.0.0\Windows.UI.ApplicationSettings.ApplicationsSettingsContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.UI.Core.AnimationMetrics.AnimationMetricsContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.UI.Core.AnimationMetrics.AnimationMetricsContract\1.0.0.0\Windows.UI.Core.AnimationMetrics.AnimationMetricsContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.UI.Core.CoreWindowDialogsContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.UI.Core.CoreWindowDialogsContract\1.0.0.0\Windows.UI.Core.CoreWindowDialogsContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.UI.Xaml.Hosting.HostingContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.UI.Xaml.Hosting.HostingContract\1.0.0.0\Windows.UI.Xaml.Hosting.HostingContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Web.Http.Diagnostics.HttpDiagnosticsContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Web.Http.Diagnostics.HttpDiagnosticsContract\2.0.0.0\Windows.Web.Http.Diagnostics.HttpDiagnosticsContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.System.SystemManagementContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.System.SystemManagementContract\3.0.0.0\Windows.System.SystemManagementContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.Calls.CallsPhoneContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.Calls.CallsPhoneContract\3.0.0.0\Windows.ApplicationModel.Calls.CallsPhoneContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.ApplicationModel.CommunicationBlocking.CommunicationBlockingContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.ApplicationModel.CommunicationBlocking.CommunicationBlockingContract\2.0.0.0\Windows.ApplicationModel.CommunicationBlocking.CommunicationBlockingContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Devices.SmartCards.SmartCardBackgroundTriggerContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Devices.SmartCards.SmartCardBackgroundTriggerContract\3.0.0.0\Windows.Devices.SmartCards.SmartCardBackgroundTriggerContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Devices.SmartCards.SmartCardEmulatorContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Devices.SmartCards.SmartCardEmulatorContract\4.0.0.0\Windows.Devices.SmartCards.SmartCardEmulatorContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Embedded.DeviceLockdown.DeviceLockdownContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Embedded.DeviceLockdown.DeviceLockdownContract\1.0.0.0\Windows.Embedded.DeviceLockdown.DeviceLockdownContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Networking.NetworkOperators.NetworkOperatorsFdnContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Networking.NetworkOperators.NetworkOperatorsFdnContract\1.0.0.0\Windows.Networking.NetworkOperators.NetworkOperatorsFdnContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Phone.PhoneContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Phone.PhoneContract\1.0.0.0\Windows.Phone.PhoneContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Phone.StartScreen.DualSimTileContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.Phone.StartScreen.DualSimTileContract\1.0.0.0\Windows.Phone.StartScreen.DualSimTileContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.UI.WebUI.Core.WebUICommandBarContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.15063.0\Windows.UI.WebUI.Core.WebUICommandBarContract\1.0.0.0\Windows.UI.WebUI.Core.WebUICommandBarContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.15063.0\Facade\Windows.winmd</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.WindowsRuntime">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\il2cpp\BCLExtensions\System.Runtime.WindowsRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.WindowsRuntime.UI.Xaml">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.1.2f1\Editor\Data\il2cpp\BCLExtensions\System.Runtime.WindowsRuntime.UI.Xaml.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\HoloToolkit\Boundary\Scripts\BoundaryManager.cs" />

@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedAlignment", "SharedAlignment.csproj", "{822160F1-D84B-4B71-F9E7-6D66D3834A0B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedAlignment.Player", "SharedAlignment.Player.csproj", "{035EB7C2-8746-2628-7438-0AAD0CCF7EB5}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.PackageManagerUI.Editor", "Unity.PackageManagerUI.Editor.csproj", "{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEditor.StandardEvents", "UnityEditor.StandardEvents.csproj", "{6800202F-4402-D405-F8CB-03DC7BD78B92}"
@@ -19,6 +21,10 @@ Global
 		{822160F1-D84B-4B71-F9E7-6D66D3834A0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{822160F1-D84B-4B71-F9E7-6D66D3834A0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{822160F1-D84B-4B71-F9E7-6D66D3834A0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{035EB7C2-8746-2628-7438-0AAD0CCF7EB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{035EB7C2-8746-2628-7438-0AAD0CCF7EB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{035EB7C2-8746-2628-7438-0AAD0CCF7EB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{035EB7C2-8746-2628-7438-0AAD0CCF7EB5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}.Release|Any CPU.ActiveCfg = Release|Any CPU
