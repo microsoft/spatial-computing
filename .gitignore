@@ -28,6 +28,10 @@ PlaneFinding.dll
 sysinfo.txt
 Lib/*.suo
 
+# Inored folders and files by naming convention
+/**/*-gitignore/
+/**/*-gitignore.*
+
 # NuGet Files
 project.lock.json
 
