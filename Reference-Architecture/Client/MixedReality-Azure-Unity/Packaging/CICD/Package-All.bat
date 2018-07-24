@@ -9,6 +9,9 @@ SET ProjectDir=%cd%\..\..
 SET AssetDir=%ProjectDir%\Assets
 SET PackageDir=%ProjectDir%\UnityPackages\Latest
 
+rmdir /S /Q %PackageDir%
+mkdir %PackageDir%
+
 CALL Package-LUIS.bat
 
 ECHO.
