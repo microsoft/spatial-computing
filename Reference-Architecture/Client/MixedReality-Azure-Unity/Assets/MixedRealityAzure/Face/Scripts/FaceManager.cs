@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license.
 //
@@ -24,52 +24,194 @@
 //
 
 using Microsoft.Azure.CognitiveServices.Vision.Face.Models;
+using System;
 using System.Collections;
-using System.IO;
 using System.Collections.Generic;
-using UnityEngine;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Security;
+using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
+
+#if !UNITY_WSA || UNITY_EDITOR
+using System.Security.Cryptography.X509Certificates;
+#endif
 
 namespace Microsoft.MR.Face
 {
-    public class FaceManager : MonoBehaviour
-    {
-        [SerializeField]
-        private string subscriptionKey = "778e6bec0a3649c6b476ca0749268549";
-        [SerializeField]
-        private string baseUri = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0";
+	/// <summary>
+	/// Manages configuration and connection to the Face service.
+	/// </summary>
+	public class FaceManager : MonoBehaviour
+	{
+		#region Member Variables
+		private FaceClient client;
+        #endregion // Member Variables
 
-        private FaceDetectClient watcherClient;
+        #region Unity Inspector Variables
+        [Tooltip("The subscription key of the Face service.")]
+		[SecretValue("Face.SubscriptionKey")]
+		public string SubscriptionKey;	
 
-        private void Awake()
-        {
-            watcherClient = new FaceDetectClient(subscriptionKey, baseUri);
+		[Tooltip("String that represents the domain of the Face endpoint.")]
+		[SecretValue("Face.Domain")]
+		public string Domain = "";
+
+        // TODO
+        // Parameters for what to details to request when making a call
+	    #endregion // Unity Inspector Variables
+
+        #region Internal Methods
+        /// <summary>
+        /// Makes sure that the client has been created.
+        /// </summary>
+        private void EnsureClient()
+		{
+			if (client == null)
+			{
+				if (!this.enabled) { throw new InvalidOperationException($"Attempting to connect to LUIS but {nameof(LuisManager)} is not enabled."); }
+                
+                baseUri = "https://"+this.Domain+".api.cognitive.microsoft.com/face/v1.0";
+			    client = new FaceClient(new ApiKeyServiceClientCredentials(this.SubscriptionKey), new System.Net.Http.DelegatingHandler[] { });
+			    client.BaseUri = new Uri(baseUri);
+			}
+		}
+		#endregion // Internal Methods
+
+		#region Unity Overrides
+		protected virtual void Awake()
+		{
+			#if !UNITY_WSA || UNITY_EDITOR
+			//This works, and one of these two options are required as Unity's TLS (SSL) support doesn't currently work like .NET
+			//ServicePointManager.CertificatePolicy = new CustomCertificatePolicy();
+
+			//This 'workaround' seems to work for the .NET Storage SDK, but not event hubs. 
+			//If you need all of it (ex Storage, event hubs,and app insights) then consider using the above.
+			//If you don't want to check an SSL certificate coming back, simply use the return true delegate below.
+			//Also it may help to use non-ssl URIs if you have the ability to, until Unity fixes the issue (which may be fixed by the time you read this)
+			ServicePointManager.ServerCertificateValidationCallback = CheckValidCertificateCallback; //delegate { return true; };
+			#endif
+
+			// Attempt to load secrets
+			SecretHelper.LoadSecrets(this);
+
+			// Validate that member variables are set
+			if (string.IsNullOrEmpty(SubscriptionKey))
+			{
+				Debug.LogErrorFormat($"'{nameof(SubscriptionKey)}' is required but is not set. {nameof(FaceManager)} has been disabled.");
+				this.enabled = false;
+			}
+
+			if (string.IsNullOrEmpty(Domain))
+			{
+				Debug.LogErrorFormat($"'{nameof(Domain)}' is required but is not set. {nameof(Manager)} has been disabled.");
+				this.enabled = false;
+			}
+
+			// Add default strategies (can be overridden)
+			AddDefaultStrategies();
         }
 
         private void OnDestroy()
         {
-            DisposeClient();
+            client.Dispose();
         }
+        #endregion // Unity Overrides
 
-        private void DisposeClient()
+        #region Overridables / Event Triggers
+        /// <summary>
+        /// Adds default context providers, entity resolvers and intent handlers.
+        /// </summary>
+        protected virtual void AddDefaultStrategies()
         {
-            watcherClient.Dispose();
+			// Default Resolvers
+			EntityResolvers.Add(new EntityMetadataResolver());
+
+			// Default Handlers
+			IntentHandlers.Add(new ResolvedIntentForwarder());
         }
 
-        public void SetCredentials(string subscriptionKey, string baseUri)
-        {
-            this.subscriptionKey = subscriptionKey;
-            this.baseUri = baseUri;
-        }
+		#if !UNITY_WSA || UNITY_EDITOR
+		protected virtual bool CheckValidCertificateCallback(System.Object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+		{
+			bool valid = true;
 
+			//// If there are errors in the certificate chain, look at each error to determine the cause.
+			//if (sslPolicyErrors != SslPolicyErrors.None)
+			//{
+			//	for (int i = 0; i < chain.ChainStatus.Length; i++)
+			//	{
+			//		if (chain.ChainStatus[i].Status != X509ChainStatusFlags.RevocationStatusUnknown)
+			//		{
+			//			chain.ChainPolicy.RevocationFlag = X509RevocationFlag.EntireChain;
+			//			chain.ChainPolicy.RevocationMode = X509RevocationMode.Online;
+			//			chain.ChainPolicy.UrlRetrievalTimeout = new TimeSpan(0, 1, 0);
+			//			chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllFlags;
+			//			bool chainIsValid = chain.Build((X509Certificate2)certificate);
+			//			if (!chainIsValid)
+			//			{
+			//				valid = false;
+			//			}
+			//		}
+			//	}
+			//}
+			return valid;
+		}
+        #endif
+        #endregion // Overridables / Event Triggers
+
+        #region Public Methods
+        /// <summary>
+        /// Attempts a Face detect with the given uri.
+        /// </summary>
+        /// <param name="uri">
+        /// Uri of the api
+        /// </param>
+        /// <returns>
+        /// Returns a list of detected Face objects
+        /// </returns>
         public async Task<IList<DetectedFace>> Detect(string uri)
-        {
-            return await watcherClient.Detect(uri);
-        }
+		{
+			return await client.Face.DetectWithUrlAsync(uri);
+		}
 
+        /// <summary>
+        /// Attempts a Face detect with the given stream.
+        /// </summary>
+        /// <param name="stream">
+        /// Stream
+        /// </param>
+        /// <returns>
+        /// Returns a list of detected Face objects
+        /// </returns>
         public async Task<IList<DetectedFace>> Detect(Stream stream)
+		{
+			return await client.Face.DetectWithStreamAsync(stream);
+		}
+        #endregion // Public Methods
+
+        #region Public Properties
+        /// <summary>
+        /// Gets the <see cref="FaceClient"/> instance created by this manager.
+        /// </summary>
+        public FaceClient Client
+		{
+			get
+			{
+				this.EnsureClient();
+				return client;
+			}
+		}
+
+
+        public void SetCredentials(string SubscriptionKey, string Domain)
         {
-            return await watcherClient.Detect(stream);
+            this.SubscriptionKey = SubscriptionKey;
+            this.Domain = Domain;
         }
+        #endregion // Public Properties
     }
 }
