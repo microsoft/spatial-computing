@@ -1,7 +1,5 @@
 # MixedReality Azure Samples
 
-OneWeek Branch Build Status: [![Build status](https://realtoinfinityandbeyond.visualstudio.com/Unity%20SDK/_apis/build/status/Unity SDK-CI)](https://realtoinfinityandbeyond.visualstudio.com/Unity%20SDK/_build/latest?definitionId=1)
-
 **MixedReality Azure Samples** is a collection of samples and reference implementations for using Azure services in simulations. Though "Mixed Reality" is mentioned throughout the project, the vast majority of resources here are not exclusive to Windows Mixed Reality devices. Each sample or reference includes a **System Requirements** section that clearly explains where the code can run.
 
 
