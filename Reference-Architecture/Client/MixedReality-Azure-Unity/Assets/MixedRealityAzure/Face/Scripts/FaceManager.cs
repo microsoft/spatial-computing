@@ -23,7 +23,6 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using Microsoft.Azure.CognitiveServices.Vision.Face.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -35,6 +34,8 @@ using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using Microsoft.Azure.CognitiveServices.Vision.Face;
+using Microsoft.Azure.CognitiveServices.Vision.Face.Models;
 
 #if !UNITY_WSA || UNITY_EDITOR
 using System.Security.Cryptography.X509Certificates;
@@ -72,9 +73,9 @@ namespace Microsoft.MR.Face
 		{
 			if (client == null)
 			{
-				if (!this.enabled) { throw new InvalidOperationException($"Attempting to connect to LUIS but {nameof(LuisManager)} is not enabled."); }
+				if (!this.enabled) { throw new InvalidOperationException($"Attempting to connect to Face but {nameof(FaceManager)} is not enabled."); }
                 
-                baseUri = "https://"+this.Domain+".api.cognitive.microsoft.com/face/v1.0";
+                String baseUri = "https://"+this.Domain+".api.cognitive.microsoft.com/face/v1.0";
 			    client = new FaceClient(new ApiKeyServiceClientCredentials(this.SubscriptionKey), new System.Net.Http.DelegatingHandler[] { });
 			    client.BaseUri = new Uri(baseUri);
 			}
@@ -107,12 +108,11 @@ namespace Microsoft.MR.Face
 
 			if (string.IsNullOrEmpty(Domain))
 			{
-				Debug.LogErrorFormat($"'{nameof(Domain)}' is required but is not set. {nameof(Manager)} has been disabled.");
+				Debug.LogErrorFormat($"'{nameof(Domain)}' is required but is not set. {nameof(FaceManager)} has been disabled.");
 				this.enabled = false;
 			}
-
-			// Add default strategies (can be overridden)
-			AddDefaultStrategies();
+            	
+			
         }
 
         private void OnDestroy()
@@ -122,18 +122,7 @@ namespace Microsoft.MR.Face
         #endregion // Unity Overrides
 
         #region Overridables / Event Triggers
-        /// <summary>
-        /// Adds default context providers, entity resolvers and intent handlers.
-        /// </summary>
-        protected virtual void AddDefaultStrategies()
-        {
-			// Default Resolvers
-			EntityResolvers.Add(new EntityMetadataResolver());
-
-			// Default Handlers
-			IntentHandlers.Add(new ResolvedIntentForwarder());
-        }
-
+                
 		#if !UNITY_WSA || UNITY_EDITOR
 		protected virtual bool CheckValidCertificateCallback(System.Object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
 		{
