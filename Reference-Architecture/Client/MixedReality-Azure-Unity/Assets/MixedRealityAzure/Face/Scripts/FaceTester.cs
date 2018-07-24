@@ -23,7 +23,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using Microsoft.ProjectOxford.Face;
+using Microsoft.Azure.CognitiveServices.Vision.Face;
 using Microsoft.MR.Face; 
 using System.Collections;
 using System.Collections.Generic;
@@ -75,13 +75,13 @@ public class FaceTester : MonoBehaviour
 		}
 
         // If there is a test button in the scene, wire up the click handler.
-        if (SceneTestButton != null)
-        {
-            SceneTestButton.onClick.AddListener(() =>
-            {
-                TryPredict();
-            });
-        }
+        //if (SceneTestButton != null)
+        //{
+        //    SceneTestButton.onClick.AddListener(() =>
+        //    {
+        //        TryPredict();
+        //    });
+        //}
 
         // If there is a test text field, setup the default
         if ((SceneImageInput != null) && (string.IsNullOrEmpty(SceneImageInput.text)))
@@ -89,17 +89,17 @@ public class FaceTester : MonoBehaviour
             SceneImageInput.text = TestImage;
         }
 
-		// Enable debugging?
-		if (EnableDebugging)
-		{
-			Face Manager.IntentHandlers.Add(new DebugIntentHandler());
-		}
+		// // Enable debugging?
+		// if (EnableDebugging)
+		// {
+		// 	FaceManager.IntentHandlers.Add(new DebugIntentHandler());
+		// }
 
 		// Detect on start?
-		if ((DetectOnStart) && (!string.IsNullOrEmpty(TestImage)))
-		{
-			TryDetect();
-		}
+		//if ((DetectOnStart) && (!string.IsNullOrEmpty(TestImage)))
+		//{
+		//	TryDetect();
+		//}
 	}
 	#endregion // Unity Overrides
 
@@ -137,7 +137,7 @@ public class FaceTester : MonoBehaviour
 		}
 
 		// Detect
-		await FaceManager.PredictAndHandleAsync(TestImage);
+		await FaceManager.Detect(TestImage);
 	}
 	#endregion // Public Methods
 }
