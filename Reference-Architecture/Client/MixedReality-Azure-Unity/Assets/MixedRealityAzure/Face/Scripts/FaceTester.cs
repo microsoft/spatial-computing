@@ -23,7 +23,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using Microsoft.ProjectOxford.Face;
+using Microsoft.Azure.CognitiveServices.Vision.Face;;
 using Microsoft.MR.Face; 
 using System.Collections;
 using System.Collections.Generic;
