@@ -60,97 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\AuthenticationResult.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\ClientApplicationBase.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Features\ConfidentialClient\ClientAssertionCertificate.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Features\ConfidentialClient\ClientCredential.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Features\ConfidentialClient\ConfidentialClientApplication.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Features\ConfidentialClient\IConfidentialClientApplication.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Features\ConfidentialClient\JsonWebToken.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Features\EventSource\MsalEventSource.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Features\EventSource\PlatformLogger.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Features\PublicClient\PublicClientApplication.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Features\TokenCache\TokenCacheAccessor.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Features\TokenCache\TokenCacheExtensions.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\IClientApplicationBase.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\AuthorizationResult.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Base64UrlHelpers.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Cache\AccessTokenCacheItem.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Cache\AccessTokenCacheKey.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Cache\BaseTokenCacheItem.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Cache\ITokenCacheAccessor.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Cache\RefreshTokenCacheItem.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Cache\RefreshTokenCacheKey.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Cache\TokenCacheKeyBase.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\ClientInfo.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Constants.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Extensions.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Http\HttpClientFactory.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Http\HttpMessageHandlerFactory.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Http\HttpRequest.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Http\HttpResponse.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\IdToken.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\ILogger.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Instance\AadAuthority.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Instance\AdfsAuthority.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Instance\AdfsWebFingerResponse.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Instance\Authority.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Instance\B2CAuthority.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Instance\DrsMetadataResponse.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Instance\InstanceDiscoveryResponse.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Instance\TenantDiscoveryResponse.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Interfaces\IWebUI.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Interfaces\IWebUIFactory.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\JsonHelper.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\MsalError.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\MsalHelpers.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\MsalIdHelper.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\OAuth2\OAuth2Client.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\OAuth2\OAuth2ResponseBase.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\OAuth2\OAuthConstants.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\OAuth2\TokenResponse.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\PlatformInformationBase.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\PlatformPlugin.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\RequestContext.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Requests\AuthenticationRequestParameters.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Requests\AuthorizationCodeRequest.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Requests\ClientCredentialRequest.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Requests\InteractiveRequest.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Requests\OnBehalfOfRequest.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Requests\RequestBase.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Requests\SilentRequest.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Telemetry\ApiEvent.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Telemetry\CacheEvent.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Telemetry\DefaultEvent.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Telemetry\Event.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Telemetry\HttpEvent.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Telemetry\TelemetryTokenCacheAccessor.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Internal\Telemetry\UiEvent.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\IPublicClientApplication.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\IUser.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Logger.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\MsalClientException.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\MsalException.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\MsalServiceException.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\MsalUiRequiredException.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Platforms\Unity\CryptographyHelper.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Platforms\Unity\PlatformInformation.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Platforms\Unity\UnityWebUI.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Platforms\Unity\WebUIFactory.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Properties\InternalsVisibleTo.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\PublicClientApplication.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\Telemetry.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\TokenCache.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\TokenCacheNotificationArgs.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\UIBehavior.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\UIParent.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\User.cs" />
-    <Compile Include="Assets\Scripts\Microsoft.Identity.Client\UserAssertion.cs" />
-    <Compile Include="Assets\Scripts\ServiceLocator.cs" />
+    <Compile Include="Assets\Scripts\Models\IdentityResult.cs" />
     <Compile Include="Assets\Scripts\StartupScript.cs" />
-    <None Include="Assets\Scripts\Microsoft.Identity.Client\Resources\AboutResources.txt" />
-    <None Include="Assets\Scripts\Microsoft.Identity.Client\Properties\Microsoft.Identity.Client.rd.xml" />
-    <None Include="Assets\Scripts\Microsoft.Identity.Client\Resources\Values\Strings.xml" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Source/GitHub/mixedreality-azure-samples/Standalone-Samples/Unity-Identity/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -358,6 +269,9 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.0f2/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:/Source/GitHub/mixedreality-azure-samples/Standalone-Samples/Unity-Identity/Assets/Plugins/Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/juswen/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
@@ -366,9 +280,6 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/juswen/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>C:/Source/GitHub/mixedreality-azure-samples/Standalone-Samples/Unity-Identity/Assets/Plugins/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.0f2/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

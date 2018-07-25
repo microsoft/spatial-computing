@@ -163,8 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ed56f1e009a384f9cc7d196b9e8043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnityWebBrowser: {fileID: 1000011757742844, guid: a157ba4f6c2697e45940e6c6b280da74,
-    type: 3}
+  ClientId: 
+  ClientSecret: 
+  TenantId: 
 --- !u!1 &1770111396
 GameObject:
   m_ObjectHideFlags: 0
