@@ -60,9 +60,6 @@ namespace Microsoft.MR.Face
 		[Tooltip("String that represents the domain of the Face endpoint.")]
 		[SecretValue("Face.Domain")]
 		public string Domain = "";
-
-        // TODO
-        // Parameters for what to details to request when making a call
 	    #endregion // Unity Inspector Variables
 
         #region Internal Methods

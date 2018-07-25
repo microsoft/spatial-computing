@@ -42,18 +42,20 @@ public class FaceTester : MonoBehaviour
 	[Tooltip("The FaceManager that the tester will interface with.")]
 	public FaceManager FaceManager;
 
-    // TODO
-    // What is the equivalent of this? Make face api call?
-	// [Tooltip("Predict the Test Utterance automatically on start.")]
-	// public bool PredictOnStart = true;
+    [Tooltip("Detect faces automatically on start.")]
+    public bool DetectOnStart = true;
 
+    //[Tooltip("Return faceIds of the detected faces or not.")]
+    //public bool returnFaceId = true;
+    // TODO
+    // Button is not displaying in play mode
     [Tooltip("Optional UI Button in the scene that can initiate the face detection.")]
     public Button SceneTestButton;
 
     [Tooltip("Optional UI Input field in the scene that supplies the test image.")]
     public InputField SceneImageInput;
 
-	[Tooltip("The image to test")]
+    [Tooltip("The image to test")]
 	public string TestImage = "";
 	#endregion // Unity Inspector Variables
 
@@ -75,13 +77,13 @@ public class FaceTester : MonoBehaviour
 		}
 
         // If there is a test button in the scene, wire up the click handler.
-        //if (SceneTestButton != null)
-        //{
-        //    SceneTestButton.onClick.AddListener(() =>
-        //    {
-        //        TryPredict();
-        //    });
-        //}
+        if (SceneTestButton != null)
+        {
+            SceneTestButton.onClick.AddListener(() =>
+            {
+                TryDetect();
+            });
+        }
 
         // If there is a test text field, setup the default
         if ((SceneImageInput != null) && (string.IsNullOrEmpty(SceneImageInput.text)))
