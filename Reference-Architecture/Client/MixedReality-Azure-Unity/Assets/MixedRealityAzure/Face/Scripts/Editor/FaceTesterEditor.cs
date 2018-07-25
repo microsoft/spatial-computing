@@ -17,7 +17,7 @@ public class FaceTesterEditor : Editor
 				FaceTester tester = (FaceTester)target;
 				if (tester != null)
 				{
-					tester.TryPredict();
+					tester.TryDetect();
 				}
             }
         }
