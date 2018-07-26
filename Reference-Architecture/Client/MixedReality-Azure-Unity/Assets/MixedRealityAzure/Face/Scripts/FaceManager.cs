@@ -67,9 +67,9 @@ namespace Microsoft.MR.Face
             return await watcherClient.Detect(uri);
         }
 
-        public async Task<IList<DetectedFace>> Detect(Stream stream)
+        public async Task<IList<DetectedFace>> Detect(Stream stream, IList<FaceAttributeType> faceAttributes = null)
         {
-            return await watcherClient.Detect(stream);
+			return await watcherClient.Detect(stream, faceAttributes);
         }
     }
 }

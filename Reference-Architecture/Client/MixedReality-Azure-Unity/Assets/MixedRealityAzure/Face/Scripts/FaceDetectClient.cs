@@ -52,9 +52,9 @@ namespace Microsoft.MR.Face
 			return await faceClient.Face.DetectWithUrlAsync(uri);
 		}
 
-		public async Task<IList<DetectedFace>> Detect(Stream stream)
+		public async Task<IList<DetectedFace>> Detect(Stream stream, IList<FaceAttributeType> faceAttributes = null)
 		{
-			return await faceClient.Face.DetectWithStreamAsync(stream);
+			return await faceClient.Face.DetectWithStreamAsync(stream, true, true, faceAttributes);
 		}
 
 		public void Dispose()
