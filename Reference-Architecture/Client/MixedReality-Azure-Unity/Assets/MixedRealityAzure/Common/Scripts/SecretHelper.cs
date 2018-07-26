@@ -23,7 +23,6 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using Microsoft.Cognitive.LUIS;
 using System;
 using System.Collections;
 using System.Collections.Generic;
