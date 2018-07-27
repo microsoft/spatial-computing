@@ -70,6 +70,8 @@
     <Compile Include="Assets\MixedRealityAzure\Face\Scripts\IImageRequester.cs" />
     <Compile Include="Assets\MixedRealityAzure\Face\Scripts\LocalImageRequester.cs" />
     <Compile Include="Assets\MixedRealityAzure\LUIS\OnlineImageRequester.cs" />
+    <Compile Include="Assets\MixedRealityAzure\Face\Scripts\FaceManager.cs" />
+    <Compile Include="Assets\MixedRealityAzure\Face\Scripts\FaceTester.cs" />
     <Compile Include="Assets\MixedRealityAzure\LUIS\Scripts\Context\IContextProvider.cs" />
     <Compile Include="Assets\MixedRealityAzure\LUIS\Scripts\Context\PredictionContext.cs" />
     <Compile Include="Assets\MixedRealityAzure\LUIS\Scripts\Intent\AppearanceIntentHandler.cs" />
@@ -99,6 +101,16 @@
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/antsiapi/Documents/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/ryfehr/Desktop/HACK 2018/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>C:/Users/ryfehr/Desktop/HACK 2018/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PackageManagerUI.Editor">
+      <HintPath>C:/Users/ryfehr/Desktop/HACK 2018/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>C:/Users/ryfehr/Desktop/HACK 2018/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -315,6 +327,23 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/antsiapi/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+    <Reference Include="Microsoft.Cognitive.LUIS">
+      <HintPath>C:/Users/ryfehr/Desktop/HACK 2018/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/Plugins/LUIS/net45+win8+wpa81/Microsoft.Cognitive.LUIS.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:/Users/ryfehr/Desktop/HACK 2018/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/Plugins/Newtonsoft.Json/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>C:/Users/ryfehr/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StandardEvents">
+      <HintPath>C:/Users/ryfehr/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.CognitiveServices.Vision.Face">
+      <HintPath>C:/Users/ryfehr/Desktop/HACK 2018/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/Plugins/Face/Microsoft.Azure.CognitiveServices.Vision.Face.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime">
+      <HintPath>C:/Users/ryfehr/Desktop/HACK 2018/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/Plugins/Face/Microsoft.Rest.ClientRuntime.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

@@ -42,18 +42,29 @@ public class FaceTester : MonoBehaviour
 	[Tooltip("The FaceManager that the tester will interface with.")]
 	public FaceManager FaceManager;
 
-    // TODO
-    // What is the equivalent of this? Make face api call?
-	// [Tooltip("Predict the Test Utterance automatically on start.")]
-	// public bool PredictOnStart = true;
+    [Tooltip("Detect faces automatically on start.")]
+    public bool DetectOnStart = true;
 
+    [Tooltip("Return faceIds of the detected faces or not.")]
+    public bool returnFaceId = true;
+
+    [Tooltip("Return face landmarks of the detected faces or not.")]
+    public bool returnFaceLandmarks = false;
+
+    [Tooltip("Analyze and return the one or more specified face attributes in the comma-separated string like \"returnFaceAttributes = age, gender\". Supported face attributes include age, gender, headPose, smile, facialHair, glasses, emotion, hair, makeup, occlusion, accessories, blur, exposure and noise. Face attribute analysis has additional computational and time cost.")]
+    public string returnFaceAttributes = "";
+
+    // TODO
+    // ISSUE
+    // Optional buttons are showing in tester due to being marked as Public
+    // Should these be marked as public with getters and setters or private
     [Tooltip("Optional UI Button in the scene that can initiate the face detection.")]
-    public Button SceneTestButton;
+    private Button SceneTestButton;
 
     [Tooltip("Optional UI Input field in the scene that supplies the test image.")]
-    public InputField SceneImageInput;
+    private InputField SceneImageInput;
 
-	[Tooltip("The image to test")]
+    [Tooltip("The image to test")]
 	public string TestImage = "";
 	#endregion // Unity Inspector Variables
 
@@ -75,13 +86,13 @@ public class FaceTester : MonoBehaviour
 		}
 
         // If there is a test button in the scene, wire up the click handler.
-        //if (SceneTestButton != null)
-        //{
-        //    SceneTestButton.onClick.AddListener(() =>
-        //    {
-        //        TryPredict();
-        //    });
-        //}
+        if (SceneTestButton != null)
+        {
+            SceneTestButton.onClick.AddListener(() =>
+            {
+                TryDetect();
+            });
+        }
 
         // If there is a test text field, setup the default
         if ((SceneImageInput != null) && (string.IsNullOrEmpty(SceneImageInput.text)))
