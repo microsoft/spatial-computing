@@ -62,7 +62,7 @@ namespace Microsoft.MR.Face
 					faceAttributeType
 				};
 
-				IList<DetectedFace> faces = await faceManager.Detect(stream, faceAttributes);
+				IList<DetectedFace> faces = await faceManager.Detect(stream, faceAttributes: faceAttributes);
 
 				if (filtersDictionary.ContainsKey(faceAttributeType))
 				{

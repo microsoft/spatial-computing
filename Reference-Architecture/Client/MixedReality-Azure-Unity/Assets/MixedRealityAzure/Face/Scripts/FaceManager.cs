@@ -161,12 +161,7 @@ namespace Microsoft.MR.Face
         /// </returns>
         public async Task<IList<DetectedFace>> Detect(string uri)
 		{
-			return await client.Face.DetectWithUrlAsync(uri);
-		}
-		
-		public async Task<IList<DetectedFace>> Detect(Stream stream, IList<FaceAttributeType> faceAttributes = null)
-		{
-			return await watcherClient.Detect(stream, faceAttributes);
+			return await Client.Face.DetectWithUrlAsync(uri);
 		}
 
         /// <summary>
@@ -178,9 +173,9 @@ namespace Microsoft.MR.Face
         /// <returns>
         /// Returns a list of detected Face objects
         /// </returns>
-        public async Task<IList<DetectedFace>> Detect(Stream stream)
+        public async Task<IList<DetectedFace>> Detect(Stream stream, IList<FaceAttributeType> faceAttributes = null)
 		{
-			return await client.Face.DetectWithStreamAsync(stream);
+			return await Client.Face.DetectWithStreamAsync(stream, returnFaceAttributes: faceAttributes);
 		}
         #endregion // Public Methods
 

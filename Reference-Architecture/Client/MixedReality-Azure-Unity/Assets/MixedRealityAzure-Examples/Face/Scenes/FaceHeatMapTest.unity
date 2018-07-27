@@ -681,8 +681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12966b11913e684b8268224724fbead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subscriptionKey: 778e6bec0a3649c6b476ca0749268549
-  baseUri: https://westcentralus.api.cognitive.microsoft.com/face/v1.0
+  SubscriptionKey: 778e6bec0a3649c6b476ca0749268549
+  Domain: westcentralus
 --- !u!4 &1407258227
 Transform:
   m_ObjectHideFlags: 0

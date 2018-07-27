@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\MixedRealityAzure\Face\Scripts\Editor\FaceTesterEditor.cs" />
     <Compile Include="Assets\MixedRealityAzure\LUIS\Scripts\Editor\LuisTesterEditor.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/antsiapi/Documents/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
@@ -72,16 +73,6 @@
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/antsiapi/Documents/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-      <HintPath>C:/Users/ryfehr/Desktop/HACK 2018/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/ryfehr/Desktop/HACK 2018/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/ryfehr/Desktop/HACK 2018/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/ryfehr/Desktop/HACK 2018/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -320,12 +311,6 @@
     <Reference Include="UnityEditor.Graphs">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.Android.Extensions">
-      <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions">
-      <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.WSA.Extensions">
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.WSA.Extensions.dll</HintPath>
     </Reference>
@@ -333,13 +318,10 @@
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.CognitiveServices.Vision.Face">
-      <HintPath>C:/Users/antsiapi/Documents/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/Plugins/Face/net452/Microsoft.Azure.CognitiveServices.Vision.Face.dll</HintPath>
+      <HintPath>C:/Users/antsiapi/Documents/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/Plugins/Face/Microsoft.Azure.CognitiveServices.Vision.Face.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime">
-      <HintPath>C:/Users/antsiapi/Documents/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/Plugins/Face/net452/Microsoft.Rest.ClientRuntime.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>C:/Users/antsiapi/Documents/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/Plugins/Face/net452/Newtonsoft.Json.dll</HintPath>
+      <HintPath>C:/Users/antsiapi/Documents/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/Plugins/Face/Microsoft.Rest.ClientRuntime.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Cognitive.LUIS">
       <HintPath>C:/Users/antsiapi/Documents/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/Plugins/LUIS/net45+win8+wpa81/Microsoft.Cognitive.LUIS.dll</HintPath>
@@ -361,44 +343,9 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/antsiapi/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
-    <Reference Include="UnityEditor.OSXStandalone.Extensions">
-      <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Cognitive.LUIS">
-      <HintPath>C:/Users/ryfehr/Desktop/HACK 2018/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/Plugins/LUIS/net45+win8+wpa81/Microsoft.Cognitive.LUIS.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>C:/Users/ryfehr/Desktop/HACK 2018/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/Plugins/Newtonsoft.Json/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Advertisements">
-      <HintPath>C:/Users/ryfehr/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>C:/Users/ryfehr/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Analytics">
-      <HintPath>C:/Users/ryfehr/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/Editor/UnityEditor.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Purchasing">
-      <HintPath>C:/Users/ryfehr/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.StandardEvents">
-      <HintPath>C:/Users/ryfehr/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.CognitiveServices.Vision.Face">
-      <HintPath>C:/Users/ryfehr/Desktop/HACK 2018/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/Plugins/Face/Microsoft.Azure.CognitiveServices.Vision.Face.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime">
-      <HintPath>C:/Users/ryfehr/Desktop/HACK 2018/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/Plugins/Face/Microsoft.Rest.ClientRuntime.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
