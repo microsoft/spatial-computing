@@ -26,6 +26,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Microsoft.MR.SharedAlignment
 {
@@ -40,7 +41,30 @@ namespace Microsoft.MR.SharedAlignment
 
 		[Tooltip("The original unoptimized model")]
 		public GameObject originalModel;
+
+		/// <summary>
+		/// UI text component to display status.
+		/// </summary>
+		[Tooltip("Reference to uGUI text component where the FPS should be displayed.")]
+		public Text statusText;
 		#endregion // Unity Inspector Variables
+
+		#region Internal Methods
+		/// <summary>
+		/// Display a status update.
+		/// </summary>
+		/// <param name="message">
+		/// The status message to display.
+		/// </param>
+		private void SetStatus(string message)
+		{
+			Debug.Log(message);
+			if (statusText != null)
+			{
+				statusText.text = message;
+			}
+		}
+		#endregion // Internal Methods
 
 		#region Public Methods
 		/// <summary>
@@ -50,6 +74,7 @@ namespace Microsoft.MR.SharedAlignment
 		{
 			if (originalModel != null) { originalModel.SetActive(false); }
 			if (optimizedModel != null) { optimizedModel.SetActive(true); }
+			SetStatus("Showing optimized model");
 		}
 
 		/// <summary>
@@ -59,6 +84,7 @@ namespace Microsoft.MR.SharedAlignment
 		{
 			if (optimizedModel != null) { optimizedModel.SetActive(false); }
 			if (originalModel != null) { originalModel.SetActive(true); }
+			SetStatus("Showing original model");
 		}
 		#endregion // Public Methods
 	}
