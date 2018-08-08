@@ -21,29 +21,23 @@ public class PredictionResult{
     //turns the json string into a list of distinct Prediction objects:
     public void JsonStringToPredictionList() {
         if (jsonResultsString != null) {
-            Debug.Log(jsonResultsString);
             JObject obj = JsonConvert.DeserializeObject<JObject>(this.jsonResultsString);
 
             //get the predicted classes into a JToken:
             List<JProperty> subProperties = obj.Properties().ToList();
             bool isUsingCustomVision = true;
             JProperty property = null;
-            bool set = false;
             try {
                 property = subProperties.Find(p => p.Name == "predictions");
-                set = true;
-            }
-            catch{
-            }
-            if (set == false) {
-                try {
+                if (property == null) {
                     property = subProperties.Find(p => p.Name == "categories");
                     isUsingCustomVision = false;
                 }
-                catch {
-
-                }
             }
+            catch (Exception ex){
+                Debug.Log(ex.ToString());
+            }
+
             JToken resultJToken = property.Value;
 
             //make sure there are some classes:
@@ -70,7 +64,6 @@ public class PredictionResult{
                     Prediction thisPrediction = new Prediction();
                     thisPrediction.name = resultJToken[i].Value<string>("name");
                     thisPrediction.confidence = resultJToken[i].Value<float>("score");
-                    
                     predictions.Add(thisPrediction);
                     if (thisPrediction.confidence > predictions[indexOfHighestConfidence].confidence){
                         indexOfHighestConfidence = predictions.Count - 1;//set this new prediction as highest confidence
