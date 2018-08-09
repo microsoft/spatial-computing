@@ -14,13 +14,14 @@ using UnityEngine.Networking;
 public class Detector{ 
     //Takes in an image, and outputs an instance of the Prediction class.
     //Uses the settings set in an Options class to decide what to do with the input image.
-    public SampleProgram2 sampleProg;
     System.Action<PredictionResult> resultCallbackFunction;
     Options options;
+    MonoBehaviour callingScript;
 
-    public Detector(SampleProgram2 sample, Options options) {
-        sampleProg = sample;
+    public Detector(Options options, MonoBehaviour caller) {
         this.options = options;
+        //needs calling script to use Coroutines:
+        callingScript = caller;
     }
 
     public void SendImage(byte[] imageData, System.Action<PredictionResult> callback) {
@@ -36,11 +37,11 @@ public class Detector{
         else{
             //Use online calls with SDK or REST API:
             if (options.useSDK){
-                sampleProg.StartCoroutine(SDKPrediction(imageData));
+                callingScript.StartCoroutine(SDKPrediction(imageData));
             }
             else{
                 //Use the REST API:
-                sampleProg.StartCoroutine(APIPrediction(imageData));
+                callingScript.StartCoroutine(APIPrediction(imageData));
             }
         }
     }
@@ -70,7 +71,6 @@ public class Detector{
 
         if (wr.isNetworkError || wr.isHttpError){
             UnityEngine.Debug.Log(wr.downloadHandler.text);
-            sampleProg.DisplayText("error in api send");
             yield return null;
         }
         else{

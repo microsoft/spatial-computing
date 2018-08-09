@@ -1,9 +1,12 @@
 To use (samples coming soon):
-1: Make an instance of the Options class, and set your options and keys
+0: Make a script that inherits MonoBehavior, and attach it to a GameObject in your scene.
 
-2: Get an image into a byte[] in jpg/png format
+1: Make an instance of the Options class, and set your options and keys.
 
-3: Make an instance of the Detector class, passing in your options object to the constructor
+2: Get an image into a byte[] in jpg/png format.
+
+3: Make an instance of the Detector class, passing in your options object and script instance to the constructor.
+	Something like: Detector detector = new Detector(options, this);
 
 4: Make a method that takes in a PredictionResult object, which will serve as a callback function when a result from the prediction is ready
 	Something like: public void PredictionCallback(PredictionResult result){}
