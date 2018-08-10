@@ -1,6 +1,7 @@
 To use (samples coming soon):
 0: Make a script that inherits MonoBehavior, and attach it to a GameObject in your scene.
 
+In that script:
 1: Make an instance of the Options class, and set your options and keys.
 
 2: Get an image into a byte[] in jpg/png format.
