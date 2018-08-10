@@ -4,7 +4,8 @@ using UnityEngine;
 using System;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 
-public class Options { 
+public class Options
+{
     //Class to set options for image classification/detection, which the Detector class will use
     //Must always be set:
     public bool useOffline;
@@ -21,7 +22,8 @@ public class Options {
     public string visionURL;
     public string visionKey;
 
-    public Options() {
+    public Options()
+    {
         useOffline = false;
         useSDK = false;
         useCustomVision = true;
