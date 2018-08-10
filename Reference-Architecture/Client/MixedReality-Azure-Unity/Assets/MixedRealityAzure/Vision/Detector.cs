@@ -32,7 +32,7 @@ public class Detector{
     public void GetPrediction(byte[] imageData){
         //send the image to the appropriate place:
         if (options.useOffline){
-
+            throw new NotImplementedException();
         }
         else{
             //Use online calls with SDK or REST API:
