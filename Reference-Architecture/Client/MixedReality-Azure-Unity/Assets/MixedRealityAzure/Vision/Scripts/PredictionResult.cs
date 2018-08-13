@@ -15,10 +15,12 @@ namespace Microsoft.MR.Vision {
         public string jsonResultsString { get; set; }
         public List<Prediction> predictions;//list to hold all predictions for a given image
         public int indexOfHighestConfidence;
+        public float minConfidence;
 
-        public PredictionResult()
+        public PredictionResult(float confidenceThreshold)
         {
             predictions = new List<Prediction>();
+            minConfidence = confidenceThreshold;
         }
 
         //turns the json string into a list of distinct Prediction objects:
@@ -62,6 +64,11 @@ namespace Microsoft.MR.Vision {
                         Prediction thisPrediction = new Prediction();
                         thisPrediction.name = resultJToken[i].Value<string>("tagName");
                         thisPrediction.confidence = resultJToken[i].Value<float>("probability");
+                        if (thisPrediction.confidence < minConfidence) {
+                            //skip this prediction:
+                            continue;
+                        }
+
                         if (resultJToken[i].Value<JToken>("boundingBox") != null)
                         {
                             SetupBoundingBox(thisPrediction, resultJToken[i].Value<JToken>("boundingBox"));
@@ -78,6 +85,11 @@ namespace Microsoft.MR.Vision {
                         Prediction thisPrediction = new Prediction();
                         thisPrediction.name = resultJToken[i].Value<string>("name");
                         thisPrediction.confidence = resultJToken[i].Value<float>("score");
+                        if (thisPrediction.confidence < minConfidence)
+                        {
+                            //skip this prediction:
+                            continue;
+                        }
                         predictions.Add(thisPrediction);
                         if (thisPrediction.confidence > predictions[indexOfHighestConfidence].confidence)
                         {
@@ -120,12 +132,11 @@ namespace Microsoft.MR.Vision {
                 {
                     thisPrediction.name = computerVisionList[i].Name;
                     thisPrediction.confidence = (float)computerVisionList[i].Score;
-
-                    predictions.Add(thisPrediction);
-                    if (thisPrediction.confidence > predictions[indexOfHighestConfidence].confidence)
-                    {
-                        indexOfHighestConfidence = predictions.Count - 1;//set this new prediction as highest confidence
-                    }
+                }
+                if (thisPrediction.confidence < minConfidence)
+                {
+                    //skip this prediction:
+                    continue;
                 }
 
                 predictions.Add(thisPrediction);
