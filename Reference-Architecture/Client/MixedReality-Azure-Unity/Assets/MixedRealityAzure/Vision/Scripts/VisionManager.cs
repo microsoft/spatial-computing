@@ -13,63 +13,90 @@ using UnityEngine.Networking;
 
 namespace Microsoft.MR.Vision
 {
-    public class Detector
+    public class VisionManager : MonoBehaviour
     {
-        //Takes in an image, and outputs an instance of the Prediction class.
-        //Uses the settings set in an Options class to decide what to do with the input image.
-        System.Action<PredictionResult> resultCallbackFunction;
-        Options options;
-        MonoBehaviour callingScript;
+        //Handles option setting and image setting for cognitive services CustomVision and ComputerVision
 
-        public Detector(Options options, MonoBehaviour caller)
+        //Options:
+        //Must always be set:
+        [Tooltip("Use online prediction or offline prediction with a downloaded CustomVision model")]
+        public bool useOffline = false;
+
+        [Tooltip("If true, use SDK. If false, use API.")]
+        public bool useSDK = false;
+
+        [Tooltip("If true, use CustomVision. If false, use ComputerVision")]
+        public bool useCustomVision = true;
+
+        [Tooltip("The minimum confidence level for a Prediction to be handled.")]
+        [Range(0f, 1.0f)]
+        public float predictionConfidenceThreshold = 0.5f;
+
+        //Must be set for using CustomVision:
+        [Tooltip("The prediction URL for your CustomVision project.")]
+        public string customVisionURL;
+
+        [Tooltip("The Prediction Key for your CustomVision project.")]
+        public string customVisionPredictionKey;
+
+        [Tooltip("The Project ID of your CustomVision project.")]
+        public string customVisionProjectID;
+
+        //Must be set for using ComputerVision:
+        [Tooltip("Your Prediction URL for ComputerVision.")]
+        public string visionURL;
+
+        [Tooltip("Your Subscription Key for ComputerVision.")]
+        public string visionKey;
+
+        void Awake()
         {
-            this.options = options;
-            //needs calling script to use Coroutines:
-            callingScript = caller;
+
         }
 
-        public void SendImage(byte[] imageData, System.Action<PredictionResult> callback)
+        void Update()
         {
-            resultCallbackFunction = callback;
-            GetPrediction(imageData);
+
         }
 
-        public void GetPrediction(byte[] imageData)
+        public async Task<PredictionResult> SendImageAsync(byte[] imageData)
         {
+            PredictionResult result;
             //send the image to the appropriate place:
-            if (options.useOffline)
+            if (useOffline)
             {
                 throw new NotImplementedException();
             }
             else
             {
                 //Use online calls with SDK or REST API:
-                if (options.useSDK)
+                if (useSDK)
                 {
-                    callingScript.StartCoroutine(SDKPrediction(imageData));
+                    result = await SDKPrediction(imageData);
                 }
                 else
                 {
                     //Use the REST API:
-                    callingScript.StartCoroutine(APIPrediction(imageData));
+                    result = await APIPrediction(imageData);
                 }
             }
+            return result;
         }
 
-        public IEnumerator APIPrediction(byte[] imageData)
+        public async Task<PredictionResult> APIPrediction(byte[] imageData)
         {
             //Predicts using a trained CustomVision model:
             UnityWebRequest wr = new UnityWebRequest();
-            if (options.useCustomVision)
+            if (useCustomVision)
             {
-                wr.url = options.customVisionURL;
-                wr.SetRequestHeader("Prediction-Key", options.customVisionPredictionKey);
+                wr.url = customVisionURL;
+                wr.SetRequestHeader("Prediction-Key", customVisionPredictionKey);
             }
             else
             {
                 //use Computer Vision:
-                wr.url = options.visionURL;
-                wr.SetRequestHeader("Ocp-Apim-Subscription-Key", options.visionKey);
+                wr.url = visionURL;
+                wr.SetRequestHeader("Ocp-Apim-Subscription-Key", visionKey);
             }
             wr.method = UnityWebRequest.kHttpVerbPOST;
 
@@ -78,14 +105,25 @@ namespace Microsoft.MR.Vision
             uploader.contentType = "application/octet-stream";
             wr.uploadHandler = uploader;
             wr.downloadHandler = new DownloadHandlerBuffer();
+            
             //send request:
-            yield return wr.SendWebRequest();
-            yield return wr.isDone;
+            wr.SendWebRequest();
+            //Task this since UnityWebRequest is not awaitable:
+            while (!wr.isDone)
+            {
+                await Task.Run(() =>
+                {
+                    Thread.CurrentThread.IsBackground = true;
+                    Thread.Sleep(100);
+                    return;
+                });
+            }
+            
 
             if (wr.isNetworkError || wr.isHttpError)
             {
                 UnityEngine.Debug.Log(wr.downloadHandler.text);
-                yield return null;
+                return null;
             }
             else
             {
@@ -93,65 +131,43 @@ namespace Microsoft.MR.Vision
                 PredictionResult predRes = new PredictionResult();
                 predRes.jsonResultsString = wr.downloadHandler.text;
                 predRes.JsonStringToPredictionList();
-                resultCallbackFunction(predRes);
-                yield return null;
+                return predRes;
             }
         }
 
-        //Uses either the Custom Vision SDK or the Computer Vision SDK, depending on the set option property "useCustom":
-        public IEnumerator SDKPrediction(byte[] imageData)
+
+        public async Task<PredictionResult> SDKPrediction(byte[] imageData)
         {
             PredictionResult predRes = new PredictionResult();
-            if (options.useCustomVision)
+            if (useCustomVision)
             {
                 ImagePredictionResultModel result = null;
-                PredictionEndpoint endpoint = new PredictionEndpoint() { ApiKey = options.customVisionPredictionKey };
+                PredictionEndpoint endpoint = new PredictionEndpoint() { ApiKey = customVisionPredictionKey };
                 MemoryStream imageStream = new MemoryStream(imageData);
-                Guid customGuid = new Guid(options.customVisionProjectID);
-                //Send to Custom Vision project, on another thread:
-                Thread sendThread = new Thread(() =>
-                {
-                    Thread.CurrentThread.IsBackground = true;
-                    result = endpoint.PredictImage(customGuid, imageStream);
-                    return;
-                });
-                sendThread.Start();
-                //wait for result:
-                while (result == null)
-                {
-                    yield return new WaitForSeconds(1f);
-                }
+                Guid customGuid = new Guid(customVisionProjectID);
+                //Send to Custom Vision project:
+
+                result = await endpoint.PredictImageAsync(customGuid, imageStream);
+
                 predRes.ListToPredictionsList(result.Predictions);
             }
             else
             {
                 //use ComputerVision:
                 ComputerVisionAPI computerVision = new ComputerVisionAPI(
-                    new ApiKeyServiceClientCredentials(options.visionKey),
+                    new ApiKeyServiceClientCredentials(visionKey),
                     new System.Net.Http.DelegatingHandler[] { });
 
                 //get the Azure Region:
-                computerVision.AzureRegion = GetAzureRegionFromURL(options.visionURL);
+                computerVision.AzureRegion = GetAzureRegionFromURL(visionURL);
                 //send the image to ComputerVision:
                 Stream imageStream = new MemoryStream(imageData);
                 ImageAnalysis analysis = null;
-                Thread sendThread = new Thread(() =>
-                {
-                    Thread.CurrentThread.IsBackground = true;
-                    analysis = AnalyzeImageRemoteAsync(computerVision, imageStream).Result;
-                    return;
-                });
-                sendThread.Start();
+                analysis = await computerVision.AnalyzeImageInStreamAsync(imageStream);
 
-                //wait for result:
-                while (analysis == null)
-                {
-                    yield return new WaitForSeconds(1f);
-                }
                 predRes.ListToPredictionsList(analysis.Categories);
             }
-            resultCallbackFunction(predRes);
-            yield return null;
+            return predRes;
         }
 
         AzureRegions GetAzureRegionFromURL(string visionURL)
@@ -180,20 +196,6 @@ namespace Microsoft.MR.Vision
             string regionString = new string(regionCharArray);
             AzureRegions region = (AzureRegions)Enum.Parse(typeof(AzureRegions), regionString);
             return region;
-        }
-
-        public async Task<ImageAnalysis> AnalyzeImageRemoteAsync(ComputerVisionAPI computerVision, Stream imageStream)
-        {
-            try
-            {
-                ImageAnalysis analysis = await computerVision.AnalyzeImageInStreamAsync(imageStream);
-                return analysis;
-            }
-            catch (Exception ex)
-            {
-                Debug.Log(ex.ToString());
-                return null;
-            }
         }
     }
 }

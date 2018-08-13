@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 //Class to store each prediction of a PredictionResult in a nice format
-namespace Microsoft.MR.Visin
+namespace Microsoft.MR.Vision
 {
     public class Prediction
     {
