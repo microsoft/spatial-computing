@@ -128,7 +128,7 @@ namespace Microsoft.MR.Vision
             else
             {
                 // Successful request, now we can output the results:
-                PredictionResult predRes = new PredictionResult();
+                PredictionResult predRes = new PredictionResult(predictionConfidenceThreshold);
                 predRes.jsonResultsString = wr.downloadHandler.text;
                 predRes.JsonStringToPredictionList();
                 return predRes;
@@ -138,7 +138,7 @@ namespace Microsoft.MR.Vision
 
         public async Task<PredictionResult> SDKPrediction(byte[] imageData)
         {
-            PredictionResult predRes = new PredictionResult();
+            PredictionResult predRes = new PredictionResult(predictionConfidenceThreshold);
             if (useCustomVision)
             {
                 ImagePredictionResultModel result = null;
