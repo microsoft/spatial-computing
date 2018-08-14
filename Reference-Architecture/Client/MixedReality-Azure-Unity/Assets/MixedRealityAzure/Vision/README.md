@@ -1,19 +1,18 @@
 To use (samples coming soon):
-0: Make a script that inherits MonoBehavior, and attach it to a GameObject in your scene.
+0: Add VisionManager.cs, PredictionResult.cs, and Prediction.cs to your Assets folder
 
-In that script:
-1: Make an instance of the Options class, and set your options and keys.
+1: Attach VisionManager.cs to a GameObject in the scene.
 
-2: Get an image into a byte[] in jpg/png format.
+2: Set your options in VisionManager in the Unity Inspector.
 
-3: Make an instance of the Detector class, passing in your options object and script instance to the constructor.
-	Something like: Detector detector = new Detector(options, this);
+3: Get a reference to VisionManager with something like:
+VisionManager visionManager = GetComponent<VisionManager>();
 
-4: Make a method that takes in a PredictionResult object, which will serve as a callback function when a result from the prediction is ready
-	Something like: public void YourCallbackFunction(PredictionResult result){}
+4: Get an image as a byte[] formatted as a png, jpg, or any other format accepted by CustomVision/ComputerVision
 
-5: Call detector.SendImage(yourByte[], result => YourCallbackFunction(result))
+5: Send your image for prediction and get the result by calling:
+PredictionResult result = await visionManager.SendImageAsync(imageData); //imageData is the byte[] here
 
-6: When a result is ready, your callback function will be called, and you will have a PredictionResult that you can do with whatever you want.
+6: Do whatever you like with the PredictionResult.
 
 Now you have image classification in your app!

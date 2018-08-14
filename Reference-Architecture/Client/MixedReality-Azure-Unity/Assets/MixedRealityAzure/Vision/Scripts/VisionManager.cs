@@ -42,6 +42,9 @@ namespace Microsoft.MR.Vision
         [Tooltip("The Project ID of your CustomVision project.")]
         public string customVisionProjectID;
 
+        [Tooltip("The Training Key for your CustomVision project.")]
+        public string customVisionTrainingKey;
+
         //Must be set for using ComputerVision:
         [Tooltip("Your Prediction URL for ComputerVision.")]
         public string visionURL;
