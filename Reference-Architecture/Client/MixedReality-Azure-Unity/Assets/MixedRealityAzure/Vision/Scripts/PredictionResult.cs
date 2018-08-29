@@ -1,15 +1,13 @@
-﻿using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
-using Microsoft.Cognitive.CustomVision.Prediction.Models;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 //Class to hold all the information of the results of an image prediction, for later use:
-namespace Microsoft.MR.Vision {
+namespace Microsoft.MR.Vision
+{
     public class PredictionResult
     {
         public string jsonResultsString { get; set; }
@@ -64,7 +62,8 @@ namespace Microsoft.MR.Vision {
                         Prediction thisPrediction = new Prediction();
                         thisPrediction.name = resultJToken[i].Value<string>("tagName");
                         thisPrediction.confidence = resultJToken[i].Value<float>("probability");
-                        if (thisPrediction.confidence < minConfidence) {
+                        if (thisPrediction.confidence < minConfidence)
+                        {
                             //skip this prediction:
                             continue;
                         }
@@ -96,53 +95,6 @@ namespace Microsoft.MR.Vision {
                             indexOfHighestConfidence = predictions.Count - 1;//set this new prediction as highest confidence
                         }
                     }
-                }
-            }
-        }
-
-        //Turns a list of predictions (where the predictions may be in weird types), into a list of Prediction objects:
-        public void ListToPredictionsList<T>(IList<T> list)
-        {
-            bool isUsingCustomVision = true;
-            List<ImageTagPredictionModel> customList = null;
-            List<Category> computerVisionList = null;
-
-            //convert the input list into the correct type:
-            if (typeof(T) == typeof(Category))
-            {
-                //Using ComputerVision:
-                isUsingCustomVision = false;
-                computerVisionList = (List<Category>)list;
-            }
-            else
-            {
-                customList = (List<ImageTagPredictionModel>)list;
-            }
-            //add the predictions to the prediction list:
-            //also keep track of which has highest confidence:
-            for (int i = 0; i < list.Count; i++)
-            {
-                Prediction thisPrediction = new Prediction();
-                if (isUsingCustomVision)
-                {
-                    thisPrediction.name = customList[i].Tag;
-                    thisPrediction.confidence = (float)customList[i].Probability;
-                }
-                else
-                {
-                    thisPrediction.name = computerVisionList[i].Name;
-                    thisPrediction.confidence = (float)computerVisionList[i].Score;
-                }
-                if (thisPrediction.confidence < minConfidence)
-                {
-                    //skip this prediction:
-                    continue;
-                }
-
-                predictions.Add(thisPrediction);
-                if (thisPrediction.confidence > predictions[indexOfHighestConfidence].confidence)
-                {
-                    indexOfHighestConfidence = predictions.Count - 1;//set this new prediction as highest confidence
                 }
             }
         }

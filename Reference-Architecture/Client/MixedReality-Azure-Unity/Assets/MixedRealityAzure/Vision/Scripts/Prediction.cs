@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-//Class to store each prediction of a PredictionResult in a nice format
+﻿//Class to store each prediction of a PredictionResult in a nice format
 namespace Microsoft.MR.Vision
 {
     public class Prediction
