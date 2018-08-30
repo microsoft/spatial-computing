@@ -21,7 +21,7 @@ namespace Microsoft.MR.Vision
         [Range(0f, 1.0f)]
         public float predictionConfidenceThreshold = 0.5f;
 
-        //Must be set for using CustomVision:
+        //CustomVision:
         [Tooltip("Required for CustomVision. The prediction URL for your CustomVision project.")]
         public string customVisionURL;
 
@@ -31,10 +31,10 @@ namespace Microsoft.MR.Vision
         [Tooltip("Required for CustomVision. The Project ID of your CustomVision project.")]
         public string customVisionProjectID;
 
-        [Tooltip("Required for CostumVision. The Training Key for your CustomVision project.")]
+        [Tooltip("Optional for CostumVision. The Training Key for your CustomVision project.")]
         public string customVisionTrainingKey;
 
-        //Must be set for using ComputerVision:
+        //ComputerVision:
         [Tooltip("Required for ComputerVision. Your Prediction URL for ComputerVision.")]
         public string visionURL;
 
@@ -58,10 +58,11 @@ namespace Microsoft.MR.Vision
 
         public async Task<PredictionResult> APIPrediction(byte[] imageData)
         {
-            //Predicts using a trained CustomVision model:
+            //Predicts using MS ComputerVision or a trained CustomVision model:
             UnityWebRequest wr = new UnityWebRequest();
             if (useCustomVision)
             {
+                //use Custom Vision:
                 wr.url = customVisionURL;
                 wr.SetRequestHeader("Prediction-Key", customVisionPredictionKey);
             }
@@ -82,14 +83,12 @@ namespace Microsoft.MR.Vision
             //send request:
             wr.SendWebRequest();
 
-            //Task this since UnityWebRequest is not awaitable:
+            //Task this since UnityWebRequest is not awaitable (wr.isDone can only be checked from main thread):
             while (!wr.isDone)
             {
                 await Task.Run(() =>
                 {
-                    Thread.CurrentThread.IsBackground = true;
-                    Thread.Sleep(100);
-                    return;
+                    Thread.Sleep(10);
                 });
             }
 
