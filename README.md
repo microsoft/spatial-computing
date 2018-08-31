@@ -12,6 +12,7 @@ Concise projects that demonstrate a capability quickly and don't have external d
 
 Samples:
 - [Custom Vision with Windows ML in HoloLens](https://github.com/meulta/mixedreality-azure-samples/tree/master/Standalone-Samples/WindowsML-CustomVision-Hololens)
+- [Unity with Custom Vision Treasure Hunt Demo for Hololens, Android, and iOS](https://github.com/Microsoft/mixedreality-azure-samples/tree/master/Standalone-Samples/VisionTreasureHunt)
 - [Unity with Cognitive Services Text-to-Speech](https://github.com/Microsoft/mixedreality-azure-samples/tree/master/Standalone-Samples/Unity-Text-to-Speech)
 - [Unity with Azure Storage](https://github.com/Microsoft/mixedreality-azure-samples/tree/master/Standalone-Samples/AzureStorageDemoUnity3D)
 
