@@ -2,6 +2,8 @@
 <h3>Add image classification and object recognition to your AR application!</h3>
 
 <h2>How To Use</h2>
+(See the Vision Treasure Hunt demo in /Standalone-Samples for an example)
+
 1: Add the Unity Package "MR-Vision-x.x.x" to your Unity project.
   </br> You'll find that in this Github Repository under MixedReality-Azure-Unity/UnityPackages
 
