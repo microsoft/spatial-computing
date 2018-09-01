@@ -23,15 +23,10 @@ public class AndroidFrameGetter : MonoBehaviour
     public async Task<byte[]> GetImageAsync()
     {
         //wait for textureReader referrence:
-        await Task.Run(() =>
+        if(textureReader == null)
         {
-            while (textureReader == null)
-            {
-                Thread.CurrentThread.IsBackground = true;
-                Thread.Sleep(100);
-                return;
-            }
-        });
+            textureReader = GameObject.FindGameObjectWithTag("ARCoreRoot").GetComponent<TextureReader>();
+        }
         
         //set OnImageAvailable to recieve a frame:
         textureReader.OnImageAvailableCallback += OnImageAvailable;
