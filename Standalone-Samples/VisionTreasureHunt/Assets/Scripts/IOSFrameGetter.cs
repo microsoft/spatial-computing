@@ -12,21 +12,18 @@ public class IOSFrameGetter : MonoBehaviour
     UnityARVideo unityARVideo;
     RenderTexture renderTexture;
     byte[] imageBytes;
-    
+#endif
     // Use this for initialization
     void Start()
     {
+#if UNITY_IOS
         unityARVideo = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<UnityARVideo>();
         imageBytes = null;
+#endif
     }
-
+#if UNITY_IOS
     public async Task<byte[]> GetImageAsync()
     {
-        //returns an image from the camera when it is available:
-        if(unityARVideo == null)
-        {
-            unityARVideo = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<UnityARVideo>();
-        }
         StartCoroutine(GetTextureToBytes());
 
         //equivalent of yield return new WaitForSeconds:

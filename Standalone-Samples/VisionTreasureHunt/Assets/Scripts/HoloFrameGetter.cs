@@ -74,7 +74,7 @@ public class HoloFrameGetter : MonoBehaviour
             return format.Subtype == MediaEncodingSubtypes.Argb32;
 
         }).FirstOrDefault();
-        Debug.Log("making frame reader about to wait");
+        Debug.Log("frame sources: " + MediaCapture.FrameSources.Count());
 
         mediaFrameReader = await MediaCapture.CreateFrameReaderAsync(colorFrameSource);
     }
