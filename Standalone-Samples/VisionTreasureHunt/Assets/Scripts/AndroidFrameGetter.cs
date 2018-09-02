@@ -16,7 +16,6 @@ public class AndroidFrameGetter : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        textureReader = GameObject.FindGameObjectWithTag("ARCoreRoot").GetComponent<TextureReader>();
         imageData = null;
     }
 
@@ -25,7 +24,7 @@ public class AndroidFrameGetter : MonoBehaviour
         //wait for textureReader referrence:
         if(textureReader == null)
         {
-            textureReader = GameObject.FindGameObjectWithTag("ARCoreRoot").GetComponent<TextureReader>();
+            textureReader = GetComponent<DemoDriver>().arCoreRoot.GetComponent<TextureReader>();
         }
         
         //set OnImageAvailable to recieve a frame:

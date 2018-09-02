@@ -252,6 +252,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58ecea7a196242dd879c814ac05084c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &773190229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1654109285976568, guid: 0b100f2620f40b94691c5f6221f1410f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1258358561}
 --- !u!1 &1105801843 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1320939473329684, guid: f4254bec62c535549869a94eb0d603e4,
@@ -397,6 +402,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b100f2620f40b94691c5f6221f1410f, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1605832081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1043103742077246, guid: f4254bec62c535549869a94eb0d603e4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1177202723}
 --- !u!1 &1803706663
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +469,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1929108974 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1979815806774534, guid: 52ef3f984b4ab194c880b7fa711a1da4,
+    type: 2}
+  m_PrefabInternal: {fileID: 112923760}
 --- !u!1 &1964602097 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1033717228754310, guid: 0a1453588fa2fa14c91d2e2aaf6ae726,
@@ -508,6 +523,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1832320f938591048b36fde286bf3858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arKitRoot: {fileID: 1605832081}
+  arCoreRoot: {fileID: 1929108974}
+  mrtkRoot: {fileID: 773190229}
   objectMarker: {fileID: 4024000993665184, guid: 348a77b3267921c498adb0b8f42c8114,
     type: 2}
 --- !u!1001 &2100676857
@@ -552,17 +570,17 @@ Prefab:
     - target: {fileID: 114818391866690084, guid: 0a1453588fa2fa14c91d2e2aaf6ae726,
         type: 2}
       propertyPath: customVisionProjectID
-      value: 
+      value: 5d695e02-cf35-4ef1-b23c-f3570538d532
       objectReference: {fileID: 0}
     - target: {fileID: 114818391866690084, guid: 0a1453588fa2fa14c91d2e2aaf6ae726,
         type: 2}
       propertyPath: customVisionURL
-      value: 
+      value: https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Prediction/5d695e02-cf35-4ef1-b23c-f3570538d532/image
       objectReference: {fileID: 0}
     - target: {fileID: 114818391866690084, guid: 0a1453588fa2fa14c91d2e2aaf6ae726,
         type: 2}
       propertyPath: customVisionPredictionKey
-      value: 
+      value: 181ef2431df342478b0eaa327c8eb7ee
       objectReference: {fileID: 0}
     - target: {fileID: 114818391866690084, guid: 0a1453588fa2fa14c91d2e2aaf6ae726,
         type: 2}

@@ -9,6 +9,10 @@ public class DemoDriver : MonoBehaviour
     AndroidFrameGetter androidFrameGetter;
     IOSFrameGetter iOSFrameGetter;
     HoloFrameGetter holoFrameGetter;
+    public GameObject arKitRoot;
+    public GameObject arCoreRoot;
+    public GameObject mrtkRoot;
+
 
     public Transform objectMarker;
     bool predictionStarted;
@@ -20,11 +24,8 @@ public class DemoDriver : MonoBehaviour
         visionManager = GetComponent<VisionManager>();
         predictionStarted = false;
 
-        //Set up the correct AR System:
-        GameObject arKitRoot = GameObject.FindGameObjectWithTag("ARKitRoot");
-        GameObject arCoreRoot = GameObject.FindGameObjectWithTag("ARCoreRoot");
-        GameObject mrtkRoot = GameObject.FindGameObjectWithTag("MRTKRoot");
 
+        //set up the correct sdk:
 #if UNITY_ANDROID && !UNITY_EDITOR
         arKitRoot.SetActive(false);
         mrtkRoot.SetActive(false);
