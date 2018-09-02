@@ -570,17 +570,17 @@ Prefab:
     - target: {fileID: 114818391866690084, guid: 0a1453588fa2fa14c91d2e2aaf6ae726,
         type: 2}
       propertyPath: customVisionProjectID
-      value: 5d695e02-cf35-4ef1-b23c-f3570538d532
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114818391866690084, guid: 0a1453588fa2fa14c91d2e2aaf6ae726,
         type: 2}
       propertyPath: customVisionURL
-      value: https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Prediction/5d695e02-cf35-4ef1-b23c-f3570538d532/image
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114818391866690084, guid: 0a1453588fa2fa14c91d2e2aaf6ae726,
         type: 2}
       propertyPath: customVisionPredictionKey
-      value: 181ef2431df342478b0eaa327c8eb7ee
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114818391866690084, guid: 0a1453588fa2fa14c91d2e2aaf6ae726,
         type: 2}
