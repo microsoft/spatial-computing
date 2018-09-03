@@ -131,14 +131,14 @@
     <Compile Include="Assets\UnityARKitPlugin\Plugins\iOS\UnityARKit\Editor\UnityARBuildPostprocessor.cs" />
     <None Include="Assets\PlayServicesResolver\Editor\play-services-resolver_v1.2.64.0.txt" />
     <None Include="Assets\GoogleARCore\Editor\ARCoreiOSDependencies.template" />
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Source/GitHub/Fork/mixedreality-azure-samples/Standalone-Samples/VisionTreasureHunt/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Source/GitHub/Fork/mixedreality-azure-samples/Standalone-Samples/VisionTreasureHunt/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Source/GitHub/Fork/mixedreality-azure-samples/Standalone-Samples/VisionTreasureHunt/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PackageManagerUI.Editor">
+      <HintPath>C:/Source/GitHub/Fork/mixedreality-azure-samples/Standalone-Samples/VisionTreasureHunt/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Source/GitHub/Fork/mixedreality-azure-samples/Standalone-Samples/VisionTreasureHunt/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>

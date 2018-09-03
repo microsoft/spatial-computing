@@ -754,14 +754,14 @@
     <None Include="Assets\HoloToolkit\Utilities\Shaders\WindowOcclusion.shader" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\Obsolete\UnlitConfigurable.cginc" />
     <None Include="Assets\HoloToolkit\UX\Shaders\3DTextShader.shader" />
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Source/GitHub/Fork/mixedreality-azure-samples/Standalone-Samples/VisionTreasureHunt/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Source/GitHub/Fork/mixedreality-azure-samples/Standalone-Samples/VisionTreasureHunt/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Source/GitHub/Fork/mixedreality-azure-samples/Standalone-Samples/VisionTreasureHunt/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PackageManagerUI.Editor">
+      <HintPath>C:/Source/GitHub/Fork/mixedreality-azure-samples/Standalone-Samples/VisionTreasureHunt/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Source/GitHub/Fork/mixedreality-azure-samples/Standalone-Samples/VisionTreasureHunt/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
