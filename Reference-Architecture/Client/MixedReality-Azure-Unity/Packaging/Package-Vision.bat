@@ -16,8 +16,7 @@ SET PackageLatestName=%PackageName%-Latest.unitypackage
 ECHO Packaging %PackageName% %PackageVersion%
 
 ECHO Defining Asset List
-SET Assets=Assets\Plugins\Vision
-SET Assets=%Assets% Assets\Plugins\Newtonsoft.Json
+SET Assets=Assets\Plugins\Newtonsoft.Json
 SET Assets=%Assets% Assets\MixedRealityAzure\Common
 SET Assets=%Assets% Assets\MixedRealityAzure\Vision
 
