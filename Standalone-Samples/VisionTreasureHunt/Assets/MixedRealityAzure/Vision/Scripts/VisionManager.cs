@@ -11,8 +11,11 @@ namespace Microsoft.MR.Vision
         //Handles option setting and image setting for cognitive services CustomVision and ComputerVision
         //Options:
         //Must always be set:
+
+        /** Not implemented:
         [Tooltip("Use online prediction or offline prediction with a downloaded CustomVision model")]
         public bool useOffline = false;
+        **/
 
         [Tooltip("If true, use CustomVision. If false, use ComputerVision")]
         public bool useCustomVision = true;
@@ -43,16 +46,7 @@ namespace Microsoft.MR.Vision
 
         public async Task<PredictionResult> SendImageAsync(byte[] imageData)
         {
-            PredictionResult result;
-            //send the image to the appropriate place:
-            if (useOffline)
-            {
-                throw new NotImplementedException();
-            }
-            else
-            {
-                result = await APIPrediction(imageData);
-            }
+            PredictionResult result = await APIPrediction(imageData);
             return result;
         }
 

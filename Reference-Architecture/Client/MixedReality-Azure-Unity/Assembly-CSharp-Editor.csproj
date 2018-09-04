@@ -334,9 +334,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>C:/Source/GitHub/Fork/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/Plugins/Newtonsoft.Json/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime">
-      <HintPath>C:/Source/GitHub/Fork/mixedreality-azure-samples/Reference-Architecture/Client/MixedReality-Azure-Unity/Assets/Plugins/Vision/TargetingNet4X/Microsoft.Rest.ClientRuntime.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/Michael/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
