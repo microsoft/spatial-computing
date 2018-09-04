@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisionTreasureHunt", "Assembly-CSharp.csproj", "{D540A543-4999-F5B4-A61B-35B8AA2847BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisionTreasureHunt", "Assembly-CSharp-Editor.csproj", "{4D9343E2-53E4-DA81-3176-38EA1A713A48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D540A543-4999-F5B4-A61B-35B8AA2847BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D540A543-4999-F5B4-A61B-35B8AA2847BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D540A543-4999-F5B4-A61B-35B8AA2847BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D540A543-4999-F5B4-A61B-35B8AA2847BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D9343E2-53E4-DA81-3176-38EA1A713A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D9343E2-53E4-DA81-3176-38EA1A713A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D9343E2-53E4-DA81-3176-38EA1A713A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D9343E2-53E4-DA81-3176-38EA1A713A48}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
