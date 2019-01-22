@@ -1,8 +1,7 @@
 # AzureStorageDemoUnity3D
-Sample Unity project used to demonstrate the use of [Azure Storage](https://azure.microsoft.com/services/storage/) services in games and Mixed Reality projects. This app shows how you can upload/download blobs from Azure Storage using the basic Azure Storage SDK, and you also get the ability to download blobs by segments of 1MB (configurable) which opens the door for tracking progress during the download. This allows you to dynamically load large media files from the cloud at runtime, such as high-resolution textures, HD videos and even panoramic 360 degrees videos.
+Sample Unity project used to demonstrate the use of [Azure Storage](https://azure.microsoft.com/services/storage/) services in unity games and cross-platform VR & Mixed Reality projects. This app shows how you can upload/download blobs from Azure Storage using the basic Azure Storage SDK, and you also get the ability to download blobs by segments of 1MB (configurable) which opens the door for tracking progress during the download. This allows you to dynamically load large media files from the cloud at runtime, such as high-resolution textures, HD videos and even panoramic 360 degrees videos.
 
-* **Unity version: 2017.4.5f1**
-* **Mixed Reality Toolkit version: 2017.2.1.1**
+* **Unity version: 2018.2.20f1**
 
 # Demo Scenes
 
@@ -17,12 +16,12 @@ Sample Unity project used to demonstrate the use of [Azure Storage](https://azur
 ## Implementation Notes
 
 * **Azure Storage**: You will need an [Azure Storage](https://azure.microsoft.com/services/storage/) account to run this demo. My Azure Storage key is included in the project but I reserve the right to remove/change it at any time. Simply create a new Azure Storage account using these [quickstart instructions](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal), create a blob container named "mediacontainerblockblob" and copy your connection string in the *AzureBlobStorageClient* script.
-* **Scripting backend**: This project requires the .NET Scripting backend and support for .NET 4.6 Experimental in Unity. This sample has not been tested with IL2CPP yet.
+* **Scripting backend**: This project requires the .NET Scripting backend and support for .NET 4.6 in Unity. It should now work with IL2CPP too. Note that API Compatibility must be set to .NET Standard 2.0.
 * **Configuration Prefab**: Use the *AzureBlobStorageManager* prefab in your scene since it contains the main *AzureBlobStorageClient* script & proxy class you need to quickly integrate Azure Blob Storage in your projects. Set your Azure Storage connection string and blob container name here.
-* **SSL/TLS Limitation**: When running in the editor you CANNOT use https to connect to Blob Storage due to a certificates limitation in Unity, but https works fine in the UWP build. The *AzureBlobStorageClient* script includes a checkbox to enable this http/https toggle automatically for you.
-* **Plugins**: The plugin DLL files are included in the source since they are specific versions selected for this project based on compatibility. The [Azure Storage DLL](https://www.nuget.org/packages/WindowsAzure.Storage/) is the Win8 version for the UWP build, and the .NET 4.5 version for the Unity editor.
-* **Data Movement Library (Editor-only)**: There is an extra button in the *AzureBlobStorageTest* scene that showcases a blob download example script using the [Azure Storage Data Movement library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement). While it currently runs fine in the Unity editor, note that the UWP build export doesn't work. This is because Unity cannot handle a 16299 UWP DLL (which is UWP v6, Unity can only produce v5), so it was decided to shelve DMLib for now until Unity 2018.1 adds support for .NET Standard 2.0.
-* **Sister Project**: If you want to dig into the techniques used for Azure Storage in this Unity demo, check out the sample [UWP XAML Test Client for Azure Storage here](https://github.com/ActiveNick/AzStorageDataMovementTest) by Nick Landry.
+* **SSL/TLS Limitation**: When running in the editor you CANNOT use https to connect to Blob Storage due to a certificates limitation in Unity, but https works fine in the UWP build. The *AzureBlobStorageClient* script includes a checkbox to enable this http/https toggle automatically for you. (*Note: SSL/TLS should now work fine in Unity 2018.2 and higher*)
+* **Plugins**: The plugin DLL files are included in the source since they are specific versions selected for this project based on compatibility. The [Azure Storage DLL](https://www.nuget.org/packages/WindowsAzure.Storage/) and the project itself was upgraded to now use .NET Standard 2.0
+* **Data Movement Library (Editor-only)**: There was an extra button in the *AzureBlobStorageTest* scene that showcased a blob download example script using the [Azure Storage Data Movement library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement). While it currently runs fine in the Unity editor, note that the UWP build export doesn't work. This is because Unity cannot handle a 16299 UWP DLL (which is UWP v6, Unity can only produce v5), so I decided to shelve DMLib for now until Unity 2018.x adds support for .NET Standard 2.0. (*Note: The code is still in the sample but it was disabled.*)
+* **Sister Project**: If you want to dig into the techniques used for Azure Storage in this Unity demo, check out my [UWP XAML Test Client for Azure Storage here](https://github.com/ActiveNick/AzStorageDataMovementTest).
 * **Movie Theater Lighting**: All the spotlights in the movie theater are set to *Not important* and use baked lighting. However, the walls and ceiling are not static since they need to be lifted. For that reason, lighting auto-generation is turned off. If you load the project and the theater walls are showing a uniform blue without any spotlight effect (see screenshot for what it should look like), set the ceiling, walls (and children) to *Static*, manually generate your lightmap, and then disable the *Static* flag on the ceiling, walls (and children) again.
 
 ## Known Issues
@@ -42,3 +41,6 @@ Sample Unity project used to demonstrate the use of [Azure Storage](https://azur
 * [Azure Storage API Docs for .NET](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/storage?view=azure-dotnet)
 * [Microsoft Azure Storage team's blog](http://blogs.msdn.com/b/windowsazurestorage/) 
 
+## Follow Me
+* Twitter: [@ActiveNick](http://twitter.com/ActiveNick)
+* SlideShare: [http://www.slideshare.net/ActiveNick](http://www.slideshare.net/ActiveNick)

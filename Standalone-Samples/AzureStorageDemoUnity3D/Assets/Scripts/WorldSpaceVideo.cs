@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 public class WorldSpaceVideo : MonoBehaviour {
 
     // Used to control the appearance of the Play button, with pause toggle
-    public Material playButtonMaterial;
-    public Material pauseButtonMaterial;
-    public Renderer playButtonRenderer;
+    public Sprite playImage;
+    public Sprite pauseImage;
+    public Image playButtonImage;
     // Since we're loading videos by url, we're not storing actual VideoClip objects, just file names
     public string[] videoClips;  
     // Used to track video length and current position during playback
@@ -71,7 +71,7 @@ public class WorldSpaceVideo : MonoBehaviour {
             if (videoPlayer.isPlaying)
             {
                 videoPlayer.Stop();
-                playButtonRenderer.material = playButtonMaterial;
+                playButtonImage.sprite = playImage;
             }
             videoPlayer.url = localvideofile;
             videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
@@ -117,11 +117,11 @@ public class WorldSpaceVideo : MonoBehaviour {
         if (videoPlayer.isPlaying)
         {
             videoPlayer.Pause();
-            playButtonRenderer.material = playButtonMaterial; // Change button appearance to Play
+            playButtonImage.sprite = playImage;
         } else
         {
             videoPlayer.Play();
-            playButtonRenderer.material = pauseButtonMaterial; // Change button appearance to Pause
+            playButtonImage.sprite = pauseImage;
         }
     }
 

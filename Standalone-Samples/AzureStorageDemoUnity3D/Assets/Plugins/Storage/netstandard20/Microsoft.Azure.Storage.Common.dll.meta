@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e33770f502113cd4ebb905c729e0fce8
+guid: b38c2b80b15a6f74fa08b8fbe8c0235d
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -13,22 +13,20 @@ PluginImporter:
     second:
       enabled: 0
       settings:
-        Exclude Android: 1
-        Exclude Editor: 1
-        Exclude Linux: 1
-        Exclude Linux64: 1
-        Exclude LinuxUniversal: 1
-        Exclude OSXIntel: 0
-        Exclude OSXIntel64: 0
-        Exclude OSXUniversal: 1
+        Exclude Android: 0
+        Exclude Editor: 0
+        Exclude Linux: 0
+        Exclude Linux64: 0
+        Exclude LinuxUniversal: 0
+        Exclude OSXUniversal: 0
         Exclude WebGL: 1
-        Exclude Win: 1
-        Exclude Win64: 1
-        Exclude WindowsStoreApps: 1
+        Exclude Win: 0
+        Exclude Win64: 0
+        Exclude WindowsStoreApps: 0
   - first:
       Android: Android
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: ARMv7
   - first:
@@ -39,7 +37,7 @@ PluginImporter:
   - first:
       Editor: Editor
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: AnyCPU
         DefaultValueInitialized: true
@@ -59,58 +57,42 @@ PluginImporter:
   - first:
       Standalone: Linux
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: x86
   - first:
       Standalone: Linux64
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: x86_64
   - first:
       Standalone: LinuxUniversal
-    second:
-      enabled: 0
-      settings:
-        CPU: None
-  - first:
-      Standalone: OSXIntel
-    second:
-      enabled: 1
-      settings: {}
-  - first:
-      Standalone: OSXIntel64
     second:
       enabled: 1
       settings: {}
   - first:
       Standalone: OSXUniversal
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: AnyCPU
   - first:
       Standalone: Win
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: AnyCPU
   - first:
       Standalone: Win64
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: AnyCPU
   - first:
-      WebGL: WebGL
-    second:
-      enabled: 0
-      settings: {}
-  - first:
       Windows Store Apps: WindowsStoreApps
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: AnyCPU
         DontProcess: false

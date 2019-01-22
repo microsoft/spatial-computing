@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 #if UNITY_EDITOR
-using Microsoft.WindowsAzure.Storage.DataMovement;
+//using Microsoft.WindowsAzure.Storage.DataMovement;
 #endif
 
 using UnityEngine;
@@ -38,6 +38,9 @@ public class BlobTransferDM : BaseStorage
     // The Azure Storage Data Movement library currently only works in the Unity Editor, not in UWP targets.
     private async Task StorageDataMovementBlockBlobDownloadAsync()
     {
+        // DEVELOPER NOTES: Temprarily disabling support for the Azure Data Movement Library since it was only tested in the editor
+        return;
+
 #if UNITY_EDITOR
         WriteLine("Downloading BlockBlob with ASDM Library");
 
@@ -65,13 +68,13 @@ public class BlobTransferDM : BaseStorage
         if (blockBlob != null)
         {
             // Setup the number of the concurrent operations
-            TransferManager.Configurations.ParallelOperations = 64;
+            //TransferManager.Configurations.ParallelOperations = 64;
             // Setup the transfer context and track the upload progress
-            SingleTransferContext context = new SingleTransferContext();
-            context.ProgressHandler = new Progress<TransferStatus>((progress) =>
-            {
-                WriteLine("  Bytes downloaded: " + progress.BytesTransferred.ToString());
-            });
+            //SingleTransferContext context = new SingleTransferContext();
+            //context.ProgressHandler = new Progress<TransferStatus>((progress) =>
+            //{
+            //    WriteLine("  Bytes downloaded: " + progress.BytesTransferred.ToString());
+            //});
 
             // Download a blob to your file system
             string path;
@@ -96,9 +99,9 @@ public class BlobTransferDM : BaseStorage
             path = Path.Combine(Application.temporaryCachePath, fileName);
 
             // Download a local blob with progress updates
-            DownloadOptions dOptions = new DownloadOptions();
-            dOptions.DisableContentMD5Validation = true;  // TO DO: Need to test if MD5 works, currently disabled
-            await TransferManager.DownloadAsync(blockBlob, path, dOptions, context, CancellationToken.None);
+            //DownloadOptions dOptions = new DownloadOptions();
+            //dOptions.DisableContentMD5Validation = true;  // TO DO: Need to test if MD5 works, currently disabled
+            //await TransferManager.DownloadAsync(blockBlob, path, dOptions, context, CancellationToken.None);
 
             sw.Stop();
             TimeSpan time = sw.Elapsed;

@@ -14,6 +14,7 @@ using UnityEngine.UI;
 // Namespaces: Azure
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Unity;
 
 // Place this script in a script manager object in your scene or use the AzureBlobStorageManager prefab
 // IMPORTANT NOTE: This script was *ONLY* designed to work in the Unity editor and in a UWP build.
@@ -29,7 +30,8 @@ public class AzureBlobStorageClient : MonoBehaviour
     // THIS MEANS YOUR CONNECTION WILL NOT BE ENCRYPTED when running your app from the Unity Editor.
     // You can use an endpoint with https and check DisableSSLInEditor to fix this. This way your
     // connection will still be secure in your UWP builds.
-    [Tooltip("Connection string to Azure Storage account (cannot use https in Editor).")]
+    [Tooltip("Connection string to Azure Storage account.")]
+    [SecretValue("Storage_ConnectionString")]
     public string ConnectionString = string.Empty;
     [Tooltip("Check this if you use an HTTPS endpoint to allow your app to still run in the Unity Editor.")]
     public bool DisableSSLInEditor = true;
@@ -61,7 +63,10 @@ public class AzureBlobStorageClient : MonoBehaviour
         } else
         {
             IsDebugTextEnabled = false;
-        }      
+        }
+
+        // Attempt to load secrets
+        SecretHelper.LoadSecrets(this);
 
         string connString;
         // Check to see if this is necessary for standalone desktop builds
@@ -139,9 +144,9 @@ public class AzureBlobStorageClient : MonoBehaviour
             // Start the timer to measure performance
             var sw = Stopwatch.StartNew();
 #if WINDOWS_UWP
-		StorageFolder storageFolder = await StorageFolder.GetFolderFromPathAsync(Application.streamingAssetsPath.Replace('/', '\\'));
-		StorageFile sf = await storageFolder.GetFileAsync(MediaFile);
-		await blockBlob.UploadFromFileAsync(sf);
+		    StorageFolder storageFolder = await StorageFolder.GetFolderFromPathAsync(Application.streamingAssetsPath.Replace('/', '\\'));
+		    StorageFile sf = await storageFolder.GetFileAsync(MediaFile);
+		    await blockBlob.UploadFromFileAsync(sf.Path);
 #else
             await blockBlob.UploadFromFileAsync(Path.Combine(Application.streamingAssetsPath, MediaFile));
 #endif
@@ -248,11 +253,11 @@ public class AzureBlobStorageClient : MonoBehaviour
                 }
                 // Start the timer to measure performance
                 var sw = Stopwatch.StartNew();
-#if WINDOWS_UWP
-                await blockBlob.DownloadToFileAsync(sf);
-#else
+//#if WINDOWS_UWP
+//                await blockBlob.DownloadToFileAsync(sf);
+//#else
                 await blockBlob.DownloadToFileAsync(path, FileMode.Create);
-#endif
+//#endif
                 // Stop the timer and report back on completion + performance
                 sw.Stop();
                 TimeSpan time = sw.Elapsed;

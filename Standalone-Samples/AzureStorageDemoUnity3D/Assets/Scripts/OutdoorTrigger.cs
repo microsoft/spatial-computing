@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using HoloToolkit.Unity.InputModule;
 
-public class OutdoorTrigger : MonoBehaviour, IInputClickHandler
+public class OutdoorTrigger : MonoBehaviour
 {
     public SkyboxVideo skyboxManager;
 
-    public void OnInputClicked(InputClickedEventData eventData)
+    public void OnInputClicked()
     {
         skyboxManager.SwitchToOutdoorTheater();
     }
