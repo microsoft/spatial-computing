@@ -23,22 +23,22 @@ I got started by training a custom vision classifier on http://customvision.ai. 
 
 For my sample, I create a model to detect coffee mugs and classify them.
 
-![Tagging in Custom Vision](images/tag.png)
+![Tagging in Custom Vision](./images/tag.png)
 
 You will need to create a train your own model on the Custom Vision portal, or roll your own inference pipeline and integrate the reporjection components into your project.
 
 Once you publish the iteration that you're happy with, you will input that URL and the Prediction Key value into the CustomVisionServiceConfig object.
 
-![CustomVisionServiceConfig](images/customvisionserviceconfig.png)
+![CustomVisionServiceConfig](./images/customvisionserviceconfig.png)
 
 Then, it will need to be set on the SceneController component.
 
-![Set the config](images/customvisionserviceconfig_set.png)
+![Set the config](./images/customvisionserviceconfig_set.png)
 
 That should be all you need to do. Don't forget to setup your HoloLens project settings and then build out to Visual Studio.
 
 ## Screenshot
 
-![screenshot](images/hololens_screenshot.jpg)
+![screenshot](./images/hololens_screenshot.jpg)
 
 If you find any issues with the sample, please submit an issue. Thank you!
